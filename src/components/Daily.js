@@ -57,25 +57,25 @@ class Daily extends Component {
                 moment().tz("Europe/Sarajevo").format('YYYY'),
                 moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
-            vaktija: dnevna((this.props.root && (cookies.get("myLocation") >= 0 || cookies.get("myLocation") <= 117)) ? cookies.get("myLocation") : this.props.myLocation).vakat
+            vaktija: dnevna((this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation).vakat
         });
     };
 
     state = {
-        location: (this.props.root && (cookies.get("myLocation") >= 0 || cookies.get("myLocation") <= 117)) ? cookies.get("myLocation") : this.props.myLocation,
+        location: (this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation,
         date: [
             moment().tz("Europe/Sarajevo").format('dddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
             moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
-        vaktija: dnevna((this.props.root && (cookies.get("myLocation") >= 0 || cookies.get("myLocation") <= 117)) ? cookies.get("myLocation") : this.props.myLocation).vakat
+        vaktija: dnevna((this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation).vakat
     }
 
     componentDidMount() {
         ReactGA.pageview(window.location.pathname + window.location.search);
         this.timerID = setInterval(() => this.tick(), 1000);
         if (!this.props.root) {
-            cookies.set('myLocation', this.props.myLocation, { path: '/' });
+            cookies.set("location", this.props.myLocation, { path: '/' });
         }
     }
 
