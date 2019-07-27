@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /download
+Disallow: /mobile
+Disallow: /qexplorer
+Sitemap: http://beta.vaktija.ba/sitemap.xml
