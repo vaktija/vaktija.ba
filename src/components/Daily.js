@@ -22,6 +22,15 @@ import slugify from "slugify";
 
 const cookies = new Cookies();
 
+const myLocations = ["Banovići", "Banja Luka", "Bihać", "Bijeljina", "Bileća", "Bosanski Brod", "Bosanska Dubica", "Bosanska Gradiška", "Bosansko Grahovo", "Bosanska Krupa", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Breza", "Bugojno", "Busovača", "Bužim", "Cazin", "Čajniče", "Čapljina", "Čelić", "Čelinac", "Čitluk", "Derventa", "Doboj", "Donji Vakuf", "Drvar", "Foča", "Fojnica", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanica", "Gradačac", "Grude", "Hadžići", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanica", "Jajce", "Kakanj", "Kalesija", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaši", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriča", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogatica", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenica", "Srebrenik", "Stolac", "Šekovići", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzla", "Ugljevik", "Vareš", "Velika Kladuša", "Visoko", "Višegrad", "Vitez", "Vlasenica", "Zavidovići", "Zenica", "Zvornik", "Žepa", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Nova Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenica", "Tutin"];
+const myLocations2 = ["Banoviće", "Banja Luku", "Bihać", "Bijeljinu", "Bileću", "Bosanski Brod", "Bosansku Dubicu", "Bosansku Gradišku", "Bosansko Grahovo", "Bosansku Krupu", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Brezu", "Bugojno", "Busovaču", "Bužim", "Cazin", "Čajniče", "Čapljinu", "Čelić", "Čelinac", "Čitluk", "Derventu", "Doboj", "Donji Vakuf", "Drvar", "Foču", "Fojnicu", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanicu", "Gradačac", "Grude", "Hadžiće", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanicu", "Jajce", "Kakanj", "Kalesiju", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaše", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriču", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogaticu", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenicu", "Srebrenik", "Stolac", "Šekoviće", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzlu", "Ugljevik", "Vareš", "Veliku Kladušu", "Visoko", "Višegrad", "Vitez", "Vlasenicu", "Zavidoviće", "Zenicu", "Zvornik", "Žepu", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Novu Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenicu", "Tutin"];
+const myLocations3 = myLocations.map(l => slugify(l, {
+    replacement: "-",
+    remove: null,
+    lower: true
+}))
+const vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
+
 ReactGA.initialize("UA-117519966-1");
 
 moment.updateLocale("bs", {
@@ -87,7 +96,8 @@ class Daily extends Component {
     localization() {
         let lokacija = this.props.myLocation
         if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") === undefined) {
-            lokacija = localStorage.getItem("mojaLokacija")
+            lokacija = myLocations3.indexOf(localStorage.getItem("mojaLokacija"))
+            // lokacija = localStorage.getItem("mojaLokacija")
         } else if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") !== undefined) {
             lokacija = cookies.get("location")
         } else if (this.props.root && localStorage.getItem("mojaLokacija") === null && cookies.get("location") !== undefined) {
@@ -100,9 +110,6 @@ class Daily extends Component {
 
     render() {
 
-        let myLocations = ["Banovići", "Banja Luka", "Bihać", "Bijeljina", "Bileća", "Bosanski Brod", "Bosanska Dubica", "Bosanska Gradiška", "Bosansko Grahovo", "Bosanska Krupa", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Breza", "Bugojno", "Busovača", "Bužim", "Cazin", "Čajniče", "Čapljina", "Čelić", "Čelinac", "Čitluk", "Derventa", "Doboj", "Donji Vakuf", "Drvar", "Foča", "Fojnica", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanica", "Gradačac", "Grude", "Hadžići", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanica", "Jajce", "Kakanj", "Kalesija", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaši", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriča", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogatica", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenica", "Srebrenik", "Stolac", "Šekovići", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzla", "Ugljevik", "Vareš", "Velika Kladuša", "Visoko", "Višegrad", "Vitez", "Vlasenica", "Zavidovići", "Zenica", "Zvornik", "Žepa", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Nova Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenica", "Tutin"];
-        let myLocations2 = ["Banoviće", "Banja Luku", "Bihać", "Bijeljinu", "Bileću", "Bosanski Brod", "Bosansku Dubicu", "Bosansku Gradišku", "Bosansko Grahovo", "Bosansku Krupu", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Brezu", "Bugojno", "Busovaču", "Bužim", "Cazin", "Čajniče", "Čapljinu", "Čelić", "Čelinac", "Čitluk", "Derventu", "Doboj", "Donji Vakuf", "Drvar", "Foču", "Fojnicu", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanicu", "Gradačac", "Grude", "Hadžiće", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanicu", "Jajce", "Kakanj", "Kalesiju", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaše", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriču", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogaticu", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenicu", "Srebrenik", "Stolac", "Šekoviće", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzlu", "Ugljevik", "Vareš", "Veliku Kladušu", "Visoko", "Višegrad", "Vitez", "Vlasenicu", "Zavidoviće", "Zenicu", "Zvornik", "Žepu", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Novu Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenicu", "Tutin"];
-        let vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
         let { date, vaktija, location } = this.state;
 
         /*         //^ backward compatibility with localStorage (beta.vaktija.ba)
