@@ -57,18 +57,19 @@ class Daily extends Component {
                 moment().tz("Europe/Sarajevo").format('YYYY'),
                 moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
-            vaktija: dnevna((this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation).vakat
+            vaktija: dnevna(this.localization()).vakat
         });
     };
 
     state = {
-        location: (this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation,
+        // location: (this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation,
+        location: this.localization(),
         date: [
             moment().tz("Europe/Sarajevo").format('dddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
             moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
-        vaktija: dnevna((this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation).vakat
+        vaktija: dnevna(this.localization()).vakat
     }
 
     componentDidMount() {
@@ -83,6 +84,19 @@ class Daily extends Component {
         clearInterval(this.timerID);
     }
 
+    localization() {
+        let lokacija = this.props.myLocation
+        if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") === undefined) {
+            lokacija = localStorage.getItem("mojaLokacija")
+        } else if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") !== undefined) {
+            lokacija = cookies.get("location")
+        } else if (this.props.root && localStorage.getItem("mojaLokacija") === null && cookies.get("location") !== undefined) {
+            lokacija = cookies.get("location")
+        } else if (this.props.root && localStorage.getItem("mojaLokacija") === null && cookies.get("location") === undefined) {
+            lokacija = this.props.myLocation
+        }
+        return lokacija
+    }
 
     render() {
 
@@ -90,6 +104,26 @@ class Daily extends Component {
         let myLocations2 = ["Banoviće", "Banja Luku", "Bihać", "Bijeljinu", "Bileću", "Bosanski Brod", "Bosansku Dubicu", "Bosansku Gradišku", "Bosansko Grahovo", "Bosansku Krupu", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Brezu", "Bugojno", "Busovaču", "Bužim", "Cazin", "Čajniče", "Čapljinu", "Čelić", "Čelinac", "Čitluk", "Derventu", "Doboj", "Donji Vakuf", "Drvar", "Foču", "Fojnicu", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanicu", "Gradačac", "Grude", "Hadžiće", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanicu", "Jajce", "Kakanj", "Kalesiju", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaše", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriču", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogaticu", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenicu", "Srebrenik", "Stolac", "Šekoviće", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzlu", "Ugljevik", "Vareš", "Veliku Kladušu", "Visoko", "Višegrad", "Vitez", "Vlasenicu", "Zavidoviće", "Zenicu", "Zvornik", "Žepu", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Novu Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenicu", "Tutin"];
         let vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
         let { date, vaktija, location } = this.state;
+
+        /*         //^ backward compatibility with localStorage (beta.vaktija.ba)
+                let mojaLokacija = null;
+                try {
+                    mojaLokacija = localStorage.getItem("mojaLokacija");
+                } catch (e) {
+                    console.log(e);
+                }
+        
+                console.log('cookie', cookies.get('location'));
+                console.log('storage', mojaLokacija);
+        
+                if ((this.props.root && mojaLokacija !== null && (cookies.get('location') === undefined))) {
+                    location = mojaLokacija
+                }
+                else {
+                    console.log('krompir')
+                }
+                //$ backward compatibility with localStorage (beta.vaktija.ba)
+         */
 
         return (
             <Fragment>
