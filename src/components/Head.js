@@ -28,7 +28,7 @@ class Head extends Component {
             <Helmet>
                 <link
                     rel="canonical"
-                    href={`http://beta.vaktija.ba/${slugify(
+                    href={`https://vaktija.ba/${slugify(
                         lokacija[this.props.lokacija],
                         {
                             replacement: "-",

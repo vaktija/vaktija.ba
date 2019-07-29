@@ -31,7 +31,10 @@ const myLocations3 = myLocations.map(l => slugify(l, {
 }))
 const vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
 
-ReactGA.initialize("UA-117519966-1");
+// beta
+// ReactGA.initialize("UA-117519966-1");
+
+ReactGA.initialize("UA-9142566-1");
 
 moment.updateLocale("bs", {
     iMonths: [
@@ -137,7 +140,7 @@ class Daily extends Component {
                 <Helmet>
                     <link
                         rel="canonical"
-                        href={`http://beta.vaktija.ba/${slugify(
+                        href={`https://vaktija.ba/${slugify(
                             myLocations[location],
                             {
                                 replacement: "-",

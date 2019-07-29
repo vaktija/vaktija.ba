@@ -11,7 +11,7 @@ class Sitemap extends Component {
             <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
                 {spisakLokacija.map((l, index) => (
                     <url>
-                        {/* <loc>{`http://beta.vaktija.ba/${l}`}</loc> */}
+                        {/* <loc>{`https://vaktija.ba/${l}`}</loc> */}
 
                         <loc>{`https://vaktija.ba/${slugify(l, {
                             replacement: "-",
