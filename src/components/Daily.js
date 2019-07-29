@@ -85,7 +85,7 @@ class Daily extends Component {
         ReactGA.pageview(window.location.pathname + window.location.search);
         this.timerID = setInterval(() => this.tick(), 1000);
         if (!this.props.root) {
-            cookies.set("location", this.props.myLocation, { path: '/' });
+            cookies.set("location", this.props.myLocation, { path: '/', domain: '.vaktija.ba' });
         }
     }
 
