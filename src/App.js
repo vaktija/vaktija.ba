@@ -12,6 +12,7 @@ let location = ["Banovići", "Banja Luka", "Bihać", "Bijeljina", "Bileća", "Bo
 const App = () => (
   <Switch>
     <Route exact path="/" render={() => <Daily root />} />
+    <Route exact path="/mobile" render={() => <Daily root />} />
     {/* <Redirect from="/sarajevo" to="/" /> */}
     {
       location.map(myLocation => <Route key={myLocation} exact path={`/${
