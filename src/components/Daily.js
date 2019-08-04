@@ -205,7 +205,7 @@ class Daily extends Component {
                         <Row>
                             <Col xs={12} lg={12}>
                                 <p className="text-muted text-center">
-                                    <a style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="http://api.vaktija.ba/vaktija/v1">
+                                    <a style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
                                         API
                                     </a> {" "}
 
