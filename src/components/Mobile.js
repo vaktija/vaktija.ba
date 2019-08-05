@@ -58,6 +58,7 @@ class Mobile extends Component {
 
     changeLocation = (e) => {
         this.setState({ mojaLokacija: Number(e.target.value) })
+        cookies.set("location", Number(e.target.value), { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
     }
 
     componentDidMount() {
