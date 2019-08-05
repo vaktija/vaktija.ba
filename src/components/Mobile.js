@@ -75,7 +75,7 @@ class Mobile extends Component {
                 .then(data => this.setState({ data, loading: false }))
         }
         // cookies.set("location", nextState.mojaLokacija, { path: '/' });
-        cookies.set("location", this.props.myLocation, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+        cookies.set("location", nextState.mojaLokacija, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
     }
 
     render() {
