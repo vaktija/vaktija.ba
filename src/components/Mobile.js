@@ -86,13 +86,13 @@ class Mobile extends Component {
         return (
             <div style={{ textAlign: "center" }}>
 
-                <h1>{lokacije[mojaLokacija]}</h1>
+                <h1 style={{ fontSize: "18px" }}>{lokacije[mojaLokacija]}</h1>
 
                 <p>{date[0]} {date[1]} / {date[2]}</p>
 
                 {
-                    loading ? <p>loading...</p> : <table style={{ marginTop: "10px", marginBottom: "10px", marginLeft: "auto", marginRight: "auto" }}><tbody>{data.vakat.map((v, index) =>
-                        <tr key={index}><td style={{ textAlign: "left", fontWeight: "bold", fontSize: "large" }}>{vakatNames[index]}</td><td>{v}</td></tr>
+                    loading ? <p>loading...</p> : <table style={{ marginTop: "2px", marginBottom: "2px", marginLeft: "auto", marginRight: "auto" }}><tbody>{data.vakat.map((v, index) =>
+                        <tr key={index}><td style={{ textAlign: "left", fontWeight: "bold", fontSize: "normal" }}>{vakatNames[index]}</td><td>{v}</td></tr>
 
                     )}</tbody></table>
                 }
