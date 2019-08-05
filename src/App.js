@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import slugify from 'slugify';
 import Daily from './components/Daily';
+import Mobile from './components/Mobile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -12,7 +13,7 @@ let location = ["Banovići", "Banja Luka", "Bihać", "Bijeljina", "Bileća", "Bo
 const App = () => (
   <Switch>
     <Route exact path="/" render={() => <Daily root />} />
-    <Route exact path="/mobile" render={() => <Daily root />} />
+    <Route path="/mobile" render={() => <Mobile lokacije={location} />} />
     {/* <Redirect from="/sarajevo" to="/" /> */}
     {
       location.map(myLocation => <Route key={myLocation} exact path={`/${
