@@ -31,9 +31,6 @@ const myLocations3 = myLocations.map(l => slugify(l, {
 }))
 const vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
 
-// beta
-// ReactGA.initialize("UA-117519966-1");
-
 ReactGA.initialize("UA-9142566-1");
 
 moment.updateLocale("bs", {
@@ -50,8 +47,10 @@ moment.updateLocale("bs", {
         "Ševval",
         "Zu-l-ka'de",
         "Zu-l-hidždže"
-    ]
+    ],
+    weekdaysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"]
 });
+
 class Daily extends Component {
     openNav = () => {
         document.getElementById("mySidenav").style.width = "100%";
@@ -65,7 +64,7 @@ class Daily extends Component {
     tick = () => {
         this.setState({
             date: [
-                moment().tz("Europe/Sarajevo").format('dddd, D. MMMM'),
+                moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
                 moment().tz("Europe/Sarajevo").format('YYYY'),
                 moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
@@ -205,18 +204,23 @@ class Daily extends Component {
                         <Row>
                             <Col xs={12} lg={12}>
                                 <p className="text-muted text-center">
-                                    <a style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
+                                    <a target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
                                         API
                                     </a> {" "}
 
-                                    <a style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://github.com/vaktija">
+                                    <a target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://github.com/vaktija">
                                         GITHUB
                                     </a> {" "}
 
-                                    <a style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="mailto:info@vaktija.ba">
+                                    <a target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="mailto:info@vaktija.ba">
                                         KONTAKT
                                     </a> {" | "}
-
                                     <span style={{ color: "#4a4a4a", fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span></p>
                             </Col>
                         </Row>
