@@ -76,7 +76,7 @@ class Daily extends Component {
         // location: (this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation,
         location: this.localization(),
         date: [
-            moment().tz("Europe/Sarajevo").format('dddd, D. MMMM'),
+            moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
             moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
