@@ -252,3 +252,19 @@ img.hidden-md.hidden-lg, img.hidden-xs.hidden-sm{
 .glyphicon:hover {
     color: #cacaca;
 }
+
+table, td, th, tr {
+    padding: 0px;
+}
+th {
+    text-align: left
+}
+
+td {
+    text-align: right
+}
+
+select {
+    text-align-last: center;
+    text-align: center;
+}

@@ -84,26 +84,40 @@ class Mobile extends Component {
         let { mojaLokacija, data, date, loading } = this.state;
 
         return (
-            <div style={{ textAlign: "center" }}>
-
-                <h1 style={{ fontSize: "18px" }}>{lokacije[mojaLokacija]}</h1>
-
-                <p>{date[0]} {date[1]} / {date[2]}</p>
-
+            <div>
                 {
-                    loading ? <p>loading...</p> : <table style={{ marginTop: "2px", marginBottom: "2px", marginLeft: "auto", marginRight: "auto" }}><tbody>{data.vakat.map((v, index) =>
-                        <tr key={index}><td style={{ textAlign: "left", fontWeight: "bold", fontSize: "normal" }}>{vakatNames[index]}</td><td>{v}</td></tr>
+                    loading ? <p style={{ textAlign: "center" }}>...</p> : <table style={{ marginTop: "2px", marginBottom: "2px", marginLeft: "auto", marginRight: "auto" }}>
+                        <tbody>
+                            <tr>
+                                <th style={{ textAlign: "center", fontSize: "large" }} colSpan={2}>{lokacije[mojaLokacija]}</th>
+                            </tr>
+                            <tr>
+                                <td colSpan={2}>{date[0]} {date[1]} / {date[2]}</td>
+                            </tr>
+                            {data.vakat.map((v, index) =>
+                                <tr key={index}>
+                                    <th>{vakatNames[index]}</th>
+                                    <td>{v}</td>
+                                </tr>
 
-                    )}</tbody></table>
+                            )}
+                            <tr>
+                                <td style={{ textAlign: "center" }} colSpan={2}>
+                                    <select onChange={(e) => this.changeLocation(e)} defaultValue={mojaLokacija}>
+                                        {
+                                            lokacije.map((l, index) => <option key={index} value={index}>{l}</option>)
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ textAlign: "center" }} colSpan={2}>
+                                    <a href="https://vaktija.ba">vaktija.ba</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 }
-
-                <select onChange={(e) => this.changeLocation(e)} defaultValue={mojaLokacija}>
-                    {
-                        lokacije.map((l, index) => <option key={index} value={index}>{l}</option>)
-                    }
-                </select>
-
-                <div>2008 - 2019 <a href="https://vaktija.ba">vaktija.ba</a></div>
             </div>
         );
     }
