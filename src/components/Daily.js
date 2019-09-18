@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
-import moment from "moment-hijri";
+import moment from "moment";
+import momenth from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
@@ -19,6 +20,8 @@ import { Link } from 'react-router-dom';
 import ReactGA from "react-ga";
 import Cookies from 'universal-cookie';
 import slugify from "slugify";
+import ReactNotifications from 'react-browser-notifications';
+import uuidv4 from "uuid/v4";
 
 const cookies = new Cookies();
 
@@ -52,6 +55,16 @@ moment.updateLocale("bs", {
 });
 
 class Daily extends Component {
+
+    showNotifications = () => {
+        if (this.n.supported()) this.n.show();
+    }
+
+    handleClick = (event) => {
+        window.focus();
+        this.n.close(event.target.tag);
+    }
+
     openNav = () => {
         document.getElementById("mySidenav").style.width = "100%";
     }
@@ -66,10 +79,18 @@ class Daily extends Component {
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
                 moment().tz("Europe/Sarajevo").format('YYYY'),
-                moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+                momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
             vaktija: dnevna(this.localization()).vakat
         });
+
+        let clock = moment().tz("Europe/Sarajevo").format();
+        let notifs = this.state.vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
+
+        if (notifs.includes(clock)) {
+            this.setState({ position: notifs.indexOf(clock) })
+            this.showNotifications();
+        }
     };
 
     state = {
@@ -78,7 +99,7 @@ class Daily extends Component {
         date: [
             moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
-            moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
         vaktija: dnevna(this.localization()).vakat
     }
@@ -112,7 +133,7 @@ class Daily extends Component {
 
     render() {
 
-        let { date, vaktija, location } = this.state;
+        let { date, vaktija, location, position } = this.state;
 
         /*         //^ backward compatibility with localStorage (beta.vaktija.ba)
                 let mojaLokacija = null;
@@ -158,6 +179,16 @@ class Daily extends Component {
 
                     <title>{`${myLocations[location]} · Vaktija`}</title>
                 </Helmet>
+                <ReactNotifications
+                    onRef={ref => (this.n = ref)}
+                    title={`${vakatNames[position]} je za 15 minuta - ${vaktija[position]}`}
+                    body={`${myLocations2[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
+                    icon={"icon.png"}
+                    tag={uuidv4()}
+                    // timeout="5000"
+                    interaction="true"
+                    onClick={event => this.handleClick(event)}
+                />
                 <Grid>
                     <Row>
                         <Col xs={6}>
