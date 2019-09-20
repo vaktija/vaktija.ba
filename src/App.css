@@ -270,7 +270,7 @@ select {
 }
 
 .text-highlight {
-    font-style: normal;
+    /* font-style: normal; */
     border-radius: 1em 0 1em 0;
     text-shadow: 1px 1px 1px #fff;
     background-image: 
