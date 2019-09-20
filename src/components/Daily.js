@@ -56,6 +56,19 @@ moment.updateLocale("bs", {
 
 class Daily extends Component {
 
+
+    next = () => {
+        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
+        if (next.filter(n => n.active === true).length) {
+            // this.setState({ next: next.filter(n => n.active === true) })
+            return next.filter(n => n.active === true)[0].pos
+        } else {
+            return 6
+        }
+    }
+
+
     showNotifications = () => {
         if (this.n.supported()) this.n.show();
     }
@@ -75,6 +88,7 @@ class Daily extends Component {
     }
 
     tick = () => {
+
         this.setState({
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
@@ -91,6 +105,7 @@ class Daily extends Component {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
+        this.next();
     };
 
     state = {
@@ -101,7 +116,8 @@ class Daily extends Component {
             moment().tz("Europe/Sarajevo").format('YYYY'),
             momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
-        vaktija: dnevna(this.localization()).vakat
+        vaktija: dnevna(this.localization()).vakat,
+        next: this.next()
     }
 
     componentDidMount() {
@@ -133,7 +149,11 @@ class Daily extends Component {
 
     render() {
 
-        let { date, vaktija, location, position } = this.state;
+        let { date, vaktija, location, position, next } = this.state;
+        // console.log(next);
+
+        // console.log('from render', this.next());
+
 
         /*         //^ backward compatibility with localStorage (beta.vaktija.ba)
                 let mojaLokacija = null;
@@ -212,7 +232,7 @@ class Daily extends Component {
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
                                 <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} />
-                                <RelativeTime vakatTime={vaktija[index]} />
+                                <RelativeTime vakatTime={vaktija[index]} highlight={next === index ? true : false} />
                             </Col>
                             )
                         }
