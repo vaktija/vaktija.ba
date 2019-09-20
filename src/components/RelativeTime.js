@@ -27,7 +27,7 @@ class RelativeTime extends Component {
         let { currentTime } = this.state;
         let { vakatTime } = this.props;
 
-        return <p><i className={`relative-time${currentTime.isBefore(moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo")) ? ' mark' : ''}`}>{currentTime.to(moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo"))}</i></p>
+        return <p><i className={`relative-time${currentTime.isBefore(moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo")) ? ' text-highlight' : ''}`}>{currentTime.to(moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo"))}</i></p>
     }
 }
 
