@@ -61,7 +61,6 @@ class Daily extends Component {
         let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
-            // this.setState({ next: next.filter(n => n.active === true) })
             return next.filter(n => n.active === true)[0].pos
         } else {
             return 6
@@ -105,7 +104,16 @@ class Daily extends Component {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
-        this.next();
+        // this.next();
+
+        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
+        if (next.filter(n => n.active === true).length) {
+            this.setState({ next: next.filter(n => n.active === true)[0].pos })
+        } else {
+            this.setState({ next: 6 })
+        }
+
     };
 
     state = {
@@ -231,8 +239,8 @@ class Daily extends Component {
                     <Row className="text-center">
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                                <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} />
-                                <RelativeTime vakatTime={vaktija[index]} highlight={next === index ? true : false} />
+                                <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
+                                <RelativeTime vakatTime={vaktija[index]} />
                             </Col>
                             )
                         }
