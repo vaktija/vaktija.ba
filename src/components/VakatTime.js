@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 class VakatTime extends Component {
     render() {
         let { vakatName, vakatTime, highlight } = this.props;
-
+        // TODO podne/dzuma
         return <Fragment>
             <h2>
                 <small>{vakatName}</small>

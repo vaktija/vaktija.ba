@@ -184,6 +184,7 @@ class Daily extends Component {
 
                     <title>{`${myLocations[location]} · Vaktija`}</title>
                 </Helmet>
+                {/* TODO podne/dzuma */}
                 <ReactNotifications
                     onRef={ref => (this.n = ref)}
                     title={`${vakatNames[next]} je za 15 minuta`}
