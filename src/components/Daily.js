@@ -9,6 +9,7 @@ import { dnevna } from "../api/vaktija/index.mjs";
 import Helmet from "react-helmet";
 import RelativeTime from './RelativeTime';
 import VakatTime from './VakatTime';
+import Counter from './Counter';
 import CurrentDate from './CurrentDate';
 import Location from './Location';
 import Stores from './Stores';
@@ -56,6 +57,18 @@ moment.updateLocale("bs", {
 
 class Daily extends Component {
 
+
+    next = () => {
+        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
+        if (next.filter(n => n.active === true).length) {
+            return next.filter(n => n.active === true)[0].pos
+        } else {
+            return 6
+        }
+    }
+
+
     showNotifications = () => {
         if (this.n.supported()) this.n.show();
     }
@@ -75,6 +88,7 @@ class Daily extends Component {
     }
 
     tick = () => {
+
         this.setState({
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
@@ -91,6 +105,16 @@ class Daily extends Component {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
+
+        // this.next();
+        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
+        if (next.filter(n => n.active === true).length) {
+            this.setState({ next: next.filter(n => n.active === true)[0].pos })
+        } else {
+            this.setState({ next: 6 })
+        }
+
     };
 
     state = {
@@ -101,7 +125,8 @@ class Daily extends Component {
             moment().tz("Europe/Sarajevo").format('YYYY'),
             momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
-        vaktija: dnevna(this.localization()).vakat
+        vaktija: dnevna(this.localization()).vakat,
+        next: this.next()
     }
 
     componentDidMount() {
@@ -133,27 +158,7 @@ class Daily extends Component {
 
     render() {
 
-        let { date, vaktija, location, position } = this.state;
-
-        /*         //^ backward compatibility with localStorage (beta.vaktija.ba)
-                let mojaLokacija = null;
-                try {
-                    mojaLokacija = localStorage.getItem("mojaLokacija");
-                } catch (e) {
-                    console.log(e);
-                }
-        
-                console.log('cookie', cookies.get('location'));
-                console.log('storage', mojaLokacija);
-        
-                if ((this.props.root && mojaLokacija !== null && (cookies.get('location') === undefined))) {
-                    location = mojaLokacija
-                }
-                else {
-                    console.log('krompir')
-                }
-                //$ backward compatibility with localStorage (beta.vaktija.ba)
-         */
+        let { date, vaktija, location, next } = this.state;
 
         return (
             <Fragment>
@@ -179,9 +184,10 @@ class Daily extends Component {
 
                     <title>{`${myLocations[location]} · Vaktija`}</title>
                 </Helmet>
+                {/* TODO podne/dzuma */}
                 <ReactNotifications
                     onRef={ref => (this.n = ref)}
-                    title={`${vakatNames[position]} je za 15 minuta - ${vaktija[position]}`}
+                    title={`${vakatNames[next]} je za 15 minuta`}
                     body={`${myLocations2[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
                     icon={"icon.png"}
                     tag={uuidv4()}
@@ -203,6 +209,11 @@ class Daily extends Component {
                         </Col>
                     </Row>
                     <Row>
+                        <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
+                            <Counter vakat={vaktija[next]} />
+                        </Col>
+                    </Row>
+                    <Row>
                         <Col xs={12} sm={12} md={12} lg={12}>
                             <Location location={location} />
                             <CurrentDate date={date} location={location} />
@@ -211,7 +222,7 @@ class Daily extends Component {
                     <Row className="text-center">
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                                <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} />
+                                <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
                                 <RelativeTime vakatTime={vaktija[index]} />
                             </Col>
                             )

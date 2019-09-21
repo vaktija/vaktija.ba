@@ -269,14 +269,12 @@ select {
     text-align: center;
 }
 
-.text-highlight {
-    /* font-style: normal; */
-    border-radius: 1em 0 1em 0;
-    text-shadow: 1px 1px 1px #fff;
-    background-image: 
-      linear-gradient(-100deg, 
-        rgba(255,250,150,0.15),
-        rgba(255,250,150,0.8) 100%, 
-        rgba(255,250,150,0.25)
-      );
+.highlight {
+    color: #9a9d14;
+}
+
+div.counter {
+    color: #cacaca;
+    font-size: 450%;
+    font-weight: 700;
 }
