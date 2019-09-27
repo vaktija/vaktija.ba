@@ -3,17 +3,18 @@
 }
 
 body {
-    /* background-color: #1e2227; */
+    background-color: #1e2227;
     color: #333;
 }
 .glyphicon {
-    /* color: #fff */
-    color: #4a4a4a;
+    color: #fff
+    /* color: #4a4a4a; */
 
 }
-/* p i {
-    color: #fff
-} */
+p i {
+    /* color: #fff */
+    color: #818181;
+}
 
 .navbar-default {
     background-color: white;
@@ -33,8 +34,8 @@ body {
 }
 
 h1, h2 {
-    color: #4a4a4a;
-    /* color: #fff; */
+    /* color: #4a4a4a; */
+    color: #fff;
     font-weight: 700;
 }
 
@@ -45,6 +46,7 @@ h1 {
 }
 
 h2 {
+    /* color: #63636e;    */
     font-size: 3.3em;
     margin-top: 10px;
     margin-bottom: 2px;
@@ -68,8 +70,12 @@ a#basic-nav-dropdown {
 }
 
 h1 small, h2 small {
-    color: #4a4a4a;
+    /* color: #4a4a4a; */
     /* color: #c1c1c1; */
+    /* color: #63636e; */
+    /* color: #fff; */
+    /* color:  #818181; */
+    color: #ececec;
     font-size: 20px;
     font-weight: 400;
 }
@@ -158,7 +164,8 @@ a {
 }
 
 p i a#year {
-    color: #337ab7;
+    /* color: #337ab7; */
+    color: #6bf;
 }
   
 a:hover {
@@ -274,7 +281,9 @@ select {
 }
 
 div.counter {
-    color: #cacaca;
+    color: #818181;
+    /* color: #63636e; */
     font-size: 450%;
     font-weight: 700;
 }
+

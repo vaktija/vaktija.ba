@@ -15,8 +15,8 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import { weight } from '../data/vaktija.json';
-import Logo from '../img/logo.svg';
-import Icon from '../img/icon.svg';
+import Logo from '../img/logo-light.svg';
+import Icon from '../img/icon-light.svg';
 import { Link } from 'react-router-dom';
 import ReactGA from "react-ga";
 import Cookies from 'universal-cookie';
@@ -248,22 +248,22 @@ class Daily extends Component {
                                 <p className="text-muted text-center">
                                     <a target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
+                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="https://api.vaktija.ba/vaktija/v1">
                                         API
                                     </a> {" "}
 
                                     <a target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://github.com/vaktija">
+                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="https://github.com/vaktija">
                                         GITHUB
                                     </a> {" "}
 
                                     <a target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="mailto:info@vaktija.ba">
+                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="mailto:info@vaktija.ba">
                                         KONTAKT
                                     </a> {" | "}
-                                    <span style={{ color: "#4a4a4a", fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span></p>
+                                    <span style={{ color: "#818181", fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span></p>
                             </Col>
                         </Row>
                     </Grid>
