@@ -61,19 +61,19 @@ moment.updateLocale("bs", {
 class Daily extends Component {
 
     toggleTheme = () => {
+
+        // import { useEffect } from 'react';
+
+        // export function addBodyClass(className) {
+        //     return () => useEffect(() => {
+        //         document.body.classList.add(className);
+        //         return () => { document.body.classList.remove(className); }
+        //     });
+        // }
+
         let { theme } = this.state;
 
         if (theme === 'light') {
-
-            //import { useEffect } from 'react';
-
-            // export function addBodyClass(className) {
-            //   return () => useEffect(() => {
-            //     document.body.classList.add(className);
-            //     return () => { document.body.classList.remove(className); }
-            //   });
-            // }
-
             document.body.classList.remove('light');
             document.body.classList.add('dark');
             this.setState({ theme: 'dark' });
@@ -114,7 +114,7 @@ class Daily extends Component {
     }
 
     tick = () => {
-
+        let { vaktija } = this.state;
         this.setState({
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
@@ -125,14 +125,13 @@ class Daily extends Component {
         });
 
         let clock = moment().tz("Europe/Sarajevo").format();
-        let notifs = this.state.vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
+        let notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
 
         if (notifs.includes(clock)) {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
 
-        // this.next();
         let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
@@ -141,8 +140,17 @@ class Daily extends Component {
             this.setState({ next: 6 })
         }
 
-        // this.toggleTheme
-
+        // TODO react context
+        // TODO transition ease
+        if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
+            this.setState({ theme: 'light' })
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else {
+            this.setState({ theme: 'dark' })
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
     };
 
     state = {
@@ -155,10 +163,20 @@ class Daily extends Component {
         ],
         vaktija: dnevna(this.localization()).vakat,
         next: this.next(),
-        theme: 'light'
+        theme: moment().isBetween(moment(dnevna(this.localization()).vakat[1], "HH:mm"), moment(dnevna(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
     componentDidMount() {
+        let { theme } = this.state;
+
+        if (theme === 'light') {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else if (theme === 'dark') {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
+
         ReactGA.pageview(window.location.pathname + window.location.search);
         this.timerID = setInterval(() => this.tick(), 1000);
         if (!this.props.root) {
@@ -296,13 +314,14 @@ class Daily extends Component {
                 </div>
                 <br />
                 <Footer theme={theme} />
-                <Grid>
+                {/* Manual theme switching */}
+                {/* <Grid>
                     <Row>
                         <Col lg={12} className="text-center">
                             <span className={`dot-${theme}`} onClick={this.toggleTheme}></span>
                         </Col>
                     </Row>
-                </Grid>
+                </Grid> */}
             </Fragment >
         )
     }

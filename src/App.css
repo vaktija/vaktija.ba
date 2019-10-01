@@ -258,7 +258,7 @@ select {
 }
 
 .counter-dark {
-    color: #4a4a4a;
+    color: #6f6f6f;
     font-size: 450%;
     font-weight: 700;
 }
@@ -270,8 +270,8 @@ select {
 }
 
 .dot-light {
-    margin: 10px;
-    padding: 10px;
+    /* margin: 10px;
+    padding: 10px; */
     height: 32px;
     width: 32px;
     border-radius: 50%;
@@ -281,8 +281,8 @@ select {
 }
 
 .dot-dark {
-    margin: 10px;
-    padding: 10px;
+    /* margin: 10px;
+    padding: 10px; */
     height: 32px;    
     width: 32px;    
     border-radius: 50%;
