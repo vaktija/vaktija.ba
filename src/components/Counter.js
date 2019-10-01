@@ -5,7 +5,7 @@ class Counter extends Component {
 
     render() {
 
-        let { vakat } = this.props;
+        let { vakat, theme } = this.props;
 
         let date = moment().tz("Europe/Sarajevo");
         let vakatDate = moment(vakat, 'HH:mm').tz("Europe/Sarajevo");
@@ -16,7 +16,7 @@ class Counter extends Component {
         if (vakat === undefined) {
             return null
         } else {
-            return <div className="counter">{duration.format("*HH:mm:ss")}</div>
+            return <div className={`counter-${theme}`}>{duration.format("*HH:mm:ss")}</div>
         }
     }
 }

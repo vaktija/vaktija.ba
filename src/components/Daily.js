@@ -14,9 +14,12 @@ import CurrentDate from './CurrentDate';
 import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
+import Footer from './Footer';
 import { weight } from '../data/vaktija.json';
-import Logo from '../img/logo-light.svg';
-import Icon from '../img/icon-light.svg';
+import LogoDark from '../img/logo-dark.svg';
+import IconDark from '../img/icon-dark.svg';
+import LogoLight from '../img/logo-light.svg';
+import IconLight from '../img/icon-light.svg';
 import { Link } from 'react-router-dom';
 import ReactGA from "react-ga";
 import Cookies from 'universal-cookie';
@@ -57,6 +60,30 @@ moment.updateLocale("bs", {
 
 class Daily extends Component {
 
+    toggleTheme = () => {
+
+        // import { useEffect } from 'react';
+
+        // export function addBodyClass(className) {
+        //     return () => useEffect(() => {
+        //         document.body.classList.add(className);
+        //         return () => { document.body.classList.remove(className); }
+        //     });
+        // }
+
+        let { theme } = this.state;
+
+        if (theme === 'light') {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+            this.setState({ theme: 'dark' });
+
+        } else if (theme === 'dark') {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+            this.setState({ theme: 'light' });
+        }
+    }
 
     next = () => {
         let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
@@ -67,7 +94,6 @@ class Daily extends Component {
             return 6
         }
     }
-
 
     showNotifications = () => {
         if (this.n.supported()) this.n.show();
@@ -88,7 +114,7 @@ class Daily extends Component {
     }
 
     tick = () => {
-
+        let { vaktija } = this.state;
         this.setState({
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
@@ -99,14 +125,13 @@ class Daily extends Component {
         });
 
         let clock = moment().tz("Europe/Sarajevo").format();
-        let notifs = this.state.vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
+        let notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
 
         if (notifs.includes(clock)) {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
 
-        // this.next();
         let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
@@ -115,6 +140,17 @@ class Daily extends Component {
             this.setState({ next: 6 })
         }
 
+        // TODO react context
+        // TODO transition ease
+        if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
+            this.setState({ theme: 'light' })
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else {
+            this.setState({ theme: 'dark' })
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
     };
 
     state = {
@@ -126,10 +162,21 @@ class Daily extends Component {
             momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
         vaktija: dnevna(this.localization()).vakat,
-        next: this.next()
+        next: this.next(),
+        theme: moment().isBetween(moment(dnevna(this.localization()).vakat[1], "HH:mm"), moment(dnevna(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
     componentDidMount() {
+        let { theme } = this.state;
+
+        if (theme === 'light') {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else if (theme === 'dark') {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
+
         ReactGA.pageview(window.location.pathname + window.location.search);
         this.timerID = setInterval(() => this.tick(), 1000);
         if (!this.props.root) {
@@ -158,7 +205,7 @@ class Daily extends Component {
 
     render() {
 
-        let { date, vaktija, location, next } = this.state;
+        let { date, vaktija, location, next, theme } = this.state;
 
         return (
             <Fragment>
@@ -182,6 +229,16 @@ class Daily extends Component {
                             }. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
                     />
 
+                    {
+                        theme === 'light' &&
+                        <meta name="theme-color" content="#ffffff" />
+                    }
+
+                    {
+                        theme === 'dark' &&
+                        <meta name="theme-color" content="#1e2227" />
+                    }
+
                     <title>{`${myLocations[location]} · Vaktija`}</title>
                 </Helmet>
                 {/* TODO podne/dzuma */}
@@ -199,31 +256,46 @@ class Daily extends Component {
                     <Row>
                         <Col xs={6}>
                             <Link to="/">
-                                <img className="hidden-xs hidden-sm" src={Logo} alt="vaktija.ba" height="48"></img>
-                                <img className="hidden-md hidden-lg" src={Icon} alt="vaktija.ba" height="32"></img>
+
+                                {
+                                    theme === 'dark' &&
+                                    <Fragment>
+                                        <img className="hidden-xs hidden-sm" src={LogoLight} alt="vaktija.ba" height="48"></img>
+                                        <img className="hidden-md hidden-lg" src={IconLight} alt="vaktija.ba" height="32"></img>
+                                    </Fragment>
+                                }
+
+                                {
+                                    theme === 'light' &&
+                                    <Fragment>
+                                        <img className="hidden-xs hidden-sm" src={LogoDark} alt="vaktija.ba" height="48"></img>
+                                        <img className="hidden-md hidden-lg" src={IconDark} alt="vaktija.ba" height="32"></img>
+                                    </Fragment>
+                                }
+
                             </Link>
                         </Col>
 
                         <Col className="text-right" xs={6}>
-                            <Glyphicon glyph="map-marker" onClick={this.openNav} />
+                            <Glyphicon glyph="map-marker" onClick={this.openNav} className={`glyphicon-${theme}`} />
                         </Col>
                     </Row>
                     <Row>
                         <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                            <Counter vakat={vaktija[next]} />
+                            <Counter vakat={vaktija[next]} theme={theme} />
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={12} sm={12} md={12} lg={12}>
-                            <Location location={location} />
-                            <CurrentDate date={date} location={location} />
+                            <Location theme={theme} location={location} />
+                            <CurrentDate theme={theme} date={date} location={location} />
                         </Col>
                     </Row>
                     <Row className="text-center">
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                                <VakatTime vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
-                                <RelativeTime vakatTime={vaktija[index]} />
+                                <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
+                                <RelativeTime theme={theme} vakatTime={vaktija[index]} />
                             </Col>
                             )
                         }
@@ -232,7 +304,7 @@ class Daily extends Component {
                         <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
                             <br />
                             <br />
-                            <Stores />
+                            <Stores theme={theme} />
                         </Col>
                     </Row>
                 </Grid>
@@ -241,33 +313,15 @@ class Daily extends Component {
                     <Locations myLocations={myLocations} weight={weight} />
                 </div>
                 <br />
-                <footer className="footer">
-                    <Grid>
-                        <Row>
-                            <Col xs={12} lg={12}>
-                                <p className="text-muted text-center">
-                                    <a target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="https://api.vaktija.ba/vaktija/v1">
-                                        API
-                                    </a> {" "}
-
-                                    <a target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="https://github.com/vaktija">
-                                        GITHUB
-                                    </a> {" "}
-
-                                    <a target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{ color: "#6bf", fontWeight: 500, fontSize: "x-small" }} href="mailto:info@vaktija.ba">
-                                        KONTAKT
-                                    </a> {" | "}
-                                    <span style={{ color: "#818181", fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span></p>
-                            </Col>
-                        </Row>
-                    </Grid>
-                </footer>
+                <Footer theme={theme} />
+                {/* Manual theme switching */}
+                {/* <Grid>
+                    <Row>
+                        <Col lg={12} className="text-center">
+                            <span className={`dot-${theme}`} onClick={this.toggleTheme}></span>
+                        </Col>
+                    </Row>
+                </Grid> */}
             </Fragment >
         )
     }
