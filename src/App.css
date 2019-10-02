@@ -145,11 +145,22 @@ a {
     text-decoration: none;
 }
 
-p i a#year {
-    /* color: #337ab7; */
-    color: #6bf;
+p i a.year-light {
+    color: #337ab7;
 }
   
+p i a.year-dark {
+    color: #6bf;
+}
+
+p a.links-light {
+    color: #337ab7;
+}
+  
+p a.links-dark {
+    color: #6bf;
+}
+
 a:hover {
     color: #777;
     text-decoration: none;

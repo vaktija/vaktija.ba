@@ -13,21 +13,27 @@ class Counter extends Component {
                     <Row>
                         <Col xs={12} lg={12}>
                             <p className="text-muted text-center">
-                                <a target="_blank"
+                                <a
+                                    className={`links-${theme}`}
+                                    target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
+                                    style={{ fontWeight: 700, fontSize: "smaller" }} href="https://api.vaktija.ba/vaktija/v1">
                                     API
                                                 </a> {" "}
 
-                                <a target="_blank"
+                                <a
+                                    className={`links-${theme}`}
+                                    target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="https://github.com/vaktija">
+                                    style={{ fontWeight: 700, fontSize: "smaller" }} href="https://github.com/vaktija">
                                     GITHUB
                                                 </a> {" "}
 
-                                <a target="_blank"
+                                <a
+                                    className={`links-${theme}`}
+                                    target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{ color: "#337ab7", fontWeight: 700, fontSize: "smaller" }} href="mailto:info@vaktija.ba">
+                                    style={{ fontWeight: 700, fontSize: "smaller" }} href="mailto:info@vaktija.ba">
                                     KONTAKT
                                                 </a> {" | "}
                                 <span className={`footer-${theme}`} style={{ fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span>
