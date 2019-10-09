@@ -1,12 +1,12 @@
-import { dnevna } from './dnevna';
-// import { mjesecna } from './mjesecna';
-// import { godisnja } from './godisnja';
-import { lokacija } from './lokacija';
+import { locations } from './locations';
+import { daily } from './daily';
+// import { monthly } from './monthly';
+// import { yearly } from './yearly';
 
 const vaktija = {
-    dnevna,
-    lokacija
+    locations,
+    daily
 }
 
-export { dnevna, lokacija }
+export { locations, daily }
 export default vaktija;

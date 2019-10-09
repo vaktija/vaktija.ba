@@ -1,12 +1,23 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
 import moment from "moment";
 import momenth from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
-import { dnevna } from "../api/vaktija/index.mjs";
+// import ReactGA from "react-ga";
+import Cookies from 'universal-cookie';
+import slugify from "slugify";
+import ReactNotifications from 'react-browser-notifications';
+import uuidv4 from "uuid/v4";
 import Helmet from "react-helmet";
+import { locations, locationsDative, vakatNames } from '../data/vaktija.json';
+import { daily } from "../api/vaktija/index.mjs";
+import LogoDark from '../img/logo-dark.svg';
+import IconDark from '../img/icon-dark.svg';
+import LogoLight from '../img/logo-light.svg';
+import IconLight from '../img/icon-light.svg';
 import RelativeTime from './RelativeTime';
 import VakatTime from './VakatTime';
 import Counter from './Counter';
@@ -15,30 +26,10 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import Footer from './Footer';
-import { weight } from '../data/vaktija.json';
-import LogoDark from '../img/logo-dark.svg';
-import IconDark from '../img/icon-dark.svg';
-import LogoLight from '../img/logo-light.svg';
-import IconLight from '../img/icon-light.svg';
-import { Link } from 'react-router-dom';
-import ReactGA from "react-ga";
-import Cookies from 'universal-cookie';
-import slugify from "slugify";
-import ReactNotifications from 'react-browser-notifications';
-import uuidv4 from "uuid/v4";
 
 const cookies = new Cookies();
 
-const myLocations = ["Banovići", "Banja Luka", "Bihać", "Bijeljina", "Bileća", "Bosanski Brod", "Bosanska Dubica", "Bosanska Gradiška", "Bosansko Grahovo", "Bosanska Krupa", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Breza", "Bugojno", "Busovača", "Bužim", "Cazin", "Čajniče", "Čapljina", "Čelić", "Čelinac", "Čitluk", "Derventa", "Doboj", "Donji Vakuf", "Drvar", "Foča", "Fojnica", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanica", "Gradačac", "Grude", "Hadžići", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanica", "Jajce", "Kakanj", "Kalesija", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaši", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriča", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogatica", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenica", "Srebrenik", "Stolac", "Šekovići", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzla", "Ugljevik", "Vareš", "Velika Kladuša", "Visoko", "Višegrad", "Vitez", "Vlasenica", "Zavidovići", "Zenica", "Zvornik", "Žepa", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Nova Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenica", "Tutin"];
-const myLocations2 = ["Banoviće", "Banja Luku", "Bihać", "Bijeljinu", "Bileću", "Bosanski Brod", "Bosansku Dubicu", "Bosansku Gradišku", "Bosansko Grahovo", "Bosansku Krupu", "Bosanski Novi", "Bosanski Petrovac", "Bosanski Šamac", "Bratunac", "Brčko", "Brezu", "Bugojno", "Busovaču", "Bužim", "Cazin", "Čajniče", "Čapljinu", "Čelić", "Čelinac", "Čitluk", "Derventu", "Doboj", "Donji Vakuf", "Drvar", "Foču", "Fojnicu", "Gacko", "Glamoč", "Goražde", "Gornji Vakuf", "Gračanicu", "Gradačac", "Grude", "Hadžiće", "Han-Pijesak", "Hlivno", "Ilijaš", "Jablanicu", "Jajce", "Kakanj", "Kalesiju", "Kalinovik", "Kiseljak", "Kladanj", "Ključ", "Konjic", "Kotor-Varoš", "Kreševo", "Kupres", "Laktaše", "Lopare", "Lukavac", "Ljubinje", "Ljubuški", "Maglaj", "Modriču", "Mostar", "Mrkonjić-Grad", "Neum", "Nevesinje", "Novi Travnik", "Odžak", "Olovo", "Orašje", "Pale", "Posušje", "Prijedor", "Prnjavor", "Prozor", "Rogaticu", "Rudo", "Sanski Most", "Sarajevo", "Skender-Vakuf", "Sokolac", "Srbac", "Srebrenicu", "Srebrenik", "Stolac", "Šekoviće", "Šipovo", "Široki Brijeg", "Teslić", "Tešanj", "Tomislav-Grad", "Travnik", "Trebinje", "Trnovo", "Tuzlu", "Ugljevik", "Vareš", "Veliku Kladušu", "Visoko", "Višegrad", "Vitez", "Vlasenicu", "Zavidoviće", "Zenicu", "Zvornik", "Žepu", "Žepče", "Živinice", "Bijelo Polje", "Gusinje", "Novu Varoš", "Novi Pazar", "Plav", "Pljevlja", "Priboj", "Prijepolje", "Rožaje", "Sjenicu", "Tutin"];
-const myLocations3 = myLocations.map(l => slugify(l, {
-    replacement: "-",
-    remove: null,
-    lower: true
-}))
-const vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
-
-ReactGA.initialize("UA-9142566-1");
+// ReactGA.initialize("UA-9142566-1");
 
 moment.updateLocale("bs", {
     iMonths: [
@@ -86,7 +77,7 @@ class Daily extends Component {
     }
 
     next = () => {
-        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+        let next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
             return next.filter(n => n.active === true)[0].pos
@@ -105,12 +96,12 @@ class Daily extends Component {
     }
 
     openNav = () => {
-        document.getElementById("mySidenav").style.width = "100%";
+        document.getElementById("sidenav").style.width = "100%";
     }
 
     closeNav = (e) => {
         e.preventDefault()
-        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("sidenav").style.width = "0";
     }
 
     tick = () => {
@@ -121,7 +112,7 @@ class Daily extends Component {
                 moment().tz("Europe/Sarajevo").format('YYYY'),
                 momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
-            vaktija: dnevna(this.localization()).vakat
+            vaktija: daily(this.localization()).vakat
         });
 
         let clock = moment().tz("Europe/Sarajevo").format();
@@ -132,7 +123,7 @@ class Daily extends Component {
             this.showNotifications();
         }
 
-        let next = dnevna(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+        let next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
             this.setState({ next: next.filter(n => n.active === true)[0].pos })
@@ -140,8 +131,6 @@ class Daily extends Component {
             this.setState({ next: 6 })
         }
 
-        // TODO react context
-        // TODO transition ease
         if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
             this.setState({ theme: 'light' })
             document.body.classList.remove('dark');
@@ -153,17 +142,29 @@ class Daily extends Component {
         }
     };
 
+    localization() {
+
+        let location = this.props.location;
+
+        if (this.props.root === undefined && cookies.get("location") !== undefined) {
+            location = cookies.get("location");
+        } else
+            if (this.props.root === undefined && cookies.get("location") === undefined) {
+                location = this.props.location;
+            }
+        return location
+    }
+
     state = {
-        // location: (this.props.root && (cookies.get("location") >= 0 || cookies.get("location") <= 117)) ? cookies.get("location") : this.props.myLocation,
         location: this.localization(),
         date: [
             moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
             momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
-        vaktija: dnevna(this.localization()).vakat,
+        vaktija: daily(this.localization()).vakat,
         next: this.next(),
-        theme: moment().isBetween(moment(dnevna(this.localization()).vakat[1], "HH:mm"), moment(dnevna(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
+        theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
     componentDidMount() {
@@ -177,30 +178,16 @@ class Daily extends Component {
             document.body.classList.add('dark');
         }
 
-        ReactGA.pageview(window.location.pathname + window.location.search);
+        // ReactGA.pageview(window.location.pathname + window.location.search);
         this.timerID = setInterval(() => this.tick(), 1000);
+
         if (!this.props.root) {
-            cookies.set("location", this.props.myLocation, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            cookies.set("location", this.props.location, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
     }
 
     componentWillUnmount() {
         clearInterval(this.timerID);
-    }
-
-    localization() {
-        let lokacija = this.props.myLocation
-        if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") === undefined) {
-            lokacija = myLocations3.indexOf(localStorage.getItem("mojaLokacija"))
-            // lokacija = localStorage.getItem("mojaLokacija")
-        } else if (this.props.root && localStorage.getItem("mojaLokacija") !== null && cookies.get("location") !== undefined) {
-            lokacija = cookies.get("location")
-        } else if (this.props.root && localStorage.getItem("mojaLokacija") === null && cookies.get("location") !== undefined) {
-            lokacija = cookies.get("location")
-        } else if (this.props.root && localStorage.getItem("mojaLokacija") === null && cookies.get("location") === undefined) {
-            lokacija = this.props.myLocation
-        }
-        return lokacija
     }
 
     render() {
@@ -213,7 +200,7 @@ class Daily extends Component {
                     <link
                         rel="canonical"
                         href={`https://vaktija.ba/${slugify(
-                            myLocations[location],
+                            locations[location],
                             {
                                 replacement: "-",
                                 remove: null,
@@ -221,14 +208,12 @@ class Daily extends Component {
                             },
                         )}`}
                     />
-
                     <meta
                         name="description"
-                        content={`Vaktija za ${myLocations2[location]}, ${date[0]} ${date[1]} / ${date[2]}${
+                        content={`Vaktija za ${locationsDative[location]}, ${date[0]} ${date[1]} / ${date[2]}${
                             vakatNames.map((vakatName, index) => ` ${vakatName} ${vaktija[index]}`)
                             }. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
                     />
-
                     {
                         theme === 'light' &&
                         <meta name="theme-color" content="#ffffff" />
@@ -238,14 +223,12 @@ class Daily extends Component {
                         theme === 'dark' &&
                         <meta name="theme-color" content="#1e2227" />
                     }
-
-                    <title>{`${myLocations[location]} · Vaktija`}</title>
+                    <title>{`${locations[location]} · Vaktija`}</title>
                 </Helmet>
-                {/* TODO podne/dzuma */}
                 <ReactNotifications
                     onRef={ref => (this.n = ref)}
                     title={`${vakatNames[next]} je za 15 minuta`}
-                    body={`${myLocations2[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
+                    body={`${locationsDative[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
                     icon={"icon.png"}
                     tag={uuidv4()}
                     // timeout="5000"
@@ -275,14 +258,13 @@ class Daily extends Component {
 
                             </Link>
                         </Col>
-
                         <Col className="text-right" xs={6}>
                             <Glyphicon glyph="map-marker" onClick={this.openNav} className={`glyphicon-${theme}`} />
                         </Col>
                     </Row>
                     <Row>
                         <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                            <Counter vakat={vaktija[next]} theme={theme} />
+                            <Counter vakatTime={vaktija[next]} theme={theme} />
                         </Col>
                     </Row>
                     <Row>
@@ -308,9 +290,9 @@ class Daily extends Component {
                         </Col>
                     </Row>
                 </Grid>
-                <div id="mySidenav" className="sidenav">
+                <div id="sidenav" className="sidenav">
                     <a href="true" className="closebtn" onClick={(e) => this.closeNav(e)}>&times;</a>
-                    <Locations myLocations={myLocations} weight={weight} />
+                    <Locations />
                 </div>
                 <br />
                 <Footer theme={theme} />
@@ -328,7 +310,6 @@ class Daily extends Component {
 }
 
 Daily.defaultProps = {
-    myLocation: 77,
-    myLocationName: "Sarajevo"
+    location: 77,
 }
 export default Daily;

@@ -24,8 +24,8 @@ class RelativeTime extends Component {
     }
 
     render() {
-        let { currentTime } = this.state;
-        let { vakatTime, theme } = this.props;
+        const { currentTime } = this.state;
+        const { vakatTime, theme } = this.props;
 
         return <p><i className={`relative-time-${theme}`}>{currentTime.to(moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo"))}</i></p>
     }

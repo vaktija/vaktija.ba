@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import moment from "moment-hijri";
+import moment from "moment";
+import momenth from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
 import Cookies from 'universal-cookie';
-import { dnevna } from "../api/vaktija/index.mjs";
+import { daily } from "../api/vaktija/index.mjs";
+import { locations } from '../data/vaktija.json';
 
 const cookies = new Cookies();
 const vakatNames = ['Zora', 'Izlazak sunca', 'Podne', 'Ikindija', 'Akšam', 'Jacija'];
@@ -37,11 +39,11 @@ class Mobile extends Component {
 
         this.state = {
             mojaLokacija: this.localization(),
-            data: dnevna(this.localization()),
+            data: daily(this.localization()),
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
                 moment().tz("Europe/Sarajevo").format('YYYY'),
-                moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+                momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
         }
     }
@@ -62,28 +64,27 @@ class Mobile extends Component {
 
     componentDidMount() {
         this.setState({
-            data: dnevna(this.state.mojaLokacija)
+            data: daily(this.state.mojaLokacija)
         })
     }
 
     componentWillUpdate(nextProps, nextState) {
         if (this.state.mojaLokacija !== nextState.mojaLokacija) {
             this.setState({
-                data: dnevna(nextState.mojaLokacija)
+                data: daily(nextState.mojaLokacija)
             })
         }
         cookies.set("location", nextState.mojaLokacija, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
     }
 
     render() {
-        let { lokacije } = this.props;
         let { mojaLokacija, data, date } = this.state;
         return (
             <div>
                 <table style={{ marginTop: "2px", marginBottom: "2px", marginLeft: "auto", marginRight: "auto" }}>
                     <tbody>
                         <tr>
-                            <th style={{ textAlign: "center", fontSize: "large" }} colSpan={2}>{lokacije[mojaLokacija]}</th>
+                            <th style={{ textAlign: "center", fontSize: "large" }} colSpan={2}>{locations[mojaLokacija]}</th>
                         </tr>
                         <tr>
                             <td colSpan={2}>{date[0]} {date[1]} / {date[2]}</td>
@@ -99,7 +100,7 @@ class Mobile extends Component {
                             <td style={{ textAlign: "center" }} colSpan={2}>
                                 <select onChange={(e) => this.changeLocation(e)} defaultValue={mojaLokacija}>
                                     {
-                                        lokacije.map((l, index) => <option key={index} value={index}>{l}</option>)
+                                        locations.map((l, index) => <option key={index} value={index}>{l}</option>)
                                     }
                                 </select>
                             </td>

@@ -16,3 +16,7 @@ TODO
 - fix dirty hack for localization()
 - check conditions in localization(), location range, string to number, localStorage.indexOf
 - meta description Bosnia || Sandzak
+- podne/dzuma
+- react context
+- transition ease
+- /mobile tick
