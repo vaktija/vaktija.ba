@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
 import moment from "moment";
@@ -51,33 +51,38 @@ moment.updateLocale("bs", {
 
 class Daily extends Component {
 
-    toggleTheme = () => {
-
-        // import { useEffect } from 'react';
-
-        // export function addBodyClass(className) {
-        //     return () => useEffect(() => {
-        //         document.body.classList.add(className);
-        //         return () => { document.body.classList.remove(className); }
-        //     });
-        // }
-
-        let { theme } = this.state;
-
-        if (theme === 'light') {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-            this.setState({ theme: 'dark' });
-
-        } else if (theme === 'dark') {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-            this.setState({ theme: 'light' });
-        }
+    state = {
+        currentMoment: moment().tz("Europe/Sarajevo"),
+        location: this.localization(),
+        date: [
+            moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
+            moment().tz("Europe/Sarajevo").format('YYYY'),
+            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+        ],
+        vaktija: daily(this.localization()).vakat,
+        next: this.next(),
+        theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
+    // toggleTheme = () => {
+
+    //     const { theme } = this.state;
+
+    //     if (theme === 'light') {
+    //         document.body.classList.remove('light');
+    //         document.body.classList.add('dark');
+    //         this.setState({ theme: 'dark' });
+
+    //     } else if (theme === 'dark') {
+    //         document.body.classList.remove('dark');
+    //         document.body.classList.add('light');
+    //         this.setState({ theme: 'light' });
+    //     }
+    // }
+
     next = () => {
-        let next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
+        const next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
             return next.filter(n => n.active === true)[0].pos
@@ -105,8 +110,14 @@ class Daily extends Component {
     }
 
     tick = () => {
-        let { vaktija } = this.state;
+
+        const { vaktija } = this.state;
+        const clock = moment().tz("Europe/Sarajevo").format();
+        const notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
+        const next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+
         this.setState({
+            currentMoment: moment().tz("Europe/Sarajevo"),
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
                 moment().tz("Europe/Sarajevo").format('YYYY'),
@@ -115,15 +126,11 @@ class Daily extends Component {
             vaktija: daily(this.localization()).vakat
         });
 
-        let clock = moment().tz("Europe/Sarajevo").format();
-        let notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
-
         if (notifs.includes(clock)) {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
 
-        let next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (next.filter(n => n.active === true).length) {
             this.setState({ next: next.filter(n => n.active === true)[0].pos })
@@ -142,33 +149,16 @@ class Daily extends Component {
         }
     };
 
-    localization() {
-
-        let location = this.props.location;
-
+    localization = () => {
         if (this.props.root === undefined && cookies.get("location") !== undefined) {
-            location = cookies.get("location");
-        } else
-            if (this.props.root === undefined && cookies.get("location") === undefined) {
-                location = this.props.location;
-            }
-        return location
-    }
-
-    state = {
-        location: this.localization(),
-        date: [
-            moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
-            moment().tz("Europe/Sarajevo").format('YYYY'),
-            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
-        ],
-        vaktija: daily(this.localization()).vakat,
-        next: this.next(),
-        theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
+            return cookies.get("location");
+        } else {
+            return this.props.location;
+        }
     }
 
     componentDidMount() {
-        let { theme } = this.state;
+        const { theme } = this.state;
 
         if (theme === 'light') {
             document.body.classList.remove('dark');
@@ -192,10 +182,10 @@ class Daily extends Component {
 
     render() {
 
-        let { date, vaktija, location, next, theme } = this.state;
+        const { currentMoment, date, vaktija, location, next, theme } = this.state;
 
         return (
-            <Fragment>
+            <>
                 <Helmet>
                     <link
                         rel="canonical"
@@ -239,23 +229,20 @@ class Daily extends Component {
                     <Row>
                         <Col xs={6}>
                             <Link to="/">
-
                                 {
                                     theme === 'dark' &&
-                                    <Fragment>
+                                    <>
                                         <img className="hidden-xs hidden-sm" src={LogoLight} alt="vaktija.ba" height="48"></img>
                                         <img className="hidden-md hidden-lg" src={IconLight} alt="vaktija.ba" height="32"></img>
-                                    </Fragment>
+                                    </>
                                 }
-
                                 {
                                     theme === 'light' &&
-                                    <Fragment>
+                                    <>
                                         <img className="hidden-xs hidden-sm" src={LogoDark} alt="vaktija.ba" height="48"></img>
                                         <img className="hidden-md hidden-lg" src={IconDark} alt="vaktija.ba" height="32"></img>
-                                    </Fragment>
+                                    </>
                                 }
-
                             </Link>
                         </Col>
                         <Col className="text-right" xs={6}>
@@ -277,7 +264,7 @@ class Daily extends Component {
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
                                 <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
-                                <RelativeTime theme={theme} vakatTime={vaktija[index]} />
+                                <RelativeTime currentMoment={currentMoment} theme={theme} vakatTime={vaktija[index]} />
                             </Col>
                             )
                         }
@@ -296,7 +283,6 @@ class Daily extends Component {
                 </div>
                 <br />
                 <Footer theme={theme} />
-                {/* Manual theme switching */}
                 {/* <Grid>
                     <Row>
                         <Col lg={12} className="text-center">
@@ -304,7 +290,7 @@ class Daily extends Component {
                         </Col>
                     </Row>
                 </Grid> */}
-            </Fragment >
+            </>
         )
     }
 }

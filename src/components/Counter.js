@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from "moment";
 
-function Counter(props) {
-    const { vakatTime, theme } = props;
+function Counter({ vakatTime, theme }) {
+
     const vakatMoment = moment(vakatTime, 'HH:mm').tz("Europe/Sarajevo");
     const duration = moment.duration(vakatMoment.diff(moment().tz("Europe/Sarajevo")));
 

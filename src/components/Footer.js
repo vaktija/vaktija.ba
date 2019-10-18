@@ -1,13 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-function Counter(props) {
-    const { theme } = props;
+function Footer({ theme }) {
     return (
         <footer className="footer">
             <Grid>
                 <Row>
-                    <Col xs={12} lg={12}>
+                    <Col xs={12} sm={12} md={12} lg={12}>
                         <p className="text-muted text-center">
                             <a className={`links-${theme}`}
                                 target="_blank"
@@ -30,8 +29,8 @@ function Counter(props) {
                     </Col>
                 </Row>
             </Grid>
-        </footer >
+        </footer>
     )
 }
 
-export default Counter;
+export default Footer;

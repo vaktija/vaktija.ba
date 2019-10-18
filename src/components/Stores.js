@@ -5,8 +5,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fab);
 
-function Stores(props) {
-    const { theme } = props;
+function Stores({ theme }) {
     return <div className="text-center">
         <a className={`store-${theme}`}
             target="_blank"

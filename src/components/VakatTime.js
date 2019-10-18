@@ -1,7 +1,6 @@
 import React from 'react';
 
-function VakatTime(props) {
-    const { vakatName, vakatTime, highlight, theme } = props;
+function VakatTime({ vakatName, vakatTime, highlight, theme }) {
     return <h2>
         <small className={`vakat-name-${theme}`}>{vakatName}</small>
         <br />
