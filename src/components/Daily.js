@@ -51,19 +51,6 @@ moment.updateLocale("bs", {
 
 class Daily extends Component {
 
-    state = {
-        currentMoment: moment().tz("Europe/Sarajevo"),
-        location: this.localization(),
-        date: [
-            moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
-            moment().tz("Europe/Sarajevo").format('YYYY'),
-            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
-        ],
-        vaktija: daily(this.localization()).vakat,
-        next: this.next(),
-        theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
-    }
-
     // toggleTheme = () => {
 
     //     const { theme } = this.state;
@@ -155,6 +142,19 @@ class Daily extends Component {
         } else {
             return this.props.location;
         }
+    }
+
+    state = {
+        currentMoment: moment().tz("Europe/Sarajevo"),
+        location: this.localization(),
+        date: [
+            moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
+            moment().tz("Europe/Sarajevo").format('YYYY'),
+            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+        ],
+        vaktija: daily(this.localization()).vakat,
+        next: this.next(),
+        theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
     componentDidMount() {
