@@ -67,12 +67,12 @@ class Daily extends Component {
     //     }
     // }
 
-    next = () => {
+    nextVakat = () => {
 
-        const next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+        const nextVakatPosition = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
-        if (next.filter(n => n.active === true).length) {
-            return next.filter(n => n.active === true)[0].pos
+        if (nextVakatPosition.filter(n => n.active === true).length) {
+            return nextVakatPosition.filter(n => n.active === true)[0].pos
         } else {
             return 6
         }
@@ -101,7 +101,7 @@ class Daily extends Component {
         const { vaktija } = this.state;
         const clock = moment().tz("Europe/Sarajevo").format();
         const notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
-        const next = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
+        const nextVakatPosition = daily(this.localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         this.setState({
             currentMoment: moment().tz("Europe/Sarajevo"),
@@ -119,10 +119,10 @@ class Daily extends Component {
         }
 
 
-        if (next.filter(n => n.active === true).length) {
-            this.setState({ next: next.filter(n => n.active === true)[0].pos })
+        if (nextVakatPosition.filter(n => n.active === true).length) {
+            this.setState({ nextVakatPosition: nextVakatPosition.filter(n => n.active === true)[0].pos })
         } else {
-            this.setState({ next: 6 })
+            this.setState({ nextVakatPosition: 6 })
         }
 
         if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
@@ -153,7 +153,7 @@ class Daily extends Component {
             momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
         vaktija: daily(this.localization()).vakat,
-        next: this.next(),
+        nextVakatPosition: this.nextVakat(),
         theme: moment().isBetween(moment(daily(this.localization()).vakat[1], "HH:mm"), moment(daily(this.localization()).vakat[4], "HH:mm")) ? 'light' : 'dark'
     }
 
@@ -182,7 +182,7 @@ class Daily extends Component {
 
     render() {
 
-        const { currentMoment, date, vaktija, location, next, theme } = this.state;
+        const { currentMoment, date, vaktija, location, nextVakatPosition, theme } = this.state;
 
         return (
             <>
@@ -217,7 +217,7 @@ class Daily extends Component {
                 </Helmet>
                 <ReactNotifications
                     onRef={ref => (this.n = ref)}
-                    title={`${vakatNames[next]} je za 15 minuta`}
+                    title={`${vakatNames[nextVakatPosition]} je za 15 minuta`}
                     body={`${locationsDative[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
                     icon={"icon.png"}
                     tag={uuidv4()}
@@ -251,7 +251,7 @@ class Daily extends Component {
                     </Row>
                     <Row>
                         <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                            <Counter vakatTime={vaktija[next]} theme={theme} />
+                            <Counter vakatTime={vaktija[nextVakatPosition]} theme={theme} />
                         </Col>
                     </Row>
                     <Row>
@@ -263,7 +263,7 @@ class Daily extends Component {
                     <Row className="text-center">
                         {
                             vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                                <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={next === index ? true : false} />
+                                <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={nextVakatPosition === index ? true : false} />
                                 <RelativeTime currentMoment={currentMoment} theme={theme} vakatTime={vaktija[index]} />
                             </Col>
                             )
