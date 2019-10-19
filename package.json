@@ -11,7 +11,7 @@
     "core-js": "^3.3.2",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
-    "moment-duration-format": "2.2.2",
+    "moment-duration-format": "2.3.2",
     "moment-hijri": "^2.1.2",
     "moment-timezone": "^0.5.27",
     "path": "^0.12.7",
