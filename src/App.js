@@ -18,7 +18,7 @@ function App() {
         key={location}
         exact
         path={`/${slugify(location, { replacement: "-", remove: null, lower: true })}`}
-        render={() => <Daily location={locations.indexOf(location)} />} />)
+        render={() => <Daily locationProps={locations.indexOf(location)} />} />)
     }
     <Route path="*"
       render={() => <Grid>

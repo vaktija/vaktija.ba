@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
-import moment from "moment";
-import momenth from "moment-hijri";
+// import moment from "moment";
+import moment from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
@@ -108,7 +108,7 @@ class Daily extends Component {
             date: [
                 moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
                 moment().tz("Europe/Sarajevo").format('YYYY'),
-                momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+                moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
             ],
             vaktija: daily(this.localization()).vakat
         });
@@ -117,7 +117,6 @@ class Daily extends Component {
             this.setState({ position: notifs.indexOf(clock) })
             this.showNotifications();
         }
-
 
         if (nextVakatPosition.filter(n => n.active === true).length) {
             this.setState({ nextVakatPosition: nextVakatPosition.filter(n => n.active === true)[0].pos })
@@ -140,17 +139,17 @@ class Daily extends Component {
         if (this.props.root === undefined && cookies.get("location") !== undefined) {
             return cookies.get("location");
         } else {
-            return this.props.location;
+            return this.props.locationProps;
         }
     }
 
     state = {
         currentMoment: moment().tz("Europe/Sarajevo"),
-        location: this.localization(),
+        locationState: this.localization(),
         date: [
             moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
-            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+            moment().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ],
         vaktija: daily(this.localization()).vakat,
         nextVakatPosition: this.nextVakat(),
@@ -172,7 +171,7 @@ class Daily extends Component {
         this.timerID = setInterval(() => this.tick(), 1000);
 
         if (!this.props.root) {
-            cookies.set("location", this.props.location, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            cookies.set("location", this.props.locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
     }
 
@@ -182,7 +181,7 @@ class Daily extends Component {
 
     render() {
 
-        const { currentMoment, date, vaktija, location, nextVakatPosition, theme } = this.state;
+        const { currentMoment, date, vaktija, locationState, nextVakatPosition, theme } = this.state;
 
         return (
             <>
@@ -190,7 +189,7 @@ class Daily extends Component {
                     <link
                         rel="canonical"
                         href={`https://vaktija.ba/${slugify(
-                            locations[location],
+                            locations[locationState],
                             {
                                 replacement: "-",
                                 remove: null,
@@ -200,7 +199,7 @@ class Daily extends Component {
                     />
                     <meta
                         name="description"
-                        content={`Vaktija za ${locationsDative[location]}, ${date[0]} ${date[1]} / ${date[2]}${
+                        content={`Vaktija za ${locationsDative[locationState]}, ${date[0]} ${date[1]} / ${date[2]}${
                             vakatNames.map((vakatName, index) => ` ${vakatName} ${vaktija[index]}`)
                             }. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
                     />
@@ -208,20 +207,18 @@ class Daily extends Component {
                         theme === 'light' &&
                         <meta name="theme-color" content="#ffffff" />
                     }
-
                     {
                         theme === 'dark' &&
                         <meta name="theme-color" content="#1e2227" />
                     }
-                    <title>{`${locations[location]} · Vaktija`}</title>
+                    <title>{`${locations[locationState]} · Vaktija`}</title>
                 </Helmet>
                 <ReactNotifications
                     onRef={ref => (this.n = ref)}
                     title={`${vakatNames[nextVakatPosition]} je za 15 minuta`}
-                    body={`${locationsDative[location]}, ${date[0]} ${date[1]} / ${date[2]}`}
+                    body={`${locationsDative[locationState]}, ${date[0]} ${date[1]} / ${date[2]}`}
                     icon={"icon.png"}
                     tag={uuidv4()}
-                    // timeout="5000"
                     interaction="true"
                     onClick={event => this.handleClick(event)}
                 />
@@ -256,8 +253,8 @@ class Daily extends Component {
                     </Row>
                     <Row>
                         <Col xs={12} sm={12} md={12} lg={12}>
-                            <Location theme={theme} location={location} />
-                            <CurrentDate theme={theme} date={date} location={location} />
+                            <Location theme={theme} location={locationState} />
+                            <CurrentDate theme={theme} date={date} location={locationState} />
                         </Col>
                     </Row>
                     <Row className="text-center">
@@ -283,19 +280,12 @@ class Daily extends Component {
                 </div>
                 <br />
                 <Footer theme={theme} />
-                {/* <Grid>
-                    <Row>
-                        <Col lg={12} className="text-center">
-                            <span className={`dot-${theme}`} onClick={this.toggleTheme}></span>
-                        </Col>
-                    </Row>
-                </Grid> */}
             </>
         )
     }
 }
 
 Daily.defaultProps = {
-    location: 77,
+    locationProps: 77,
 }
 export default Daily;
