@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
 import moment from "moment";
@@ -50,34 +50,14 @@ moment.updateLocale("bs", {
 
 function Daily({ locationProps = 77, root }) {
 
-    const [n, setN] = useState(null);
-    const [currentMoment, setCurrentMoment] = useState(moment().tz("Europe/Sarajevo"));
-    const [locationState] = useState(localization());
-    const [vaktija, setVaktija] = useState(daily(localization()).vakat);
-    const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
-    const [theme, setTheme] = useState(moment().isBetween(moment(daily(localization()).vakat[1], "HH:mm"), moment(daily(localization()).vakat[4], "HH:mm")) ? 'light' : 'dark');
-    const [date, setDate] = useState([moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'), moment().tz("Europe/Sarajevo").format('YYYY'), momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()]);
-
-    useEffect(() => {
-        const interval = setInterval(() => tick(), 1000);
-
-        if (theme === 'light') {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else if (theme === 'dark') {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
+    const localization = useCallback(() => {
+        if (root && cookies.get("location") !== undefined) {
+            return cookies.get("location");
         }
+        return locationProps
+    }, [locationProps, root]);
 
-        if (!root) {
-            cookies.set("location", locationProps, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
-            // cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
-        }
-
-        return () => clearInterval(interval);
-    }, []);
-
-    function nextVakat() {
+    const nextVakat = () => {
         const nextVakatPosition = daily(localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
 
         if (nextVakatPosition.filter(n => n.active === true).length) {
@@ -87,32 +67,19 @@ function Daily({ locationProps = 77, root }) {
         }
     }
 
-    function showNotifications() {
+    const [n, setN] = useState();
+    const [currentMoment, setCurrentMoment] = useState(moment().tz("Europe/Sarajevo"));
+    const [locationState] = useState(localization());
+    const [vaktija, setVaktija] = useState(daily(localization()).vakat);
+    const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
+    const [theme, setTheme] = useState(moment().isBetween(moment(daily(localization()).vakat[1], "HH:mm"), moment(daily(localization()).vakat[4], "HH:mm")) ? 'light' : 'dark');
+    const [date, setDate] = useState([moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'), moment().tz("Europe/Sarajevo").format('YYYY'), momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()]);
+
+    const showNotifications = useCallback(() => {
         if (n.supported()) n.show();
-    }
+    }, [n]);
 
-    function handleClick(event) {
-        window.focus();
-        n.close(event.target.tag);
-    }
-
-    function openNav() {
-        document.getElementById("sidenav").style.width = "100%";
-    }
-
-    function closeNav(e) {
-        e.preventDefault()
-        document.getElementById("sidenav").style.width = "0";
-    }
-
-    function localization() {
-        if (root && cookies.get("location") !== undefined) {
-            return cookies.get("location");
-        }
-        return locationProps
-    }
-
-    function tick() {
+    const tick = useCallback(() => {
         const clock = moment().tz("Europe/Sarajevo").format();
         const notifs = vaktija.map((v, i) => moment(v, "HH:mm").tz("Europe/Sarajevo").subtract(15, "m").format());
         const nextVakatPosition = daily(localization()).vakat.map((v, i) => ({ pos: i, active: moment().tz("Europe/Sarajevo").isSameOrBefore(moment(v, 'HH:mm').tz("Europe/Sarajevo")) }))
@@ -145,7 +112,42 @@ function Daily({ locationProps = 77, root }) {
             document.body.classList.remove('light');
             document.body.classList.add('dark');
         }
-    };
+    }, [localization, showNotifications, vaktija]);
+
+    useEffect(() => {
+        const interval = setInterval(() => tick(), 1000);
+        return () => clearInterval(interval);
+    }, [tick]);
+
+    useEffect(() => {
+        if (theme === 'light') {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else if (theme === 'dark') {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
+
+        if (!root) {
+            cookies.set("location", locationProps, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            // cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+        }
+
+    }, [locationProps, root, n, currentMoment, locationState, vaktija, nextVakatPosition, theme, date]);
+
+    const handleClick = (event) => {
+        window.focus();
+        n.close(event.target.tag);
+    }
+
+    const openNav = () => {
+        document.getElementById("sidenav").style.width = "100%";
+    }
+
+    const closeNav = (e) => {
+        e.preventDefault()
+        document.getElementById("sidenav").style.width = "0";
+    }
 
     return <>
         <Helmet>
@@ -179,7 +181,7 @@ function Daily({ locationProps = 77, root }) {
         <ReactNotifications
             onRef={ref => (setN(ref))}
             title={`${vakatNames[nextVakatPosition]} je za 15 minuta`}
-            body={`${locationsDative[locationState]}, ${date[0]} ${date[1]} / ${date[2]}`}
+            body={`${locations[locationState]}, ${date[0]} ${date[1]} / ${date[2]}`}
             icon={"icon.png"}
             tag={uuidv4()}
             interaction="true"
