@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
 import moment from "moment";
-import momenth from "moment-hijri";
+import momentHijri from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
@@ -26,6 +26,12 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import Footer from './Footer';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, fas);
 
 const cookies = new Cookies();
 // ReactGA.initialize("UA-9142566-1");
@@ -73,11 +79,12 @@ function Daily({ locationProps = 77, root }) {
     const [vaktija, setVaktija] = useState(daily(localization()).vakat);
     const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
     const [theme, setTheme] = useState(moment().isBetween(moment(daily(localization()).vakat[1], "HH:mm"), moment(daily(localization()).vakat[4], "HH:mm")) ? 'light' : 'dark');
-    const [date, setDate] = useState([moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'), moment().tz("Europe/Sarajevo").format('YYYY'), momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()]);
-
+    const [date, setDate] = useState([moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'), moment().tz("Europe/Sarajevo").format('YYYY'), momentHijri().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()]);
     const showNotifications = useCallback(() => {
         if (n.supported()) n.show();
     }, [n]);
+
+    const [automaticTheme, setAutomaticTheme] = useState(true);
 
     const tick = useCallback(() => {
         const clock = moment().tz("Europe/Sarajevo").format();
@@ -89,7 +96,7 @@ function Daily({ locationProps = 77, root }) {
         setDate([
             moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'),
             moment().tz("Europe/Sarajevo").format('YYYY'),
-            momenth().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
+            momentHijri().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
         ])
 
         if (notifs.includes(clock)) {
@@ -103,16 +110,18 @@ function Daily({ locationProps = 77, root }) {
             setNextVakatPosition(6);
         }
 
-        if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
-            setTheme('light');
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else {
-            setTheme('dark');
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
+        if (automaticTheme) {
+            if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
+                setTheme('light');
+                document.body.classList.remove('dark');
+                document.body.classList.add('light');
+            } else {
+                setTheme('dark');
+                document.body.classList.remove('light');
+                document.body.classList.add('dark');
+            }
         }
-    }, [localization, showNotifications, vaktija]);
+    }, [localization, showNotifications, vaktija, automaticTheme]);
 
     useEffect(() => {
         const interval = setInterval(() => tick(), 1000);
@@ -147,6 +156,20 @@ function Daily({ locationProps = 77, root }) {
     const closeNav = (e) => {
         e.preventDefault()
         document.getElementById("sidenav").style.width = "0";
+    }
+
+    const toggleTheme = () => {
+        setAutomaticTheme(false);
+
+        if (theme === 'dark') {
+            setTheme('light');
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else if (theme === 'light') {
+            setTheme('dark');
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
     }
 
     return <>
@@ -244,7 +267,7 @@ function Daily({ locationProps = 77, root }) {
             <Locations />
         </div>
         <br />
-        <Footer theme={theme} />
+        <Footer theme={theme} toggleTheme={toggleTheme} />
     </>
 }
 

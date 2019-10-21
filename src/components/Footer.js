@@ -1,30 +1,74 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Footer({ theme }) {
+function Footer({ theme, toggleTheme }) {
     return (
         <footer className="footer">
             <Grid>
                 <Row>
-                    <Col xs={12} sm={12} md={12} lg={12}>
-                        <p className="text-muted text-center">
-                            <a className={`links-${theme}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ fontWeight: 700, fontSize: "smaller" }}
-                                href="https://api.vaktija.ba/vaktija/v1">API</a> {" "}
-                            <a className={`links-${theme}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ fontWeight: 700, fontSize: "smaller" }}
-                                href="https://github.com/vaktija">GITHUB</a> {" "}
-                            <a className={`links-${theme}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ fontWeight: 700, fontSize: "smaller" }}
-                                href="mailto:info@vaktija.ba">KONTAKT</a> {" | "}
-                            <span className={`footer-${theme}`}
-                                style={{ fontWeight: 400, fontSize: "x-small" }}>2019 VAKTIJA</span>
+                    <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
+                        <p className="text-muted">
+                            {
+                                theme === 'dark' &&
+                                <>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="mailto:info@vaktija.ba">
+                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'envelope']} size="1x" />
+                                    </a>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="https://api.vaktija.ba/vaktija/v1">
+                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'code']} size="1x" />
+                                    </a>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="https://github.com/vaktija">
+                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fab', 'github']} size="1x" />
+                                    </a>
+                                    {"|"}
+                                    <span style={{ padding: 15 }}>
+                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'sun']} size="1x" onClick={toggleTheme} />
+                                    </span>
+                                </>
+                            }
+                            {
+                                theme === 'light' &&
+                                <>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="mailto:info@vaktija.ba">
+                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'envelope']} size="1x" />
+                                    </a>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="https://api.vaktija.ba/vaktija/v1">
+                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'code']} size="1x" />
+                                    </a>
+                                    <a className={`store-${theme}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ padding: 15 }}
+                                        href="https://github.com/vaktija">
+                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fab', 'github']} size="1x" />
+                                    </a>
+                                    {"|"}
+                                    <span style={{ padding: 15 }}>
+                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'moon']} size="1x" onClick={toggleTheme} />
+                                    </span>
+                                </>
+                            }
                         </p>
                     </Col>
                 </Row>
