@@ -15,26 +15,26 @@ function Footer({ theme, toggleTheme }) {
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="mailto:info@vaktija.ba">
                                         <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'envelope']} size="1x" />
                                     </a>
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="https://api.vaktija.ba/vaktija/v1">
                                         <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'code']} size="1x" />
                                     </a>
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="https://github.com/vaktija">
                                         <FontAwesomeIcon style={{ color: "#fff" }} icon={['fab', 'github']} size="1x" />
                                     </a>
                                     {"|"}
-                                    <span style={{ cursor: "pointer", padding: 15 }}>
+                                    <span style={{ cursor: "pointer", margin: 15 }}>
                                         <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'sun']} size="1x" onClick={toggleTheme} />
                                     </span>
                                 </>
@@ -45,26 +45,26 @@ function Footer({ theme, toggleTheme }) {
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="mailto:info@vaktija.ba">
                                         <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'envelope']} size="1x" />
                                     </a>
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="https://api.vaktija.ba/vaktija/v1">
                                         <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'code']} size="1x" />
                                     </a>
                                     <a className={`store-${theme}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ padding: 15 }}
+                                        style={{ margin: 15 }}
                                         href="https://github.com/vaktija">
                                         <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fab', 'github']} size="1x" />
                                     </a>
                                     {"|"}
-                                    <span style={{ cursor: "pointer", padding: 15 }}>
+                                    <span style={{ cursor: "pointer", margin: 15 }}>
                                         <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'moon']} size="1x" onClick={toggleTheme} />
                                     </span>
                                 </>

@@ -191,14 +191,9 @@ function Daily({ locationProps = 77, root }) {
                     vakatNames.map((vakatName, index) => ` ${vakatName} ${vaktija[index]}`)
                     }. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
             />
-            {
-                theme === 'light' &&
-                <meta name="theme-color" content="#ffffff" />
-            }
-            {
-                theme === 'dark' &&
-                <meta name="theme-color" content="#1e2227" />
-            }
+
+            <meta name="theme-color" content={theme === 'light' ? '#ffffff' : '#1e2227'} />
+
             <title>{`${locations[locationState]} · Vaktija`}</title>
         </Helmet>
         <ReactNotifications
@@ -215,18 +210,15 @@ function Daily({ locationProps = 77, root }) {
                 <Col xs={6}>
                     <Link to="/">
                         {
-                            theme === 'dark' &&
-                            <>
-                                <img className="hidden-xs hidden-sm" src={LogoLight} alt="vaktija.ba" height="48"></img>
-                                <img className="hidden-md hidden-lg" src={IconLight} alt="vaktija.ba" height="32"></img>
-                            </>
-                        }
-                        {
-                            theme === 'light' &&
-                            <>
-                                <img className="hidden-xs hidden-sm" src={LogoDark} alt="vaktija.ba" height="48"></img>
-                                <img className="hidden-md hidden-lg" src={IconDark} alt="vaktija.ba" height="32"></img>
-                            </>
+                            theme === 'light' ?
+                                <>
+                                    <img className="hidden-xs hidden-sm" src={LogoDark} alt="vaktija.ba" height="48"></img>
+                                    <img className="hidden-md hidden-lg" src={IconDark} alt="vaktija.ba" height="32"></img>
+                                </> :
+                                <>
+                                    <img className="hidden-xs hidden-sm" src={LogoLight} alt="vaktija.ba" height="48"></img>
+                                    <img className="hidden-md hidden-lg" src={IconLight} alt="vaktija.ba" height="32"></img>
+                                </>
                         }
                     </Link>
                 </Col>
