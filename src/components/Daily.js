@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
 import moment from "moment";
@@ -34,6 +34,7 @@ import Footer from './Footer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { ThemeContext } from '../contexts/ThemeContext';
 
 library.add(fab, fas);
 
@@ -60,6 +61,7 @@ moment.updateLocale("bs", {
 
 function Daily({ locationProps = 77, root }) {
 
+    const context = useContext(ThemeContext);
     const localization = useCallback(() => {
         if (root && cookies.get("location") !== undefined) {
             return cookies.get("location");
@@ -82,13 +84,13 @@ function Daily({ locationProps = 77, root }) {
     const [locationState] = useState(localization());
     const [vaktija, setVaktija] = useState(daily(localization()).vakat);
     const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
-    const [theme, setTheme] = useState(moment().isBetween(moment(daily(localization()).vakat[1], "HH:mm"), moment(daily(localization()).vakat[4], "HH:mm")) ? 'light' : 'dark');
+    const { toggleTheme, initTheme, automaticTheme, theme } = context;
+    // let theme = context.theme || moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm")) ? 'light' : 'dark');
+
     const [date, setDate] = useState([moment().tz("Europe/Sarajevo").format('ddd, D. MMMM'), moment().tz("Europe/Sarajevo").format('YYYY'), momentHijri().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()]);
     const showNotifications = useCallback(() => {
         if (n.supported()) n.show();
     }, [n]);
-
-    const [automaticTheme, setAutomaticTheme] = useState(true);
 
     const tick = useCallback(() => {
         const clock = moment().tz("Europe/Sarajevo").format();
@@ -114,39 +116,47 @@ function Daily({ locationProps = 77, root }) {
             setNextVakatPosition(6);
         }
 
-        if (automaticTheme) {
-            if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
-                setTheme('light');
-                document.body.classList.remove('dark');
-                document.body.classList.add('light');
-            } else {
-                setTheme('dark');
-                document.body.classList.remove('light');
-                document.body.classList.add('dark');
-            }
-        }
-    }, [localization, showNotifications, vaktija, automaticTheme]);
+
+    }, [localization, showNotifications, vaktija]);
 
     useEffect(() => {
         const interval = setInterval(() => tick(), 1000);
         return () => clearInterval(interval);
     }, [tick]);
 
-    useEffect(() => {
-        if (theme === 'light') {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else if (theme === 'dark') {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-        }
+    // useEffect(() => {
 
+    //         if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
+    //             initTheme('light');
+    //             console.log("Iz useEffecta", theme);
+    //         } else {
+    //             initTheme('dark');
+    //             console.log("Iz useEffecta", theme);
+    //         }
+    // }, [vaktija, initTheme, toggleTheme, theme]);
+
+    useEffect(() => {
+
+        // console.log(automaticTheme, vaktija, initTheme, toggleTheme, theme);
+
+        if (automaticTheme) {
+            if (moment().isBetween(moment(vaktija[1], "HH:mm"), moment(vaktija[4], "HH:mm"))) {
+                initTheme('light');
+                console.log("Iz useEffecta", theme);
+            } else {
+                initTheme('dark');
+                console.log("Iz useEffecta", theme);
+            }
+        }
+    }, [automaticTheme, initTheme, theme, vaktija]);
+    // }, []);
+
+    useEffect(() => {
         if (!root) {
             cookies.set("location", locationProps, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
             // cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
-
-    }, [locationProps, root, n, currentMoment, locationState, vaktija, nextVakatPosition, theme, date]);
+    }, [locationProps, root]);
 
     const handleClick = (event) => {
         window.focus();
@@ -160,20 +170,6 @@ function Daily({ locationProps = 77, root }) {
     const closeNav = (e) => {
         e.preventDefault()
         document.getElementById("sidenav").style.width = "0";
-    }
-
-    const toggleTheme = () => {
-        setAutomaticTheme(false);
-
-        if (theme === 'dark') {
-            setTheme('light');
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else if (theme === 'light') {
-            setTheme('dark');
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-        }
     }
 
     return <>
@@ -209,56 +205,58 @@ function Daily({ locationProps = 77, root }) {
             interaction="true"
             onClick={event => handleClick(event)}
         />
-        <Grid>
-            <Row>
-                <Col xs={6} className="text-left">
-                    <Link to="/">
-                        {
-                            theme === 'light' ?
-                                <>
-                                    <LogoDark style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
-                                    <IconDark style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
-                                </> :
-                                <>
-                                    <LogoLight style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
-                                    <IconLight style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
-                                </>
-                        }
-                    </Link>
-                </Col>
-                <Col className="text-right" xs={6}>
-                    <Glyphicon glyph="map-marker" onClick={openNav} className={`glyphicon-${theme}`} />
-                </Col>
-            </Row>
-            <Row>
-                <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                    <Counter vakatTime={vaktija[nextVakatPosition]} theme={theme} />
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={12} sm={12} md={12} lg={12}>
-                    <Location theme={theme} location={locationState} />
-                    <CurrentDate theme={theme} date={date} location={locationState} />
-                </Col>
-            </Row>
-            <Row className="text-center">
-                {
-                    vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                        <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={nextVakatPosition === index ? true : false} />
-                        <RelativeTime currentMoment={currentMoment} theme={theme} vakatTime={vaktija[index]} />
+        {theme &&
+            <Grid>
+                <Row>
+                    <Col xs={6} className="text-left">
+                        <Link to="/">
+                            {
+                                theme === 'light' ?
+                                    <>
+                                        <LogoDark style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                        <IconDark style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
+                                    </> :
+                                    <>
+                                        <LogoLight style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                        <IconLight style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
+                                    </>
+                            }
+                        </Link>
                     </Col>
-                    )
-                }
-            </Row>
-            <Row>
-                <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                    <br />
-                    <br />
-                    <Stores theme={theme} />
-                </Col>
-            </Row>
-        </Grid>
-        <div id="sidenav" className="sidenav">
+                    <Col className="text-right" xs={6}>
+                        <Glyphicon glyph="map-marker" onClick={openNav} className={`glyphicon-${theme}`} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
+                        <Counter vakatTime={vaktija[nextVakatPosition]} theme={theme} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} sm={12} md={12} lg={12}>
+                        <Location theme={theme} location={locationState} />
+                        <CurrentDate theme={theme} date={date} location={locationState} />
+                    </Col>
+                </Row>
+                <Row className="text-center">
+                    {
+                        vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
+                            <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={nextVakatPosition === index ? true : false} />
+                            <RelativeTime currentMoment={currentMoment} theme={theme} vakatTime={vaktija[index]} />
+                        </Col>
+                        )
+                    }
+                </Row>
+                <Row>
+                    <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
+                        <br />
+                        <br />
+                        <Stores theme={theme} />
+                    </Col>
+                </Row>
+            </Grid>
+
+        }<div id="sidenav" className="sidenav">
             <a href="true" className="closebtn" onClick={(e) => closeNav(e)}>&times;</a>
             <Locations />
         </div>

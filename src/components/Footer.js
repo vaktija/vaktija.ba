@@ -35,7 +35,7 @@ function Footer({ theme, toggleTheme }) {
                                     </a>
                                     {"|"}
                                     <span style={{ cursor: "pointer", margin: 15 }}>
-                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'sun']} size="1x" onClick={toggleTheme} />
+                                        <FontAwesomeIcon style={{ color: "#fff" }} icon={['fas', 'sun']} size="1x" onClick={() => toggleTheme('light')} />
                                     </span>
                                 </>
                             }
@@ -65,7 +65,7 @@ function Footer({ theme, toggleTheme }) {
                                     </a>
                                     {"|"}
                                     <span style={{ cursor: "pointer", margin: 15 }}>
-                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'moon']} size="1x" onClick={toggleTheme} />
+                                        <FontAwesomeIcon style={{ color: "#4a4a4a" }} icon={['fas', 'moon']} size="1x" onClick={() => toggleTheme('dark')} />
                                     </span>
                                 </>
                             }
