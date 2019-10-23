@@ -7,6 +7,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.6",
+    "@svgr/cli": "^4.3.3",
     "bootstrap": "3.4.1",
     "compression": "^1.7.4",
     "core-js": "^3.3.2",
@@ -30,6 +31,7 @@
     "uuid": "^3.3.3"
   },
   "scripts": {
+    "svgr": "svgr -d src/icons/ src/img/",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "start": "node server.js",

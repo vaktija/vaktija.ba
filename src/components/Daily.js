@@ -14,10 +14,15 @@ import uuidv4 from "uuid/v4";
 import Helmet from "react-helmet";
 import { locations, locationsDative, vakatNames } from '../data/vaktija.json';
 import { daily } from "../api/vaktija/index.mjs";
-import LogoDark from '../img/logo-dark.svg';
-import IconDark from '../img/icon-dark.svg';
-import LogoLight from '../img/logo-light.svg';
-import IconLight from '../img/icon-light.svg';
+import LogoDark from '../icons/LogoDark.js';
+import IconDark from '../icons/IconDark.js';
+import LogoLight from '../icons/LogoLight.js';
+import IconLight from '../icons/IconLight.js';
+// TODO check svgr/webpack
+// import { ReactComponent as LogoDark } from '../img/logo-dark.svg';
+// import { ReactComponent as IconDark } from '../img/icon-dark.svg';
+// import { ReactComponent as LogoLight } from '../img/logo-light.svg';
+// import { ReactComponent as IconLight } from '../img/icon-light.svg';
 import RelativeTime from './RelativeTime';
 import VakatTime from './VakatTime';
 import Counter from './Counter';
@@ -26,7 +31,6 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import Footer from './Footer';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -207,17 +211,17 @@ function Daily({ locationProps = 77, root }) {
         />
         <Grid>
             <Row>
-                <Col xs={6}>
+                <Col xs={6} className="text-left">
                     <Link to="/">
                         {
                             theme === 'light' ?
                                 <>
-                                    <img className="hidden-xs hidden-sm" src={LogoDark} alt="vaktija.ba" height="48"></img>
-                                    <img className="hidden-md hidden-lg" src={IconDark} alt="vaktija.ba" height="32"></img>
+                                    <LogoDark style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                    <IconDark style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
                                 </> :
                                 <>
-                                    <img className="hidden-xs hidden-sm" src={LogoLight} alt="vaktija.ba" height="48"></img>
-                                    <img className="hidden-md hidden-lg" src={IconLight} alt="vaktija.ba" height="32"></img>
+                                    <LogoLight style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                    <IconLight style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
                                 </>
                         }
                     </Link>
