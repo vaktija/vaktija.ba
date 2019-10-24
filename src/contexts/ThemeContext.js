@@ -1,50 +1,45 @@
-import React, { Component, createContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const ThemeContext = createContext();
 
-class ThemeContextProvider extends Component {
-    state = {
-        automaticTheme: true
-    }
+function ThemeContextProvider(props) {
 
-    initTheme = (theme) => {
-        console.log("hajde ba init", theme);
+    const [automaticTheme, setAutomaticTheme] = useState(true);
+    const [theme, setTheme] = useState('light');
 
+    const initTheme = (theme) => {
         if (theme === 'dark') {
-            this.setState({ theme: 'dark' });
+            setTheme('dark');
             document.body.classList.remove('light');
             document.body.classList.add('dark');
 
         } else if (theme === 'light') {
-            this.setState({ theme: 'light' });
+            setTheme('light');
             document.body.classList.remove('dark');
             document.body.classList.add('light');
         }
     }
 
-    toggleTheme = (theme) => {
-
-        console.log("hajde ba toggle", theme);
-
+    const toggleTheme = (theme) => {
         if (theme === 'dark') {
-            this.setState({ theme: 'dark', automaticTheme: false });
+            setTheme('dark');
+            setAutomaticTheme(false);
             document.body.classList.remove('light');
             document.body.classList.add('dark');
 
         } else if (theme === 'light') {
-            this.setState({ theme: 'light', automaticTheme: false });
+            setTheme('light');
+            setAutomaticTheme(false);
             document.body.classList.remove('dark');
             document.body.classList.add('light');
         }
     }
 
-    render() {
-        return (
-            <ThemeContext.Provider value={{ ...this.state, toggleTheme: this.toggleTheme, initTheme: this.initTheme }}>
-                {this.props.children}
-            </ThemeContext.Provider>
-        );
-    }
+    return (
+        <ThemeContext.Provider value={{ automaticTheme, setAutomaticTheme, toggleTheme, initTheme, theme }}>
+            {props.children}
+        </ThemeContext.Provider>
+    );
 }
 
 export default ThemeContextProvider;

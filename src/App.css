@@ -2,23 +2,23 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+/* body {
     transition: color 0.2s ease-out, background 0.2s ease-out;
     transition-property: color, background;
     transition-duration: 0.2s, 0.2s;
     transition-timing-function: ease-out, ease-out;
     transition-delay: 0s, 0s;
-}
+} */
 
 body.dark {
     background-color: #1e2227;
     color: #ffffff;
 }
 
-/* body.light {
+body.light {
     background-color: #ffffff;
     color: #333;
-} */
+}
 
 .glyphicon-light {
     color: #4a4a4a;
