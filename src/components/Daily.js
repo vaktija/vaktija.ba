@@ -6,7 +6,6 @@ import momentHijri from "moment-hijri";
 import 'moment-timezone';
 import "moment-duration-format";
 import "moment/locale/bs";
-// import ReactGA from "react-ga";
 import Cookies from 'universal-cookie';
 import slugify from "slugify";
 import ReactNotifications from 'react-browser-notifications';
@@ -18,11 +17,6 @@ import LogoDark from '../icons/LogoDark.js';
 import IconDark from '../icons/IconDark.js';
 import LogoLight from '../icons/LogoLight.js';
 import IconLight from '../icons/IconLight.js';
-// TODO check svgr/webpack
-// import { ReactComponent as LogoDark } from '../img/logo-dark.svg';
-// import { ReactComponent as IconDark } from '../img/icon-dark.svg';
-// import { ReactComponent as LogoLight } from '../img/logo-light.svg';
-// import { ReactComponent as IconLight } from '../img/icon-light.svg';
 import RelativeTime from './RelativeTime';
 import VakatTime from './VakatTime';
 import Counter from './Counter';
@@ -36,12 +30,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { ThemeContext } from '../contexts/ThemeContext';
-
-library.add(fab, fas);
-
-const cookies = new Cookies();
+// import ReactGA from "react-ga";
 // ReactGA.initialize("UA-9142566-1");
 
+library.add(fab, fas);
+const cookies = new Cookies();
 moment.updateLocale("bs", {
     iMonths: [
         "Muharrem",
@@ -61,7 +54,6 @@ moment.updateLocale("bs", {
 });
 
 function Daily({ locationProps = 77, root }) {
-
     const context = useContext(ThemeContext);
     const localization = useCallback(() => {
         if (root && cookies.get("location") !== undefined) {
@@ -130,6 +122,7 @@ function Daily({ locationProps = 77, root }) {
                 initTheme('dark');
             }
         }
+        // eslint-disable-next-line
     }, [automaticTheme, initTheme, nextVakatPosition]);
 
     useEffect(() => {
@@ -173,9 +166,7 @@ function Daily({ locationProps = 77, root }) {
                     vakatNames.map((vakatName, index) => ` ${vakatName} ${vaktija[index]}`)
                     }. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
             />
-
             <meta name="theme-color" content={theme === 'light' ? '#ffffff' : '#1e2227'} />
-
             <title>{`${locations[locationState]} · Vaktija`}</title>
         </Helmet>
         <ReactNotifications
@@ -189,45 +180,53 @@ function Daily({ locationProps = 77, root }) {
         />
         <Grid>
             <Row>
-                <Col xs={6} className="text-left">
+                <Col className="text-left" xs={6} sm={6} md={6} lg={6}>
                     <Link to="/">
                         {
                             theme === 'light' ?
                                 <>
-                                    <LogoDark style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                    <LogoDark style={{ marginTop: 15 }} height="48" width="128" className="hidden-xs hidden-sm" alt="vaktija.ba" />
                                     <IconDark style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
                                 </> :
                                 <>
-                                    <LogoLight style={{ marginTop: 15 }} height="48" width="126.92" className="hidden-xs hidden-sm" alt="vaktija.ba" />
+                                    <LogoLight style={{ marginTop: 15 }} height="48" width="128" className="hidden-xs hidden-sm" alt="vaktija.ba" />
                                     <IconLight style={{ marginTop: 15 }} height="32" width="32" className="hidden-md hidden-lg" alt="vaktija.ba" />
                                 </>
                         }
                     </Link>
                 </Col>
-                <Col className="text-right" xs={6}>
-                    <FontAwesomeIcon
-                        style={{ marginTop: 15, cursor: "pointer" }}
-                        onClick={openNav}
-                        icon={['fas', 'map-marker-alt']}
-                        size="2x" />
+                <Col className="text-right" xs={6} sm={6} md={6} lg={6}>
+                    {
+                        theme === 'light' ?
+                            <FontAwesomeIcon
+                                style={{ marginTop: 15, cursor: "pointer", color: "#4a4a4a" }}
+                                onClick={openNav}
+                                icon={['fas', 'map-marker-alt']}
+                                size="2x" /> :
+                            <FontAwesomeIcon
+                                style={{ marginTop: 15, cursor: "pointer", color: "#fff" }}
+                                onClick={openNav}
+                                icon={['fas', 'map-marker-alt']}
+                                size="2x" />
+                    }
                 </Col>
             </Row>
             <Row>
                 <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-                    <Counter vakatTime={vaktija[nextVakatPosition]} theme={theme} />
+                    <Counter theme={theme} vakatTime={vaktija[nextVakatPosition]} />
                 </Col>
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={12} lg={12}>
                     <Location theme={theme} location={locationState} />
-                    <CurrentDate theme={theme} date={date} location={locationState} />
+                    <CurrentDate theme={theme} location={locationState} date={date} />
                 </Col>
             </Row>
-            <Row className="text-center">
+            <Row>
                 {
-                    vakatNames.map((vakatName, index) => <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
-                        <VakatTime theme={theme} vakatName={vakatName} vakatTime={vaktija[index]} highlight={nextVakatPosition === index ? true : false} />
-                        <RelativeTime currentMoment={currentMoment} theme={theme} vakatTime={vaktija[index]} />
+                    vakatNames.map((vakatName, index) => <Col key={vaktija[index]} className="text-center" xs={12} sm={12} md={12} lg={2}>
+                        <VakatTime theme={theme} vakatTime={vaktija[index]} vakatName={vakatName} highlight={nextVakatPosition === index ? true : false} />
+                        <RelativeTime theme={theme} currentMoment={currentMoment} vakatTime={vaktija[index]} />
                     </Col>
                     )
                 }
@@ -240,10 +239,7 @@ function Daily({ locationProps = 77, root }) {
                 </Col>
             </Row>
         </Grid>
-        <div id="sidenav" className="sidenav">
-            <a href="true" className="closebtn" onClick={(e) => closeNav(e)}>&times;</a>
-            <Locations />
-        </div>
+        <Locations closeNav={closeNav} />
         <br />
         <Footer theme={theme} toggleTheme={toggleTheme} />
     </>
