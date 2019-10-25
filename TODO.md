@@ -20,3 +20,4 @@ TODO
 - react context
 - transition ease
 - /mobile tick
+- // TODO check svgr/webpack import { ReactComponent as LogoDark } from '../img/logo-dark.svg';

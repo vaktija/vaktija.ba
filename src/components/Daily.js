@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Row, Col, Glyphicon } from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 import moment from "moment";
 import momentHijri from "moment-hijri";
 import 'moment-timezone';
@@ -31,6 +31,7 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import Footer from './Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -129,13 +130,14 @@ function Daily({ locationProps = 77, root }) {
                 initTheme('dark');
             }
         }
-    }, [automaticTheme, initTheme, theme, vaktija]);
+    }, [automaticTheme, initTheme, nextVakatPosition]);
 
     useEffect(() => {
         if (!root) {
             cookies.set("location", locationProps, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
             // cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
+        // ReactGA.pageview(window.location.pathname + window.location.search);
     }, [locationProps, root]);
 
     const handleClick = (event) => {
@@ -203,7 +205,11 @@ function Daily({ locationProps = 77, root }) {
                     </Link>
                 </Col>
                 <Col className="text-right" xs={6}>
-                    <Glyphicon glyph="map-marker" onClick={openNav} className={`glyphicon-${theme}`} />
+                    <FontAwesomeIcon
+                        style={{ marginTop: 15, cursor: "pointer" }}
+                        onClick={openNav}
+                        icon={['fas', 'map-marker-alt']}
+                        size="2x" />
                 </Col>
             </Row>
             <Row>
