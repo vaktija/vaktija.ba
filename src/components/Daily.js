@@ -30,8 +30,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { ThemeContext } from '../contexts/ThemeContext';
-// import ReactGA from "react-ga";
-// ReactGA.initialize("UA-9142566-1");
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-9142566-1");
 
 library.add(fab, fas);
 const cookies = new Cookies();
@@ -127,10 +127,9 @@ function Daily({ locationProps = 77, root }) {
 
     useEffect(() => {
         if (!root) {
-            cookies.set("location", locationProps, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
-            // cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            cookies.set("location", locationProps, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
-        // ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }, [locationProps, root]);
 
     const handleClick = (event) => {

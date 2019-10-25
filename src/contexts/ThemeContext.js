@@ -46,13 +46,13 @@ function ThemeContextProvider(props) {
             setAutomaticTheme(false);
             document.body.classList.remove('light');
             document.body.classList.add('dark');
-            cookies.set("theme", theme, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            cookies.set("theme", theme, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         } else if (theme === 'light') {
             setTheme('light');
             setAutomaticTheme(false);
             document.body.classList.remove('dark');
             document.body.classList.add('light');
-            cookies.set("theme", theme, { path: '/', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
+            cookies.set("theme", theme, { path: '/', domain: '.vaktija.ba', expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate() });
         }
     }
 
