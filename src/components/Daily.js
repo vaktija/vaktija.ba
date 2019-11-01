@@ -25,6 +25,7 @@ import Location from './Location';
 import Stores from './Stores';
 import Locations from './Locations';
 import Footer from './Footer';
+import Ads from './Ads';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -235,6 +236,8 @@ function Daily({ locationProps = 77, root }) {
                     <br />
                     <br />
                     <Stores theme={theme} />
+                    <br />
+                    <Ads />
                 </Col>
             </Row>
         </Grid>
