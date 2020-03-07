@@ -2,7 +2,7 @@
     <url>
         <loc>https://vaktija.ba/banovici</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/banja-luka</loc>
@@ -22,52 +22,52 @@
     <url>
         <loc>https://vaktija.ba/bileca</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanski-brod</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanska-dubica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanska-gradiska</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosansko-grahovo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanska-krupa</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanski-novi</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanski-petrovac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bosanski-samac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bratunac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/brcko</loc>
@@ -77,22 +77,22 @@
     <url>
         <loc>https://vaktija.ba/breza</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/bugojno</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/busovaca</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/buzim</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/cazin</loc>
@@ -102,32 +102,32 @@
     <url>
         <loc>https://vaktija.ba/cajnice</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/capljina</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/celic</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/celinac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/citluk</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/derventa</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/doboj</loc>
@@ -137,172 +137,172 @@
     <url>
         <loc>https://vaktija.ba/donji-vakuf</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/drvar</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/foca</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/fojnica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gacko</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/glamoc</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gorazde</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gornji-vakuf</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gracanica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gradacac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/grude</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/hadzici</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/han-pijesak</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/hlivno</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/ilijas</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/jablanica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/jajce</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kakanj</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kalesija</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kalinovik</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kiseljak</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kladanj</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kljuc</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/konjic</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kotor-varos</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kresevo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/kupres</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/laktasi</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/lopare</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/lukavac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/ljubinje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/ljubuski</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/maglaj</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/modrica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/mostar</loc>
@@ -312,47 +312,47 @@
     <url>
         <loc>https://vaktija.ba/mrkonjic-grad</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/neum</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/nevesinje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/novi-travnik</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/odzak</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/olovo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/orasje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/pale</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/posusje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/prijedor</loc>
@@ -362,27 +362,27 @@
     <url>
         <loc>https://vaktija.ba/prnjavor</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/prozor</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/rogatica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/rudo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sanski-most</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sarajevo</loc>
@@ -392,62 +392,62 @@
     <url>
         <loc>https://vaktija.ba/skender-vakuf</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sokolac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/srbac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/srebrenica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/srebrenik</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/stolac</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sekovici</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sipovo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/siroki-brijeg</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/teslic</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/tesanj</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/tomislav-grad</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/travnik</loc>
@@ -457,12 +457,12 @@
     <url>
         <loc>https://vaktija.ba/trebinje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/trnovo</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/tuzla</loc>
@@ -472,42 +472,42 @@
     <url>
         <loc>https://vaktija.ba/ugljevik</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/vares</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/velika-kladusa</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/visoko</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/visegrad</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/vitez</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/vlasenica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/zavidovici</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/zenica</loc>
@@ -522,12 +522,12 @@
     <url>
         <loc>https://vaktija.ba/zepa</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/zepce</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/zivinice</loc>
@@ -537,17 +537,17 @@
     <url>
         <loc>https://vaktija.ba/bijelo-polje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.5</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/gusinje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/nova-varos</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/novi-pazar</loc>
@@ -557,36 +557,36 @@
     <url>
         <loc>https://vaktija.ba/plav</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/pljevlja</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/priboj</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/prijepolje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.2</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/rozaje</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/sjenica</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vaktija.ba/tutin</loc>
         <changefreq>daily</changefreq>
-        <priority>0.3</priority>
+        <priority>1.0</priority>
     </url>
 </urlset>
