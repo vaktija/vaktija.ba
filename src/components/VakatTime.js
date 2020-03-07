@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 
 function VakatTime({ vakatName, vakatTime, highlight, theme }) {
-    return <h2>
-        <small className={`vakat-name-${theme}`}>{vakatName}</small>
-        <br />
-        <span className={`vakat-time-${theme}${highlight ? ' highlight' : ''}`}>{vakatTime}</span>
+  return (
+    <h2>
+      <small className={`vakat-name-${theme}`}>{vakatName}</small>
+      <br />
+      <span className={`vakat-time-${theme}${highlight ? " highlight" : ""}`}>
+        {vakatTime}
+      </span>
     </h2>
+  );
 }
 
 export default VakatTime;
