@@ -233,7 +233,7 @@ function Daily({ locationProps = 77, root }) {
       <Grid>
         <Row>
           <Col className="text-left" xs={6} sm={6} md={6} lg={6}>
-            <Link to="/">
+            <Link aria-label="Home" to="/">
               {theme === "light" ? (
                 <>
                   <LogoDark
