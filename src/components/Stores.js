@@ -5,6 +5,7 @@ function Stores({ theme }) {
   return (
     <div className="text-center">
       <a
+        aria-label="Official Android App"
         className={`store-${theme}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -14,6 +15,7 @@ function Stores({ theme }) {
         <FontAwesomeIcon icon={["fab", "android"]} size="3x" />
       </a>
       <a
+        aria-label="Official iOS App"
         className={`store-${theme}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -23,6 +25,7 @@ function Stores({ theme }) {
         <FontAwesomeIcon icon={["fab", "apple"]} size="3x" />
       </a>
       <a
+        aria-label="Official Windows App"
         className={`store-${theme}`}
         target="_blank"
         rel="noopener noreferrer"
