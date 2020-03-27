@@ -12,6 +12,7 @@ function Footer({ theme, toggleTheme }) {
               {theme === "light" ? (
                 <>
                   <a
+                    aria-label="Contact E-mail"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -25,6 +26,7 @@ function Footer({ theme, toggleTheme }) {
                     />
                   </a>
                   <a
+                    aria-label="API"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -38,6 +40,7 @@ function Footer({ theme, toggleTheme }) {
                     />
                   </a>
                   <a
+                    aria-label="GitHub"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -63,6 +66,7 @@ function Footer({ theme, toggleTheme }) {
               ) : (
                 <>
                   <a
+                    aria-label="Contact E-mail"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -76,6 +80,7 @@ function Footer({ theme, toggleTheme }) {
                     />
                   </a>
                   <a
+                    aria-label="API"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -89,6 +94,7 @@ function Footer({ theme, toggleTheme }) {
                     />
                   </a>
                   <a
+                    aria-label="GitHub"
                     className={`store-${theme}`}
                     target="_blank"
                     rel="noopener noreferrer"
