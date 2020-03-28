@@ -1,0 +1,51 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+}
+
+.icons {
+  margin: 25px 15px 25px 15px;
+}
+
+.links {
+  margin: 15px;
+}
+
+.toggle-theme {
+  cursor: pointer;
+  margin: 15px;
+}
+
+.svg-inline--fa.fa-moon.fa-w-16.fa-1x {
+  color: #4a4a4a;
+}
+
+.svg-inline--fa.fa-sun.fa-w-16.fa-1x {
+  color: #fff;
+}
+
+.svg-inline--fa.fa-envelope.fa-w-16.fa-1x.light {
+  color: #4a4a4a;
+}
+
+.svg-inline--fa.fa-envelope.fa-w-16.fa-1x.dark {
+  color: #fff;
+}
+
+.svg-inline--fa.fa-code.fa-w-20.fa-1x.light {
+  color: #4a4a4a;
+}
+
+.svg-inline--fa.fa-code.fa-w-20.fa-1x.dark {
+  color: #fff;
+}
+
+.svg-inline--fa.fa-github.fa-w-16.fa-1x.light {
+  color: #4a4a4a;
+}
+
+.svg-inline--fa.fa-github.fa-w-16.fa-1x.dark {
+  color: #fff;
+}

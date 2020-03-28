@@ -1,0 +1,19 @@
+svg.hidden-md.hidden-lg {
+  margin-top: 15px;
+}
+
+svg.hidden-xs.hidden-sm {
+  margin-top: 15px;
+}
+
+svg.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light {
+  margin-top: 15px;
+  cursor: pointer;
+  color: #4a4a4a;
+}
+
+svg.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
+  margin-top: 15px;
+  cursor: pointer;
+  color: #fff;
+}

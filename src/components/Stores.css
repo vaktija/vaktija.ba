@@ -2,10 +2,22 @@
   padding: 10px;
 }
 
-.store-dark {
+.store-dark,
+.store-dark:active,
+.store-dark:focus {
   color: #ffffff;
 }
 
-.store-light {
+.store-light,
+.store-light:active,
+.store-light:focus {
   color: #4a4a4a;
+}
+
+.store-dark:hover {
+  color: #cacaca;
+}
+
+.store-light:hover {
+  color: #333;
 }

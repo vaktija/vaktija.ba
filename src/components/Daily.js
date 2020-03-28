@@ -238,14 +238,12 @@ function Daily({ locationProps = 77, root }) {
               {theme === "light" ? (
                 <>
                   <LogoDark
-                    style={{ marginTop: 15 }}
                     height="48"
                     width="128"
                     className="hidden-xs hidden-sm"
                     alt="vaktija.ba"
                   />
                   <IconDark
-                    style={{ marginTop: 15 }}
                     height="32"
                     width="32"
                     className="hidden-md hidden-lg"
@@ -255,14 +253,12 @@ function Daily({ locationProps = 77, root }) {
               ) : (
                 <>
                   <LogoLight
-                    style={{ marginTop: 15 }}
                     height="48"
                     width="128"
                     className="hidden-xs hidden-sm"
                     alt="vaktija.ba"
                   />
                   <IconLight
-                    style={{ marginTop: 15 }}
                     height="32"
                     width="32"
                     className="hidden-md hidden-lg"
@@ -273,21 +269,12 @@ function Daily({ locationProps = 77, root }) {
             </Link>
           </Col>
           <Col className="text-right" xs={6} sm={6} md={6} lg={6}>
-            {theme === "light" ? (
-              <FontAwesomeIcon
-                style={{ marginTop: 15, cursor: "pointer", color: "#4a4a4a" }}
-                onClick={openNav}
-                icon={["fas", "map-marker-alt"]}
-                size="2x"
-              />
-            ) : (
-              <FontAwesomeIcon
-                style={{ marginTop: 15, cursor: "pointer", color: "#fff" }}
-                onClick={openNav}
-                icon={["fas", "map-marker-alt"]}
-                size="2x"
-              />
-            )}
+            <FontAwesomeIcon
+              className={theme}
+              onClick={openNav}
+              icon={["fas", "map-marker-alt"]}
+              size="2x"
+            />
           </Col>
         </Row>
         <Row>

@@ -9,116 +9,62 @@ function Footer({ theme, toggleTheme }) {
       <Grid>
         <Row>
           <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-            <p className="text-muted">
-              {theme === "light" ? (
-                <>
-                  <a
-                    aria-label="Contact E-mail"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="mailto:info@vaktija.ba"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#4a4a4a" }}
-                      icon={["fas", "envelope"]}
-                      size="1x"
-                    />
-                  </a>
-                  <a
-                    aria-label="API"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="https://api.vaktija.ba/vaktija/v1"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#4a4a4a" }}
-                      icon={["fas", "code"]}
-                      size="1x"
-                    />
-                  </a>
-                  <a
-                    aria-label="GitHub"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="https://github.com/vaktija"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#4a4a4a" }}
-                      icon={["fab", "github"]}
-                      size="1x"
-                    />
-                  </a>
-                  {"|"}
-                  <span style={{ cursor: "pointer", margin: 15 }}>
-                    <FontAwesomeIcon
-                      style={{ color: "#4a4a4a" }}
-                      icon={["fas", "moon"]}
-                      size="1x"
-                      onClick={() => toggleTheme("dark")}
-                    />
-                  </span>
-                </>
-              ) : (
-                <>
-                  <a
-                    aria-label="Contact E-mail"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="mailto:info@vaktija.ba"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#fff" }}
-                      icon={["fas", "envelope"]}
-                      size="1x"
-                    />
-                  </a>
-                  <a
-                    aria-label="API"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="https://api.vaktija.ba/vaktija/v1"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#fff" }}
-                      icon={["fas", "code"]}
-                      size="1x"
-                    />
-                  </a>
-                  <a
-                    aria-label="GitHub"
-                    className={`store-${theme}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ margin: 15 }}
-                    href="https://github.com/vaktija"
-                  >
-                    <FontAwesomeIcon
-                      style={{ color: "#fff" }}
-                      icon={["fab", "github"]}
-                      size="1x"
-                    />
-                  </a>
-                  {"|"}
-                  <span style={{ cursor: "pointer", margin: 15 }}>
-                    <FontAwesomeIcon
-                      style={{ color: "#fff" }}
-                      icon={["fas", "sun"]}
-                      size="1x"
-                      onClick={() => toggleTheme("light")}
-                    />
-                  </span>
-                </>
-              )}
+            <p className="icons">
+              <a
+                aria-label="Contact E-mail"
+                className="links"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="mailto:info@vaktija.ba"
+              >
+                <FontAwesomeIcon
+                  className={theme}
+                  icon={["fas", "envelope"]}
+                  size="1x"
+                />
+              </a>
+              <a
+                aria-label="API"
+                className="links"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://api.vaktija.ba/vaktija/v1"
+              >
+                <FontAwesomeIcon
+                  className={theme}
+                  icon={["fas", "code"]}
+                  size="1x"
+                />
+              </a>
+              <a
+                aria-label="GitHub"
+                className="links"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/vaktija"
+              >
+                <FontAwesomeIcon
+                  className={theme}
+                  icon={["fab", "github"]}
+                  size="1x"
+                />
+              </a>
+              {/* {"|"} */}
+              <span className="toggle-theme">
+                {theme === "light" ? (
+                  <FontAwesomeIcon
+                    icon={["fas", "moon"]}
+                    size="1x"
+                    onClick={() => toggleTheme("dark")}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={["fas", "sun"]}
+                    size="1x"
+                    onClick={() => toggleTheme("light")}
+                  />
+                )}
+              </span>
             </p>
           </Col>
         </Row>
