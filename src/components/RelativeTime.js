@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import "moment-timezone";
 import "moment/locale/bs";
+import "./RelativeTime";
 
 function RelativeTime({ currentMoment, vakatTime, theme }) {
   return (

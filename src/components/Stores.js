@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Stores";
 
 function Stores({ theme }) {
   return (

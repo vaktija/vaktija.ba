@@ -31,6 +31,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { ThemeContext } from "../contexts/ThemeContext";
 import ReactGA from "react-ga";
+import "./Daily.css";
 ReactGA.initialize("UA-9142566-1");
 
 library.add(fab, fas);

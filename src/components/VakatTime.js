@@ -1,4 +1,5 @@
 import React from "react";
+import "./VakatTime";
 
 function VakatTime({ vakatName, vakatTime, highlight, theme }) {
   return (

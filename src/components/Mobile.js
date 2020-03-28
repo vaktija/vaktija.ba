@@ -7,6 +7,7 @@ import "moment/locale/bs";
 import Cookies from "universal-cookie";
 import { daily } from "../api/vaktija/index.mjs";
 import { locations, vakatNames } from "../data/vaktija.json";
+import "./Mobile.css";
 
 const cookies = new Cookies();
 const iMonths = [
