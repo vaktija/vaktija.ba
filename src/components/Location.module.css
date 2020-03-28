@@ -1,0 +1,13 @@
+.location {
+  text-align: center;
+  font-size: 3.7em;
+  font-weight: bold;
+}
+
+.dark {
+  color: #ffffff;
+}
+
+.light {
+  color: #4a4a4a;
+}

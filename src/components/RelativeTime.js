@@ -2,14 +2,12 @@ import React from "react";
 import moment from "moment";
 import "moment-timezone";
 import "moment/locale/bs";
-import "./RelativeTime.css";
+import styles from "./RelativeTime.module.css";
 
 function RelativeTime({ currentMoment, vakatTime, theme }) {
   return (
-    <p>
-      <i className={`relative-time-${theme}`}>
-        {currentMoment.to(moment(vakatTime, "HH:mm").tz("Europe/Sarajevo"))}
-      </i>
+    <p className={[styles["relative-time"], styles[theme]].join(" ")}>
+      {currentMoment.to(moment(vakatTime, "HH:mm").tz("Europe/Sarajevo"))}
     </p>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import "./Counter.css";
+import styles from "./Counter.module.css";
 
 function Counter({ vakatTime, theme }) {
   const vakatMoment = moment(vakatTime, "HH:mm").tz("Europe/Sarajevo");
@@ -12,7 +12,9 @@ function Counter({ vakatTime, theme }) {
     return null;
   } else {
     return (
-      <div className={`counter-${theme}`}>{duration.format("*HH:mm:ss")}</div>
+      <div className={[styles.counter, styles[theme]].join(" ")}>
+        {duration.format("*HH:mm:ss")}
+      </div>
     );
   }
 }

@@ -1,0 +1,21 @@
+.name {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.time {
+  font-size: 3.3em;
+  font-weight: bold;
+}
+
+.dark {
+  color: #ffffff;
+}
+
+.light {
+  color: #4a4a4a;
+}
+
+.highlight {
+  color: #9a9d14;
+}
