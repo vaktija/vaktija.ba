@@ -1,6 +1,6 @@
 import React from "react";
 import { locations } from "../data/vaktija.json";
-import "./Location";
+import "./Location.css";
 
 function Location({ theme, location }) {
   return (

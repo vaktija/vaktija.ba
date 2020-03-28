@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Footer";
+import "./Footer.css";
 
 function Footer({ theme, toggleTheme }) {
   return (

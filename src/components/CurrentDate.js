@@ -1,6 +1,6 @@
 import React from "react";
 import { locations } from "../data/vaktija.json";
-import "./CurrentDate";
+import "./CurrentDate.css";
 
 function CurrentDate({ date, theme, location }) {
   return (

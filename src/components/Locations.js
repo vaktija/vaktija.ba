@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 import { locations, locationsShort, weights } from "../data/vaktija.json";
-import "./Locations";
+import "./Locations.css";
 
 function Locations({ closeNav }) {
   return (
