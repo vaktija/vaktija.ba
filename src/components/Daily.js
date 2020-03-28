@@ -18,7 +18,7 @@ import IconDark from "../icons/IconDark.js";
 import LogoLight from "../icons/LogoLight.js";
 import IconLight from "../icons/IconLight.js";
 import RelativeTime from "./RelativeTime";
-import VakatTime from "./VakatTime";
+import Vakat from "./Vakat";
 import Counter from "./Counter";
 import CurrentDate from "./CurrentDate";
 import Location from "./Location";
@@ -311,7 +311,7 @@ function Daily({ locationProps = 77, root }) {
               md={12}
               lg={2}
             >
-              <VakatTime
+              <Vakat
                 theme={theme}
                 vakatTime={vaktija[index]}
                 vakatName={vakatName}
