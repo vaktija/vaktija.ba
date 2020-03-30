@@ -2,12 +2,13 @@
   text-align: center;
   font-size: 3.7em;
   font-weight: bold;
+  margin-top: 10px;
 }
 
-.dark {
+.location-dark {
   color: #ffffff;
 }
 
-.light {
+.location-light {
   color: #4a4a4a;
 }

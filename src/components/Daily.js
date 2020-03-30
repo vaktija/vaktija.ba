@@ -11,11 +11,15 @@ import slugify from "slugify";
 import ReactNotifications from "react-browser-notifications";
 import { v4 as uuidv4 } from "uuid";
 import Helmet from "react-helmet";
-import { locations, locationsDative, vakatNames } from "../data/vaktija.json";
+import {
+  locations,
+  locationsDative,
+  vakatNames,
+  locationsShort,
+  weights
+} from "../data/vaktija.json";
 import { daily } from "../api/vaktija/index.mjs";
-import LogoDark from "../icons/LogoDark.js";
 import IconDark from "../icons/IconDark.js";
-import LogoLight from "../icons/LogoLight.js";
 import IconLight from "../icons/IconLight.js";
 import RelativeTime from "./RelativeTime";
 import Vakat from "./Vakat";
@@ -32,10 +36,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { ThemeContext } from "../contexts/ThemeContext";
 import ReactGA from "react-ga";
 import "./Daily.css";
-ReactGA.initialize("UA-9142566-1");
 
+ReactGA.initialize("UA-9142566-1");
 library.add(fab, fas);
-const cookies = new Cookies();
+
 moment.updateLocale("bs", {
   iMonths: [
     "Muharrem",
@@ -53,6 +57,8 @@ moment.updateLocale("bs", {
   ],
   weekdaysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"]
 });
+
+const cookies = new Cookies();
 
 function Daily({ locationProps = 77, root }) {
   const context = useContext(ThemeContext);
@@ -236,35 +242,19 @@ function Daily({ locationProps = 77, root }) {
           <Col className="text-left" xs={6} sm={6} md={6} lg={6}>
             <Link aria-label="Home" to="/">
               {theme === "light" ? (
-                <>
-                  <LogoDark
-                    height="48"
-                    width="128"
-                    className="hidden-xs hidden-sm"
-                    alt="vaktija.ba"
-                  />
-                  <IconDark
-                    height="32"
-                    width="32"
-                    className="hidden-md hidden-lg"
-                    alt="vaktija.ba"
-                  />
-                </>
+                <IconDark
+                  height="32"
+                  width="32"
+                  className="brand"
+                  alt="vaktija.ba"
+                />
               ) : (
-                <>
-                  <LogoLight
-                    height="48"
-                    width="128"
-                    className="hidden-xs hidden-sm"
-                    alt="vaktija.ba"
-                  />
-                  <IconLight
-                    height="32"
-                    width="32"
-                    className="hidden-md hidden-lg"
-                    alt="vaktija.ba"
-                  />
-                </>
+                <IconLight
+                  height="32"
+                  width="32"
+                  className="brand"
+                  alt="vaktija.ba"
+                />
               )}
             </Link>
           </Col>
@@ -284,8 +274,17 @@ function Daily({ locationProps = 77, root }) {
         </Row>
         <Row>
           <Col xs={12} sm={12} md={12} lg={12}>
-            <Location theme={theme} location={locationState} />
-            <CurrentDate theme={theme} location={locationState} date={date} />
+            <Location
+              theme={theme}
+              location={locationState}
+              locations={locations}
+            />
+            <CurrentDate
+              theme={theme}
+              date={date}
+              location={locationState}
+              locations={locations}
+            />
           </Col>
         </Row>
         <Row>
@@ -306,8 +305,8 @@ function Daily({ locationProps = 77, root }) {
               />
               <RelativeTime
                 theme={theme}
-                currentMoment={currentMoment}
                 vakatTime={vaktija[index]}
+                currentMoment={currentMoment}
               />
             </Col>
           ))}
@@ -320,7 +319,12 @@ function Daily({ locationProps = 77, root }) {
           </Col>
         </Row>
       </Grid>
-      <Locations closeNav={closeNav} />
+      <Locations
+        closeNav={closeNav}
+        locations={locations}
+        locationsShort={locationsShort}
+        weights={weights}
+      />
       <br />
       <Footer theme={theme} toggleTheme={toggleTheme} />
     </>

@@ -1,10 +1,10 @@
 .relative-time {
   font-style: italic;
 }
-.dark {
+.relative-time-dark {
   color: #cacaca;
 }
 
-.light {
+.relative-time-light {
   color: #333333;
 }

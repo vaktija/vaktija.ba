@@ -1,19 +1,25 @@
-svg.hidden-md.hidden-lg {
+.brand {
   margin-top: 15px;
 }
 
-svg.hidden-xs.hidden-sm {
-  margin-top: 15px;
-}
-
-svg.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light {
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light,
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
   margin-top: 15px;
   cursor: pointer;
+}
+
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light {
   color: #4a4a4a;
 }
 
-svg.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
-  margin-top: 15px;
-  cursor: pointer;
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light:hover {
+  color: #333333;
+}
+
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
   color: #fff;
+}
+
+.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark:hover {
+  color: #cacaca;
 }

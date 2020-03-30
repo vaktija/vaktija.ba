@@ -1,12 +1,12 @@
 .counter {
-  font-size: 450%;
+  font-size: 4.5em;
   font-weight: bold;
 }
 
-.dark {
+.counter-dark {
   color: #6f6f6f;
 }
 
-.light {
+.counter-light {
   color: #cacaca;
 }

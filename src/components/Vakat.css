@@ -1,5 +1,10 @@
+.name,
+.time {
+  margin-bottom: 0px;
+}
+
 .name {
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: normal;
 }
 
@@ -8,14 +13,16 @@
   font-weight: bold;
 }
 
-.dark {
+.name-dark,
+.time-dark {
   color: #ffffff;
 }
 
-.light {
+.name-light,
+.time-light {
   color: #4a4a4a;
 }
 
-.highlight {
+.time-highlight {
   color: #9a9d14;
 }

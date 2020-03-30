@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
-import { locations, locationsShort, weights } from "../data/vaktija.json";
 import "./Locations.css";
 
-function Locations({ closeNav }) {
+function Locations({ closeNav, locations, locationsShort, weights }) {
   return (
     <div id="sidenav" className="sidenav">
       <a href="true" className="closebtn" onClick={e => closeNav(e)}>

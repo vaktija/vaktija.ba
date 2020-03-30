@@ -1,21 +1,15 @@
 import React from "react";
-import styles from "./Vakat.module.css";
+import "./Vakat.css";
 
-function VakatTime({ vakatName, vakatTime, highlight, theme }) {
+function Vakat({ vakatName, vakatTime, highlight, theme }) {
   return (
     <>
-      <h2 className={[styles.name, styles[theme]].join(" ")}>{vakatName}</h2>
-      <p
-        className={[
-          styles.time,
-          styles[theme],
-          highlight ? styles.highlight : ""
-        ].join(" ")}
-      >
+      <h2 className={`name name-${theme}`}>{vakatName}</h2>
+      <p className={`time time-${theme}${highlight ? " time-highlight" : ""}`}>
         {vakatTime}
       </p>
     </>
   );
 }
 
-export default VakatTime;
+export default Vakat;

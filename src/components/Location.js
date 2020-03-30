@@ -1,12 +1,9 @@
 import React from "react";
-import { locations } from "../data/vaktija.json";
-import styles from "./Location.module.css";
+import "./Location.css";
 
-function Location({ theme, location }) {
+function Location({ theme, location, locations }) {
   return (
-    <h1 className={[styles.location, styles[theme]].join(" ")}>
-      {locations[location]}
-    </h1>
+    <h1 className={`location location-${theme}`}>{locations[location]}</h1>
   );
 }
 

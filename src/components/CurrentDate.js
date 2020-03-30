@@ -1,13 +1,12 @@
 import React from "react";
-import { locations } from "../data/vaktija.json";
-import styles from "./CurrentDate.module.css";
+import "./CurrentDate.css";
 
-function CurrentDate({ date, theme, location }) {
+function CurrentDate({ date, theme, location, locations }) {
   return (
-    <p className={[styles["current-date"], styles[theme]].join(" ")}>
+    <p className={`current-date current-date-${theme}`}>
       {date[0]}{" "}
       <a
-        className={[styles.year, styles[theme]].join(" ")}
+        className={`year year-${theme}`}
         href={`download/pdf/${locations[location]}_${date[1]}.pdf`}
       >
         {date[1]}

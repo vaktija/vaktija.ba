@@ -1,0 +1,37 @@
+.current-date {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.current-date-dark {
+  color: #cacaca;
+}
+
+.current-date-light {
+  color: #333333;
+}
+
+.year-light {
+  color: #337ab7;
+}
+
+.year-dark {
+  color: #66bbff;
+}
+
+.year {
+  text-decoration: none;
+}
+
+.year:hover {
+  text-decoration: underline;
+}
+
+.year-light:hover {
+  color: #337ab7;
+}
+
+.year-dark:hover {
+  color: #66bbff;
+}
