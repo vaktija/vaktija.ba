@@ -186,7 +186,9 @@ function Daily({ locationProps = 77, root }) {
           .toDate()
       });
     }
+    ReactGA.set({ title: `${locations[locationState]} · Vaktija` })
     ReactGA.pageview(window.location.pathname + window.location.search);
+    // eslint-disable-next-line
   }, [locationProps, root]);
 
   const handleClick = event => {
