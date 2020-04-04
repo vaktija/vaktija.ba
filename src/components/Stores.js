@@ -11,7 +11,8 @@ function Stores({ theme }) {
           ReactGA.event({
             category: "Store",
             action: "Google Play link clicked",
-            label: "Android"
+            label: "Android",
+            nonInteraction: true
           })
         }
         aria-label="Official Android App"
@@ -27,7 +28,8 @@ function Stores({ theme }) {
           ReactGA.event({
             category: "Store",
             action: "Apple Store link clicked",
-            label: "iOS"
+            label: "iOS",
+            nonInteraction: true
           })
         }
         aria-label="Official iOS App"
@@ -43,7 +45,8 @@ function Stores({ theme }) {
           ReactGA.event({
             category: "Store",
             action: "Windows Store link clicked",
-            label: "Windows"
+            label: "Windows",
+            nonInteraction: true
           })
         }
         aria-label="Official Windows App"

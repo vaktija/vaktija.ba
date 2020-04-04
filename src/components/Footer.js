@@ -16,7 +16,8 @@ function Footer({ theme, toggleTheme }) {
                   ReactGA.event({
                     category: "Link",
                     action: "Mailto clicked",
-                    label: "info"
+                    label: "info",
+                    nonInteraction: true
                   })
                 }
                 aria-label="Contact E-mail"
@@ -36,7 +37,8 @@ function Footer({ theme, toggleTheme }) {
                   ReactGA.event({
                     category: "Link",
                     action: "API link clicked",
-                    label: "api.vaktija.ba"
+                    label: "api.vaktija.ba",
+                    nonInteraction: true
                   })
                 }
                 aria-label="API"
@@ -56,7 +58,8 @@ function Footer({ theme, toggleTheme }) {
                   ReactGA.event({
                     category: "Link",
                     action: "GitHub link clicked",
-                    label: "github.com/vaktija"
+                    label: "github.com/vaktija",
+                    nonInteraction: true
                   })
                 }
                 aria-label="GitHub"
@@ -76,7 +79,8 @@ function Footer({ theme, toggleTheme }) {
                   ReactGA.event({
                     category: "Theme",
                     action: "Toggle theme clicked",
-                    label: theme
+                    label: theme,
+                    nonInteraction: true
                   })
                 }
                 className="toggle-theme"

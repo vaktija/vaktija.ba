@@ -11,7 +11,8 @@ function CurrentDate({ date, theme, location, locations }) {
           ReactGA.event({
             category: "Download",
             action: "Yearly PDF file clicked",
-            label: `${locations[location]}_${date[1]}.pdf`
+            label: `${locations[location]}_${date[1]}.pdf`,
+            nonInteraction: true
           })
         }
         className={`year year-${theme}`}
