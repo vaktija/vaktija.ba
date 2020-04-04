@@ -1,11 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactGA from "react-ga";
 import "./Stores.css";
 
 function Stores({ theme }) {
   return (
     <div className="text-center">
       <a
+        onClick={() =>
+          ReactGA.event({
+            category: "Store",
+            action: "Google Play link clicked",
+            label: "Android"
+          })
+        }
         aria-label="Official Android App"
         className={`store store-${theme}`}
         target="_blank"
@@ -15,6 +23,13 @@ function Stores({ theme }) {
         <FontAwesomeIcon icon={["fab", "android"]} size="3x" />
       </a>
       <a
+        onClick={() =>
+          ReactGA.event({
+            category: "Store",
+            action: "Apple Store link clicked",
+            label: "iOS"
+          })
+        }
         aria-label="Official iOS App"
         className={`store store-${theme}`}
         target="_blank"
@@ -24,6 +39,13 @@ function Stores({ theme }) {
         <FontAwesomeIcon icon={["fab", "apple"]} size="3x" />
       </a>
       <a
+        onClick={() =>
+          ReactGA.event({
+            category: "Store",
+            action: "Windows Store link clicked",
+            label: "Windows"
+          })
+        }
         aria-label="Official Windows App"
         className={`store store-${theme}`}
         target="_blank"
