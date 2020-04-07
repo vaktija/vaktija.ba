@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactGA from "react-ga";
 import "./Footer.css";
@@ -7,7 +7,7 @@ import "./Footer.css";
 function Footer({ theme, toggleTheme }) {
   return (
     <footer className="footer">
-      <Grid>
+      <Container>
         <Row>
           <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
             <p className="icons">
@@ -92,17 +92,17 @@ function Footer({ theme, toggleTheme }) {
                     onClick={() => toggleTheme("dark")}
                   />
                 ) : (
-                    <FontAwesomeIcon
-                      icon={["fas", "sun"]}
-                      size="1x"
-                      onClick={() => toggleTheme("light")}
-                    />
-                  )}
+                  <FontAwesomeIcon
+                    icon={["fas", "sun"]}
+                    size="1x"
+                    onClick={() => toggleTheme("light")}
+                  />
+                )}
               </span>
             </p>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     </footer>
   );
 }
