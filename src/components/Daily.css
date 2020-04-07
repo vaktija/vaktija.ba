@@ -1,10 +1,12 @@
 .brand {
   margin-top: 15px;
+  margin-left: 5px;
 }
 
 .svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light,
 .svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
   margin-top: 15px;
+  margin-right: 5px;
   cursor: pointer;
 }
 

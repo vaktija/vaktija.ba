@@ -297,7 +297,6 @@ function Daily({ locationProps = 77, root }) {
         <Row>
           <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
             <br />
-            <br />
             <Stores theme={theme} />
           </Col>
         </Row>

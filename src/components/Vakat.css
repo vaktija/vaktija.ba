@@ -4,12 +4,13 @@
 }
 
 .name {
-  font-size: 1.5em;
-  font-weight: normal;
+  font-size: 1.3em;
+  font-weight: 400;
+  margin-top: 20px;
 }
 
 .time {
-  font-size: 3.3em;
+  font-size: 2.9em;
   font-weight: bold;
 }
 
