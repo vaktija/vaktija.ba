@@ -37,8 +37,85 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import ReactGA from "react-ga";
 import "./Daily.css";
 
-ReactGA.initialize(process.env.REACT_APP_GA);
-library.add(fab, fas);
+const cookies = new Cookies();
+
+const toOrdinalSuffixMinutes = num => {
+  const int = parseInt(num, 10),
+    digits = [int % 10, int % 100],
+    ordinals = [" minutu", " minute", " minute", " minute", " minuta"],
+    // ordinals = [" min", " min", " min", " min", " min"],
+    oPattern = [1, 2, 3, 4],
+    tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
+  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
+    ? ordinals[digits[0] - 1]
+    : ordinals[4];
+};
+
+const toOrdinalSuffixHours = num => {
+  const int = parseInt(num, 10),
+    digits = [int % 10, int % 100],
+    ordinals = [" sat", " sata", " sata", " sata", " sati"],
+    oPattern = [1, 2, 3, 4],
+    tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
+  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
+    ? ordinals[digits[0] - 1]
+    : ordinals[4];
+};
+
+const translate = (number, withoutSuffix, key) => {
+  var result = number + " ";
+  // eslint-disable-next-line default-case
+  switch (key) {
+    case "ss":
+      if (number === 1) {
+        result += "sekunda";
+      } else if (number === 2 || number === 3 || number === 4) {
+        result += "sekunde";
+      } else {
+        result += "sekundi";
+      }
+      return result;
+    case "m":
+      return withoutSuffix ? "jedna minuta" : "jednu minutu";
+    // result += toOrdinalSuffixMinutes(number);
+    // return result;
+    case "mm":
+      result += toOrdinalSuffixMinutes(number);
+      return result;
+    case "h":
+      return withoutSuffix ? "jedan sat" : "jedan sat";
+    // result += toOrdinalSuffixHours(number);
+    // return result;
+    case "hh":
+      result += toOrdinalSuffixHours(number);
+      return result;
+    case "dd":
+      if (number === 1) {
+        result += "dan";
+      } else {
+        result += "dana";
+      }
+      return result;
+    case "MM":
+      if (number === 1) {
+        result += "mjesec";
+      } else if (number === 2 || number === 3 || number === 4) {
+        result += "mjeseca";
+      } else {
+        result += "mjeseci";
+      }
+      return result;
+    case "yy":
+      if (number === 1) {
+        result += "godina";
+      } else if (number === 2 || number === 3 || number === 4) {
+        result += "godine";
+      } else {
+        result += "godina";
+      }
+      return result;
+  }
+};
 
 moment.updateLocale("bs", {
   iMonths: [
@@ -55,10 +132,28 @@ moment.updateLocale("bs", {
     "Zu-l-ka'de",
     "Zu-l-hidždže"
   ],
-  weekdaysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"]
+  weekdaysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"],
+  relativeTime: {
+    future: "za %s",
+    past: "prije %s",
+    s: "par sekundi",
+    ss: translate,
+    m: translate,
+    mm: translate,
+    h: translate,
+    hh: translate,
+    d: "dan",
+    dd: translate,
+    M: "mjesec",
+    MM: translate,
+    y: "godinu",
+    yy: translate
+  }
 });
 
-const cookies = new Cookies();
+ReactGA.initialize(process.env.REACT_APP_GA);
+
+library.add(fab, fas);
 
 function Daily({ locationProps = 77, root }) {
   const context = useContext(ThemeContext);
