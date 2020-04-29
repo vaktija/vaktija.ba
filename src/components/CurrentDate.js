@@ -16,7 +16,7 @@ function CurrentDate({ date, theme, location, locations }) {
           })
         }
         className={`year year-${theme}`}
-        href={`download/pdf/${locations[location]}_${date[1]}.pdf`}
+        href={`/download/pdf/${locations[location]}_${date[1]}.pdf`}
       >
         {date[1]}
       </a>{" "}
