@@ -10,7 +10,7 @@ import Cookies from "universal-cookie";
 import slugify from "slugify";
 import ReactNotifications from "react-browser-notifications";
 import { v4 as uuidv4 } from "uuid";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import {
   locations,
   locationsDative,
