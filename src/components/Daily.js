@@ -284,27 +284,29 @@ function Daily({ locationProps = 77, root }) {
   return (
     <>
       <Helmet>
-        <link
-          rel="canonical"
-          href={`https://vaktija.ba/${slugify(locations[locationState], {
-            replacement: "-",
-            remove: null,
-            lower: true
-          })}`}
-        />
+        {!root && (
+          <link
+            rel="canonical"
+            href={`https://vaktija.ba/${slugify(locations[locationState], {
+              replacement: "-",
+              remove: null,
+              lower: true
+            })}`}
+          />
+        )}
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
-            date[1]
-          } / ${date[2]}${vakatNames.map(
-            (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
-          )}. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
+          content={`Vaktija za ${
+            !root ? locationsDative[locationState] : "Bosnu i Hercegovinu"
+          }`}
         />
         <meta
           name="theme-color"
           content={theme === "light" ? "#ffffff" : "#1e2227"}
         />
-        <title>{`${locations[locationState]} · Vaktija`}</title>
+        <title>
+          {!root ? locations[locationState] : "Vaktija za Bosnu i Hercegovinu"}
+        </title>
       </Helmet>
       <ReactNotifications
         onRef={ref => setNotification(ref)}
