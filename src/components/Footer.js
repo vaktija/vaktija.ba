@@ -1,7 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactGA from "react-ga";
+// https://fontawesome.com/
+import Envelope from "../icons/Envelope.js";
+import Code from "../icons/Code.js";
+import Github from "../icons/Github.js";
+import Moon from "../icons/Moon.js";
+import Sun from "../icons/Sun.js";
 import "./Footer.css";
 
 function Footer({ theme, toggleTheme }) {
@@ -26,10 +31,10 @@ function Footer({ theme, toggleTheme }) {
                 rel="noopener noreferrer"
                 href="mailto:info@vaktija.ba"
               >
-                <FontAwesomeIcon
-                  className={theme}
-                  icon={["fas", "envelope"]}
-                  size="1x"
+                <Envelope
+                  height="18"
+                  width="18"
+                  className={`envelope ${theme}`}
                 />
               </a>
               <a
@@ -47,11 +52,7 @@ function Footer({ theme, toggleTheme }) {
                 rel="noopener noreferrer"
                 href="https://api.vaktija.ba/vaktija/v1"
               >
-                <FontAwesomeIcon
-                  className={theme}
-                  icon={["fas", "code"]}
-                  size="1x"
-                />
+                <Code height="18" width="18" className={`code ${theme}`} />
               </a>
               <a
                 onClick={() =>
@@ -68,11 +69,7 @@ function Footer({ theme, toggleTheme }) {
                 rel="noopener noreferrer"
                 href="https://github.com/vaktija"
               >
-                <FontAwesomeIcon
-                  className={theme}
-                  icon={["fab", "github"]}
-                  size="1x"
-                />
+                <Github height="18" width="18" className={`github ${theme}`} />
               </a>
               <span
                 onClick={() =>
@@ -86,15 +83,17 @@ function Footer({ theme, toggleTheme }) {
                 className="toggle-theme"
               >
                 {theme === "light" ? (
-                  <FontAwesomeIcon
-                    icon={["fas", "moon"]}
-                    size="1x"
+                  <Moon
+                    height="18"
+                    width="18"
+                    className={`moon ${theme}`}
                     onClick={() => toggleTheme("dark")}
                   />
                 ) : (
-                  <FontAwesomeIcon
-                    icon={["fas", "sun"]}
-                    size="1x"
+                  <Sun
+                    height="18"
+                    width="18"
+                    className={`sun ${theme}`}
                     onClick={() => toggleTheme("light")}
                   />
                 )}

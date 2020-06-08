@@ -1,5 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// https://fontawesome.com/
+import Android from "../icons/Android.js";
+import Apple from "../icons/Apple.js";
+import Windows from "../icons/Windows.js";
 import ReactGA from "react-ga";
 import "./Stores.css";
 
@@ -21,7 +24,7 @@ function Stores({ theme }) {
         rel="noopener noreferrer"
         href="https://play.google.com/store/apps/details?id=ba.vaktija.android"
       >
-        <FontAwesomeIcon icon={["fab", "android"]} size="3x" />
+        <Android height="48" width="48" />
       </a>
       <a
         onClick={() =>
@@ -38,7 +41,7 @@ function Stores({ theme }) {
         rel="noopener noreferrer"
         href="https://itunes.apple.com/us/app/vaktija.ba/id1095343967?ls=1&mt=8"
       >
-        <FontAwesomeIcon icon={["fab", "apple"]} size="3x" />
+        <Apple height="48" width="48" />
       </a>
       <a
         onClick={() =>
@@ -55,7 +58,7 @@ function Stores({ theme }) {
         rel="noopener noreferrer"
         href="https://www.microsoft.com/en-us/store/apps/vaktijaba/9nblggh5lc4p"
       >
-        <FontAwesomeIcon icon={["fab", "windows"]} size="3x" />
+        <Windows height="48" width="48" />
       </a>
     </div>
   );

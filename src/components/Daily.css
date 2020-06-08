@@ -3,25 +3,25 @@
   margin-left: 5px;
 }
 
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light,
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
+.map-marker-alt.light,
+.map-marker-alt.dark {
   margin-top: 20px;
-  margin-right: 5px;
+  margin-right: 1px;
   cursor: pointer;
 }
 
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light {
+.map-marker-alt.light {
   color: #4a4a4a;
 }
 
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.light:hover {
+.map-marker-alt.light:hover {
   color: #333333;
 }
 
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark {
+.map-marker-alt.dark {
   color: #fff;
 }
 
-.svg-inline--fa.fa-map-marker-alt.fa-w-12.fa-2x.dark:hover {
+.map-marker-alt.dark:hover {
   color: #cacaca;
 }

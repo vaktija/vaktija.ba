@@ -21,6 +21,8 @@ import {
 import { daily } from "../api/vaktija/index.mjs";
 import IconDark from "../icons/IconDark.js";
 import IconLight from "../icons/IconLight.js";
+// https://fontawesome.com/
+import MapMarkerAlt from "../icons/MapMarkerAlt.js";
 import RelativeTime from "./RelativeTime";
 import Vakat from "./Vakat";
 import Counter from "./Counter";
@@ -29,10 +31,6 @@ import Location from "./Location";
 import Stores from "./Stores";
 import Locations from "./Locations";
 import Footer from "./Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import { ThemeContext } from "../contexts/ThemeContext";
 import ReactGA from "react-ga";
 import "./Daily.css";
@@ -152,8 +150,6 @@ moment.updateLocale("bs", {
 });
 
 ReactGA.initialize(process.env.REACT_APP_GA);
-
-library.add(fab, fas);
 
 function Daily({ locationProps = 77, root }) {
   const context = useContext(ThemeContext);
@@ -339,11 +335,11 @@ function Daily({ locationProps = 77, root }) {
             </Link>
           </Col>
           <Col className="text-right" xs={6} sm={6} md={6} lg={6}>
-            <FontAwesomeIcon
-              className={theme}
+            <MapMarkerAlt
+              height="32"
+              width="32"
+              className={`map-marker-alt ${theme}`}
               onClick={openNav}
-              icon={["fas", "map-marker-alt"]}
-              size="2x"
             />
           </Col>
         </Row>

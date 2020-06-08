@@ -18,34 +18,34 @@
   margin: 15px;
 }
 
-.svg-inline--fa.fa-moon.fa-w-16.fa-1x {
+.moon {
   color: #4a4a4a;
 }
 
-.svg-inline--fa.fa-sun.fa-w-16.fa-1x {
+.sun {
   color: #fff;
 }
 
-.svg-inline--fa.fa-envelope.fa-w-16.fa-1x.light {
+.envelope.light {
   color: #4a4a4a;
 }
 
-.svg-inline--fa.fa-envelope.fa-w-16.fa-1x.dark {
+.envelope.dark {
   color: #fff;
 }
 
-.svg-inline--fa.fa-code.fa-w-20.fa-1x.light {
+.code.light {
   color: #4a4a4a;
 }
 
-.svg-inline--fa.fa-code.fa-w-20.fa-1x.dark {
+.code.dark {
   color: #fff;
 }
 
-.svg-inline--fa.fa-github.fa-w-16.fa-1x.light {
+.github.light {
   color: #4a4a4a;
 }
 
-.svg-inline--fa.fa-github.fa-w-16.fa-1x.dark {
+.github.dark {
   color: #fff;
 }
