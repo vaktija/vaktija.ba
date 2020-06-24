@@ -20,14 +20,13 @@
     "react-bootstrap": "^1.0.1",
     "react-browser-notifications": "^1.0.14",
     "react-dom": "^16.13.1",
-    "react-ga": "^3.0.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "slugify": "^1.4.0",
+    "slugify": "^1.4.2",
     "typescript": "^3.9.5",
     "universal-cookie": "^4.0.3",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "svgr": "svgr -d src/icons/ src/img/",

@@ -1,12 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import ReactGA from "react-ga";
-// https://fontawesome.com/
-import Envelope from "../icons/Envelope.js";
-import Code from "../icons/Code.js";
-import Github from "../icons/Github.js";
-import Moon from "../icons/Moon.js";
-import Sun from "../icons/Sun.js";
+import Envelope from "../icons/Envelope.js"; // https://fontawesome.com/
+import Code from "../icons/Code.js"; // https://fontawesome.com/
+import Github from "../icons/Github.js"; // https://fontawesome.com/
+import Moon from "../icons/Moon.js"; // https://fontawesome.com/
+import Sun from "../icons/Sun.js"; // https://fontawesome.com/
 import "./Footer.css";
 
 function Footer({ theme, toggleTheme }) {
@@ -17,14 +15,6 @@ function Footer({ theme, toggleTheme }) {
           <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
             <p className="icons">
               <a
-                onClick={() =>
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Mailto clicked",
-                    label: "info",
-                    nonInteraction: true
-                  })
-                }
                 aria-label="Contact E-mail"
                 className="links"
                 target="_blank"
@@ -38,14 +28,6 @@ function Footer({ theme, toggleTheme }) {
                 />
               </a>
               <a
-                onClick={() =>
-                  ReactGA.event({
-                    category: "Link",
-                    action: "API link clicked",
-                    label: "api.vaktija.ba",
-                    nonInteraction: true
-                  })
-                }
                 aria-label="API"
                 className="links"
                 target="_blank"
@@ -55,14 +37,6 @@ function Footer({ theme, toggleTheme }) {
                 <Code height="18" width="18" className={`code ${theme}`} />
               </a>
               <a
-                onClick={() =>
-                  ReactGA.event({
-                    category: "Link",
-                    action: "GitHub link clicked",
-                    label: "github.com/vaktija",
-                    nonInteraction: true
-                  })
-                }
                 aria-label="GitHub"
                 className="links"
                 target="_blank"
@@ -71,17 +45,7 @@ function Footer({ theme, toggleTheme }) {
               >
                 <Github height="18" width="18" className={`github ${theme}`} />
               </a>
-              <span
-                onClick={() =>
-                  ReactGA.event({
-                    category: "Theme",
-                    action: "Toggle theme clicked",
-                    label: theme,
-                    nonInteraction: true
-                  })
-                }
-                className="toggle-theme"
-              >
+              <span className="toggle-theme">
                 {theme === "light" ? (
                   <Moon
                     height="18"

@@ -1,23 +1,13 @@
 import React from "react";
-// https://fontawesome.com/
-import Android from "../icons/Android.js";
-import Apple from "../icons/Apple.js";
-import Windows from "../icons/Windows.js";
-import ReactGA from "react-ga";
+import Android from "../icons/Android.js"; // https://fontawesome.com/
+import Apple from "../icons/Apple.js"; // https://fontawesome.com/
+import Windows from "../icons/Windows.js"; // https://fontawesome.com/
 import "./Stores.css";
 
 function Stores({ theme }) {
   return (
     <div className="text-center">
       <a
-        onClick={() =>
-          ReactGA.event({
-            category: "Store",
-            action: "Google Play link clicked",
-            label: "Android",
-            nonInteraction: true
-          })
-        }
         aria-label="Official Android App"
         className={`store store-${theme}`}
         target="_blank"
@@ -27,14 +17,6 @@ function Stores({ theme }) {
         <Android height="48" width="48" />
       </a>
       <a
-        onClick={() =>
-          ReactGA.event({
-            category: "Store",
-            action: "Apple Store link clicked",
-            label: "iOS",
-            nonInteraction: true
-          })
-        }
         aria-label="Official iOS App"
         className={`store store-${theme}`}
         target="_blank"
@@ -44,14 +26,6 @@ function Stores({ theme }) {
         <Apple height="48" width="48" />
       </a>
       <a
-        onClick={() =>
-          ReactGA.event({
-            category: "Store",
-            action: "Windows Store link clicked",
-            label: "Windows",
-            nonInteraction: true
-          })
-        }
         aria-label="Official Windows App"
         className={`store store-${theme}`}
         target="_blank"

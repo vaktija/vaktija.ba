@@ -21,8 +21,7 @@ import {
 import { daily } from "../api/vaktija/index.mjs";
 import IconDark from "../icons/IconDark.js";
 import IconLight from "../icons/IconLight.js";
-// https://fontawesome.com/
-import MapMarkerAlt from "../icons/MapMarkerAlt.js";
+import MapMarkerAlt from "../icons/MapMarkerAlt.js"; // https://fontawesome.com/
 import RelativeTime from "./RelativeTime";
 import Vakat from "./Vakat";
 import Counter from "./Counter";
@@ -32,7 +31,6 @@ import Stores from "./Stores";
 import Locations from "./Locations";
 import Footer from "./Footer";
 import { ThemeContext } from "../contexts/ThemeContext";
-import ReactGA from "react-ga";
 import "./Daily.css";
 
 const cookies = new Cookies();
@@ -149,8 +147,6 @@ moment.updateLocale("bs", {
   }
 });
 
-ReactGA.initialize(process.env.REACT_APP_GA);
-
 function Daily({ locationProps = 77, root }) {
   const context = useContext(ThemeContext);
   const localization = useCallback(() => {
@@ -258,8 +254,6 @@ function Daily({ locationProps = 77, root }) {
         expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate()
       });
     }
-    ReactGA.set({ title: `${locations[locationState]} · Vaktija` });
-    ReactGA.pageview(window.location.pathname + window.location.search);
     // eslint-disable-next-line
   }, [locationProps, root]);
 
