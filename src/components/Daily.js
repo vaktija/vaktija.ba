@@ -276,25 +276,37 @@ function Daily({ locationProps = 77, root }) {
       <Helmet>
         <link
           rel="canonical"
-          href={`https://vaktija.ba/${slugify(locations[locationState], {
-            replacement: "-",
-            remove: null,
-            lower: true
-          })}`}
+          href={
+            !root
+              ? `https://vaktija.ba/${slugify(locations[locationState], {
+                  replacement: "-",
+                  remove: null,
+                  lower: true
+                })}`
+              : `https://vaktija.ba`
+          }
         />
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
-            date[1]
-          } / ${date[2]}${vakatNames.map(
-            (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
-          )}. Preuzmite oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije, namaz, salat, džuma, sehur, ramazan, iftar, teravija, takvim, bosna i hercegovina, sandžak`}
+          content={
+            !root
+              ? `Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
+                  date[1]
+                } / ${date[2]}.${vakatNames.map(
+                  (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
+                )}. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`
+              : `Vaktija za Bosnu i Hercegovinu i Sandžak, ${date[0]} ${date[1]} / ${date[2]}. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`
+          }
         />
         <meta
           name="theme-color"
           content={theme === "light" ? "#ffffff" : "#1e2227"}
         />
-        <title>{`${locations[locationState]} · Vaktija`}</title>
+        <title>
+          {!root
+            ? `${locations[locationState]} · Vaktija`
+            : "Bosna i Hercegovina · Vaktija"}
+        </title>
       </Helmet>
       <ReactNotifications
         onRef={ref => setNotification(ref)}
