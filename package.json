@@ -23,8 +23,8 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "slugify": "^1.4.2",
-    "typescript": "^3.9.5",
+    "slugify": "^1.4.4",
+    "typescript": "^3.9.6",
     "universal-cookie": "^4.0.3",
     "uuid": "^8.2.0"
   },
