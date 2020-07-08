@@ -290,12 +290,16 @@ function Daily({ locationProps = 77, root }) {
           name="description"
           content={
             !root
-              ? `Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
+              ? `Vaktija za ${locationsDative[locationState]} ${
+                  date[0].split(" ")[2]
+                } ${date[1]} / ${date[2].split(" ")[1]} ${
+                  date[2].split(" ")[2]
+                }`
+              : `Vaktija za Bosnu i Hercegovinu ${date[0].split(" ")[2]} ${
                   date[1]
-                } / ${date[2]}.${vakatNames.map(
-                  (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
-                )}. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`
-              : `Vaktija za Bosnu i Hercegovinu i Sandžak, ${date[0]} ${date[1]} / ${date[2]}. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`
+                } / ${date[2].split(" ")[1]} ${
+                  date[2].split(" ")[2]
+                }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows aplikacije.`
           }
         />
         <meta
@@ -303,9 +307,7 @@ function Daily({ locationProps = 77, root }) {
           content={theme === "light" ? "#ffffff" : "#1e2227"}
         />
         <title>
-          {!root
-            ? `${locations[locationState]} · Vaktija`
-            : "Bosna i Hercegovina · Vaktija"}
+          {!root ? `${locations[locationState]}` : "Bosna i Hercegovina"}
         </title>
       </Helmet>
       <ReactNotifications
