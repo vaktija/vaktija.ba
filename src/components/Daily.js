@@ -297,9 +297,7 @@ function Daily({ locationProps = 77, root }) {
                 }`
               : `Vaktija za Bosnu i Hercegovinu ${date[0].split(" ")[2]} ${
                   date[1]
-                } / ${date[2].split(" ")[1]} ${
-                  date[2].split(" ")[2]
-                }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows aplikacije.`
+                } / ${date[2].split(" ")[1]} ${date[2].split(" ")[2]}`
           }
         />
         <meta
