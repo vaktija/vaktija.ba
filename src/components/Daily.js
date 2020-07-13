@@ -147,14 +147,16 @@ moment.updateLocale("bs", {
   }
 });
 
-function Daily({ locationProps = 77, root }) {
+function Daily({ locationProps = 77, root, location }) {
+  const { sarajevo } = location;
   const context = useContext(ThemeContext);
   const localization = useCallback(() => {
-    if (root && cookies.get("location") !== undefined) {
+    if (sarajevo !== undefined) {
+      return 77;
+    } else if (root && cookies.get("location") !== undefined) {
       return cookies.get("location");
-    }
-    return locationProps;
-  }, [locationProps, root]);
+    } else return locationProps;
+  }, [locationProps, root, sarajevo]);
 
   const nextVakat = () => {
     const nextVakatPosition = daily(localization()).vakat.map((v, i) => ({
@@ -175,7 +177,7 @@ function Daily({ locationProps = 77, root }) {
   const [currentMoment, setCurrentMoment] = useState(
     moment().tz("Europe/Sarajevo")
   );
-  const [locationState] = useState(localization());
+  const [locationState] = useState(Number(localization()));
   const [vaktija, setVaktija] = useState(daily(localization()).vakat);
   const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
   const { toggleTheme, initTheme, automaticTheme, theme } = context;
@@ -247,6 +249,13 @@ function Daily({ locationProps = 77, root }) {
   }, [automaticTheme, initTheme, nextVakatPosition]);
 
   useEffect(() => {
+    if (sarajevo) {
+      cookies.set("location", 77, {
+        path: "/",
+        domain: ".vaktija.ba",
+        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate()
+      });
+    }
     if (!root) {
       cookies.set("location", locationProps, {
         path: "/",
@@ -254,8 +263,7 @@ function Daily({ locationProps = 77, root }) {
         expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate()
       });
     }
-    // eslint-disable-next-line
-  }, [locationProps, root]);
+  }, [locationProps, root, sarajevo]);
 
   const handleClick = event => {
     window.focus();
@@ -277,7 +285,7 @@ function Daily({ locationProps = 77, root }) {
         <link
           rel="canonical"
           href={
-            !root
+            locationState !== 77
               ? `https://vaktija.ba/${slugify(locations[locationState], {
                   replacement: "-",
                   remove: null,
@@ -288,25 +296,17 @@ function Daily({ locationProps = 77, root }) {
         />
         <meta
           name="description"
-          content={
-            !root
-              ? `Vaktija za ${locationsDative[locationState]} ${
-                  date[0].split(" ")[2]
-                } ${date[1]} / ${date[2].split(" ")[1]} ${
-                  date[2].split(" ")[2]
-                }`
-              : `Vaktija za Bosnu i Hercegovinu ${date[0].split(" ")[2]} ${
-                  date[1]
-                } / ${date[2].split(" ")[1]} ${date[2].split(" ")[2]}`
-          }
+          content={`Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
+            date[1]
+          } / ${date[2]}.${vakatNames.map(
+            (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
+          )}. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
         />
         <meta
           name="theme-color"
           content={theme === "light" ? "#ffffff" : "#1e2227"}
         />
-        <title>
-          {!root ? `${locations[locationState]}` : "Bosna i Hercegovina"}
-        </title>
+        <title>{`${locations[locationState]} · Vaktija`}</title>
       </Helmet>
       <ReactNotifications
         onRef={ref => setNotification(ref)}
