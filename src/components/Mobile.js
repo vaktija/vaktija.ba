@@ -42,13 +42,8 @@ function Mobile() {
   const [location, setLocation] = useState(localization());
   const [data, setData] = useState(daily(localization()));
   const [date, setDate] = useState([
-    moment()
-      .tz("Europe/Sarajevo")
-      .format("ddd, D. MMMM YYYY"),
-    momentHijri()
-      .tz("Europe/Sarajevo")
-      .format("iD. iMMMM iYYYY")
-      .toLowerCase()
+    moment().tz("Europe/Sarajevo").format("ddd, D. MMMM YYYY"),
+    momentHijri().tz("Europe/Sarajevo").format("iD. iMMMM iYYYY").toLowerCase()
   ]);
 
   const changeLocation = e => {
@@ -56,10 +51,9 @@ function Mobile() {
     cookies.set("location", Number(e.target.value), {
       path: "/",
       domain: ".vaktija.ba",
-      expires: moment()
-        .add(1, "y")
-        .tz("Europe/Sarajevo")
-        .toDate()
+      expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+      sameSite: "Lax",
+      secure: true
     });
   };
 
@@ -67,9 +61,7 @@ function Mobile() {
     const interval = setInterval(
       () =>
         setDate([
-          moment()
-            .tz("Europe/Sarajevo")
-            .format("ddd, D. MMMM YYYY"),
+          moment().tz("Europe/Sarajevo").format("ddd, D. MMMM YYYY"),
           momentHijri()
             .tz("Europe/Sarajevo")
             .format("iD. iMMMM iYYYY")
@@ -85,10 +77,9 @@ function Mobile() {
     cookies.set("location", location, {
       path: "/",
       domain: ".vaktija.ba",
-      expires: moment()
-        .add(1, "y")
-        .tz("Europe/Sarajevo")
-        .toDate()
+      expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+      sameSite: "Lax",
+      secure: true
     });
   }, [date, location]);
 

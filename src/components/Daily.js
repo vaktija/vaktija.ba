@@ -253,14 +253,18 @@ function Daily({ locationProps = 77, root, location }) {
       cookies.set("location", 77, {
         path: "/",
         domain: ".vaktija.ba",
-        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate()
+        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+        sameSite: "Lax",
+        secure: true
       });
     }
     if (!root) {
       cookies.set("location", locationProps, {
         path: "/",
         domain: ".vaktija.ba",
-        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate()
+        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+        sameSite: "Lax",
+        secure: true
       });
     }
   }, [locationProps, root, sarajevo]);

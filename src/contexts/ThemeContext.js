@@ -46,10 +46,9 @@ function ThemeContextProvider(props) {
       cookies.set("theme", theme, {
         path: "/",
         domain: ".vaktija.ba",
-        expires: moment()
-          .add(1, "y")
-          .tz("Europe/Sarajevo")
-          .toDate()
+        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+        sameSite: "Lax",
+        secure: true
       });
     } else if (theme === "light") {
       setTheme("light");
@@ -59,10 +58,9 @@ function ThemeContextProvider(props) {
       cookies.set("theme", theme, {
         path: "/",
         domain: ".vaktija.ba",
-        expires: moment()
-          .add(1, "y")
-          .tz("Europe/Sarajevo")
-          .toDate()
+        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
+        sameSite: "Lax",
+        secure: true
       });
     }
   };
