@@ -147,16 +147,13 @@ moment.updateLocale("bs", {
   }
 });
 
-function Daily({ locationProps = 77, root, location }) {
-  const { sarajevo } = location;
+function Daily({ locationProps = 77, root }) {
   const context = useContext(ThemeContext);
   const localization = useCallback(() => {
-    if (sarajevo !== undefined) {
-      return 77;
-    } else if (root && cookies.get("location") !== undefined) {
+    if (root && cookies.get("location") !== undefined) {
       return cookies.get("location");
     } else return locationProps;
-  }, [locationProps, root, sarajevo]);
+  }, [locationProps, root]);
 
   const nextVakat = () => {
     const nextVakatPosition = daily(localization()).vakat.map((v, i) => ({
@@ -249,15 +246,6 @@ function Daily({ locationProps = 77, root, location }) {
   }, [automaticTheme, initTheme, nextVakatPosition]);
 
   useEffect(() => {
-    if (sarajevo) {
-      cookies.set("location", 77, {
-        path: "/",
-        domain: ".vaktija.ba",
-        expires: moment().add(1, "y").tz("Europe/Sarajevo").toDate(),
-        sameSite: "Lax",
-        secure: true
-      });
-    }
     if (!root) {
       cookies.set("location", locationProps, {
         path: "/",
@@ -267,7 +255,7 @@ function Daily({ locationProps = 77, root, location }) {
         secure: true
       });
     }
-  }, [locationProps, root, sarajevo]);
+  }, [locationProps, root]);
 
   const handleClick = event => {
     window.focus();

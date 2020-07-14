@@ -29,17 +29,27 @@ app.use(
 );
 app.disable("x-powered-by");
 app.use(favicon(__dirname + "/build/favicon.ico"));
-// the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "build")));
-app.get("/ping", function (req, res) {
-  return res.send("pong");
-});
-app.get("/*", function (req, res) {
-  if (/[A-Z]/.test(req.url)) {
-    res.redirect(301, req.url.toLowerCase());
-  } else {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+
+app.get(
+  vaktija.locations.map(
+    location =>
+      `^/${slugify(location, {
+        replacement: "-",
+        remove: null,
+        lower: true
+      })}$`
+  ),
+  (req, res) => {
+    if (/[A-Z]/.test(req.url)) {
+      res.redirect(301, req.url.toLowerCase());
+    } else res.sendFile(path.join(__dirname, "build", "index.html"));
   }
+);
+
+app.get("*", (req, res) => {
+  res.status(404).send("404 Page not found.");
 });
+
 app.listen(port);

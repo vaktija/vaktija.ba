@@ -18,14 +18,7 @@ function App() {
     <ThemeContextProvider>
       <Router>
         <Switch>
-          <Route exact path="/" render={props => <Daily {...props} root />} />
-          <Redirect
-            from="/sarajevo"
-            to={{
-              pathname: "/",
-              sarajevo: true
-            }}
-          />
+          <Route exact path="/" render={() => <Daily root />} />
           <Route path="/mobile" render={() => <Mobile />} />
           {locations.map(location => (
             <Route
@@ -36,8 +29,8 @@ function App() {
                 remove: null,
                 lower: true
               })}`}
-              render={props => (
-                <Daily {...props} locationProps={locations.indexOf(location)} />
+              render={() => (
+                <Daily locationProps={locations.indexOf(location)} />
               )}
             />
           ))}
