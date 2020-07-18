@@ -288,11 +288,11 @@ function Daily({ locationProps = 77, root }) {
         />
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${date[0]} ${
-            date[1]
-          } / ${date[2]}.${vakatNames.map(
-            (vakatName, index) => ` ${vakatName} ${vaktija[index]}`
-          )}. Oficijelne Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
+          content={`Vaktija za ${locationsDative[locationState]}, ${
+            date[0].split(" ")[2]
+          } ${date[1]} / ${date[2].split(" ")[1]} ${
+            date[2].split(" ")[2]
+          }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
         />
         <meta
           name="theme-color"
