@@ -303,7 +303,7 @@ function Daily({ locationProps = 77, root }) {
       <ReactNotifications
         onRef={ref => setNotification(ref)}
         title={`${vakatNames[nextVakatPosition]} je za 15 minuta`}
-        body={`${locations[locationState]}, ${date[0]} ${date[1]} / ${date[2]}`}
+        body={`${locations[locationState]}, ${vakatNames[nextVakatPosition]} je u ${vaktija[nextVakatPosition]}`}
         icon={"icon.png"}
         tag={uuidv4()}
         interaction="true"
