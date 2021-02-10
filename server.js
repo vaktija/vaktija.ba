@@ -7,7 +7,26 @@ const vaktija = require("./src/data/vaktija.json");
 const slugify = require("slugify");
 const app = express();
 
+const prerender = require("prerender-node").set(
+  "prerenderToken",
+  process.env.PRERENDER_TOKEN
+);
+prerender.crawlerUserAgents.push("googlebot");
+
 app.use(compression());
+app.use(
+  prerender.whitelisted([
+    "^/$",
+    ...vaktija.locations.map(
+      location =>
+        `^/${slugify(location, {
+          replacement: "-",
+          remove: null,
+          lower: true
+        })}$`
+    )
+  ])
+);
 app.use(favicon(__dirname + "/build/favicon.ico"));
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "build")));
