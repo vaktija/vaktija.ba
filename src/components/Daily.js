@@ -28,6 +28,7 @@ import Counter from "./Counter";
 import CurrentDate from "./CurrentDate";
 import Location from "./Location";
 import Stores from "./Stores";
+import Iz from "./Iz";
 import Locations from "./Locations";
 import Footer from "./Footer";
 import { ThemeContext } from "../contexts/ThemeContext";
@@ -279,20 +280,18 @@ function Daily({ locationProps = 77, root }) {
           href={
             locationState !== 77
               ? `https://vaktija.ba/${slugify(locations[locationState], {
-                  replacement: "-",
-                  remove: null,
-                  lower: true
-                })}`
+                replacement: "-",
+                remove: null,
+                lower: true
+              })}`
               : `https://vaktija.ba`
           }
         />
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${
-            date[0].split(" ")[2]
-          } ${date[1]} / ${date[2].split(" ")[1]} ${
-            date[2].split(" ")[2]
-          }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
+          content={`Vaktija za ${locationsDative[locationState]}, ${date[0].split(" ")[2]
+            } ${date[1]} / ${date[2].split(" ")[1]} ${date[2].split(" ")[2]
+            }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
         />
         <meta
           name="theme-color"
@@ -321,13 +320,13 @@ function Daily({ locationProps = 77, root }) {
                   alt="vaktija.ba"
                 />
               ) : (
-                <IconLight
-                  height="32"
-                  width="32"
-                  className="brand"
-                  alt="vaktija.ba"
-                />
-              )}
+                  <IconLight
+                    height="32"
+                    width="32"
+                    className="brand"
+                    alt="vaktija.ba"
+                  />
+                )}
             </Link>
           </Col>
           <Col className="text-right" xs={6} sm={6} md={6} lg={6}>
@@ -387,6 +386,12 @@ function Daily({ locationProps = 77, root }) {
           <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
             <br />
             <Stores theme={theme} />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
+            <br />
+            <Iz theme={theme} />
           </Col>
         </Row>
       </Container>
