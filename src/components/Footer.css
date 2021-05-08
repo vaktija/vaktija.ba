@@ -6,7 +6,7 @@
 }
 
 .icons {
-  margin: 25px 15px 25px 15px;
+  margin: 25px 0px 25px 0px;
 }
 
 .links {
@@ -47,5 +47,21 @@
 }
 
 .github.dark {
+  color: #fff;
+}
+
+.android.light {
+  color: #4a4a4a;
+}
+
+.android.dark {
+  color: #fff;
+}
+
+.windows.light {
+  color: #4a4a4a;
+}
+
+.windows.dark {
   color: #fff;
 }
