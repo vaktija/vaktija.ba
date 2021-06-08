@@ -7,6 +7,8 @@ const vaktija = require("./src/data/vaktija.json");
 const slugify = require("slugify");
 const app = express();
 
+vaktija.locations.push("mobile");
+
 const prerender = require("prerender-node").set(
   "prerenderToken",
   process.env.PRERENDER_TOKEN
