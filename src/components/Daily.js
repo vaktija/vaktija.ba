@@ -309,7 +309,7 @@ function Daily({ locationProps = 77, root }) {
       />
       <Container>
         <Row>
-          <Col className="text-left" xs={6} sm={6} md={6} lg={6}>
+          <Col className="text-start" xs={6} sm={6} md={6} lg={6}>
             <Link aria-label="Home" to="/">
               {theme === "light" ? (
                 <IconDark
@@ -328,7 +328,7 @@ function Daily({ locationProps = 77, root }) {
               )}
             </Link>
           </Col>
-          <Col className="text-right" xs={6} sm={6} md={6} lg={6}>
+          <Col className="text-end" xs={6} sm={6} md={6} lg={6}>
             <MapMarkerAlt
               height="32"
               width="32"
