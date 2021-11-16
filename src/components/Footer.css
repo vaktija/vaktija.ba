@@ -18,6 +18,17 @@
   margin: 15px;
 }
 
+@media only screen and (max-width: 320px) {
+  .links {
+    margin: 13px;
+  }
+  .toggle-theme {
+    margin: 13px;
+  }
+}
+
+p > a.links:first-child { margin-left: 0 !important; }
+
 .moon {
   color: #4a4a4a;
 }
@@ -55,6 +66,14 @@
 }
 
 .android.dark {
+  color: #fff;
+}
+
+.apple.light {
+  color: #4a4a4a;
+}
+
+.apple.dark {
   color: #fff;
 }
 

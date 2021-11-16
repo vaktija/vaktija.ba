@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Envelope from "../icons/Envelope.js"; // https://fontawesome.com/
 import Code from "../icons/Code.js"; // https://fontawesome.com/
 import Android from "../icons/Android.js"; // https://fontawesome.com/
+import Apple from "../icons/Apple.js"; // https://fontawesome.com/
 import Windows from "../icons/Windows.js"; // https://fontawesome.com/
 import Github from "../icons/Github.js"; // https://fontawesome.com/
 import Moon from "../icons/Moon.js"; // https://fontawesome.com/
@@ -46,6 +47,15 @@ function Footer({ theme, toggleTheme }) {
                 href="https://play.google.com/store/apps/details?id=ba.vaktija.android"
               >
                 <Android height="18" width="18" className={`android ${theme}`} />
+              </a>
+              <a
+                aria-label="Official iOS App"
+                className="links"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://apps.apple.com/app/id1095343967"
+              >
+                <Apple height="18" width="18" className={`apple ${theme}`} />
               </a>
               <a
                 aria-label="Official Windows App"
