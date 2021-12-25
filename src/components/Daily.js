@@ -279,18 +279,20 @@ function Daily({ locationProps = 77, root }) {
           href={
             locationState !== 77
               ? `https://vaktija.ba/${slugify(locations[locationState], {
-                replacement: "-",
-                remove: null,
-                lower: true
-              })}`
+                  replacement: "-",
+                  remove: null,
+                  lower: true
+                })}`
               : `https://vaktija.ba`
           }
         />
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${date[0].split(" ")[2]
-            } ${date[1]} / ${date[2].split(" ")[1]} ${date[2].split(" ")[2]
-            }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
+          content={`Vaktija za ${locationsDative[locationState]}, ${
+            date[0].split(" ")[2]
+          } ${date[1]} / ${date[2].split(" ")[1]} ${
+            date[2].split(" ")[2]
+          }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
         />
         <meta
           name="theme-color"
@@ -307,95 +309,104 @@ function Daily({ locationProps = 77, root }) {
         interaction="true"
         onClick={event => handleClick(event)}
       />
-      <Container>
-        <Row>
-          <Col className="text-start" xs={6} sm={6} md={6} lg={6}>
-            <Link aria-label="Home" to="/">
-              {theme === "light" ? (
-                <IconDark
-                  height="32"
-                  width="32"
-                  className="brand"
-                  alt="vaktija.ba"
-                />
-              ) : (
-                <IconLight
-                  height="32"
-                  width="32"
-                  className="brand"
-                  alt="vaktija.ba"
-                />
-              )}
-            </Link>
-          </Col>
-          <Col className="text-end" xs={6} sm={6} md={6} lg={6}>
-            <MapMarkerAlt
-              height="32"
-              width="32"
-              className={`map-marker-alt ${theme}`}
-              onClick={openNav}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-            <Counter theme={theme} vakatTime={vaktija[nextVakatPosition]} />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <Location
-              theme={theme}
-              location={locationState}
-              locations={locations}
-            />
-            <CurrentDate
-              theme={theme}
-              date={date}
-              location={locationState}
-              locations={locations}
-            />
-          </Col>
-        </Row>
-        <Row>
-          {vakatNames.map((vakatName, index) => (
-            <Col
-              key={vaktija[index]}
-              className="text-center"
-              xs={12}
-              sm={12}
-              md={12}
-              lg={2}
-            >
-              <Vakat
-                theme={theme}
-                vakatTime={vaktija[index]}
-                vakatName={vakatName}
-                highlight={nextVakatPosition === index ? true : false}
-              />
-              <RelativeTime
-                theme={theme}
-                vakatTime={vaktija[index]}
-                currentMoment={currentMoment}
-              />
-            </Col>
-          ))}
-        </Row>
-        <Row>
-          <Col className="text-center" xs={12} sm={12} md={12} lg={12}>
-            <br />
-            <Iz theme={theme} />
-          </Col>
-        </Row>
-      </Container>
       <Locations
         closeNav={closeNav}
         locations={locations}
         locationsShort={locationsShort}
         weights={weights}
       />
-      <br />
-      <Footer theme={theme} toggleTheme={toggleTheme} />
+      <Container className="d-flex flex-column h-100 justify-content-between text-center">
+        <header>
+          <Row>
+            <Col className="text-start" xs={6} sm={6} md={6} lg={6}>
+              <Link aria-label="Home" to="/">
+                {theme === "light" ? (
+                  <IconDark
+                    height="32"
+                    width="32"
+                    className="brand"
+                    alt="vaktija.ba"
+                  />
+                ) : (
+                  <IconLight
+                    height="32"
+                    width="32"
+                    className="brand"
+                    alt="vaktija.ba"
+                  />
+                )}
+              </Link>
+            </Col>
+            <Col className="text-end" xs={6} sm={6} md={6} lg={6}>
+              <MapMarkerAlt
+                height="32"
+                width="32"
+                className={`map-marker-alt ${theme}`}
+                onClick={openNav}
+              />
+            </Col>
+          </Row>
+        </header>
+        <main>
+          <section>
+            <Row>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <Counter theme={theme} vakatTime={vaktija[nextVakatPosition]} />
+              </Col>
+            </Row>
+          </section>
+          <section>
+            <Row>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <Location
+                  theme={theme}
+                  location={locationState}
+                  locations={locations}
+                />
+                <CurrentDate
+                  theme={theme}
+                  date={date}
+                  location={locationState}
+                  locations={locations}
+                />
+              </Col>
+            </Row>
+          </section>
+          <section>
+            <Row>
+              {vakatNames.map((vakatName, index) => (
+                <Col key={vaktija[index]} xs={12} sm={12} md={12} lg={2}>
+                  <Vakat
+                    theme={theme}
+                    vakatTime={vaktija[index]}
+                    vakatName={vakatName}
+                    highlight={nextVakatPosition === index ? true : false}
+                  />
+                  <RelativeTime
+                    theme={theme}
+                    vakatTime={vaktija[index]}
+                    currentMoment={currentMoment}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </section>
+          <section>
+            <Row>
+              <Col className="py-4" xs={12} sm={12} md={12} lg={12}>
+                <Iz theme={theme} />
+              </Col>
+            </Row>
+          </section>
+        </main>
+        <footer>
+          <Row>
+            <Col xs={12} sm={12} md={12} lg={12}>
+              <Footer theme={theme} toggleTheme={toggleTheme} />
+            </Col>
+          </Row>
+        </footer>
+      </Container>
     </>
   );
 }

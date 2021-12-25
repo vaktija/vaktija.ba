@@ -54,7 +54,7 @@ a.location-1 {
 ul {
   list-style-type: none;
   margin: 0;
-  padding-left: 1%;
+  padding-left: 1% !important;
   padding-right: 1%;
   overflow: hidden;
   background-color: #1e2227;
