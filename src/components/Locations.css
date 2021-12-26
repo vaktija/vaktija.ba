@@ -7,14 +7,12 @@
   left: 0;
   background-color: #1e2227;
   overflow-x: hidden;
-  padding-top: 50px;
 }
 
 .sidenav a {
-  padding: 5px 15px 5px 15px;
   text-decoration: none;
   color: #818181;
-  display: block;
+  transition: all 0.3s ease-out;
 }
 
 .sidenav a:hover {
@@ -23,9 +21,6 @@
 }
 
 .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 36px;
 }
 
@@ -48,45 +43,5 @@ a.location-2 {
 a.location-1 {
   font-size: 40px;
   color: white;
-  font-weight: 500;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding-left: 1% !important;
-  padding-right: 1%;
-  overflow: hidden;
-  background-color: #1e2227;
-  line-height: 30px;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  text-align: left;
-  padding: 0px;
-  text-decoration: none;
-  color: rgb(204, 204, 204);
-}
-
-li a:hover {
-  text-decoration: none;
-  color: white;
-  background-color: #1e2227;
-}
-
-li a:active {
-  text-decoration: none;
-  color: white;
-  background-color: #1e2227;
-}
-
-li a:focus {
-  text-decoration: none;
-  color: white;
-  background-color: #1e2227;
+  font-weight: bold;
 }
