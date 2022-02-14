@@ -19,6 +19,7 @@ prerender.crawlerUserAgents.push('bingbot');
 prerender.crawlerUserAgents.push('yandex');
 
 app.use(compression());
+app.use(require('prerender-node').set('host', 'vaktija.ba'));
 app.use(
   prerender.whitelisted([
     "^/$",
