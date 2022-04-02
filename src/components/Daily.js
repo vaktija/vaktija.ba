@@ -19,6 +19,7 @@ import {
   weights
 } from "../data/vaktija.json";
 import { daily } from "../api/vaktija/index.mjs";
+import Alert from "react-bootstrap/Alert";
 import IconDark from "../icons/IconDark.js";
 import IconLight from "../icons/IconLight.js";
 import MapMarkerAlt from "../icons/MapMarkerAlt.js"; // https://fontawesome.com/
@@ -148,6 +149,7 @@ moment.updateLocale("bs", {
 });
 
 function Daily({ locationProps = 77, root }) {
+  const [showAlert, setShowAlert] = useState(true);
   const context = useContext(ThemeContext);
   const localization = useCallback(() => {
     if (root && cookies.get("location") !== undefined) {
@@ -348,6 +350,26 @@ function Daily({ locationProps = 77, root }) {
           </Row>
         </header>
         <main>
+          <section>
+            <Row>
+              <Col lg={{ span: 8, offset: 2 }} className="mt-4">
+                {showAlert && (
+                  <Alert
+                    variant="info"
+                    onClose={() => setShowAlert(false)}
+                    dismissible
+                  >
+                    <span>
+                      <strong>Novo!</strong> Edukativna platforma{" "}
+                      <a href="https://islam.ba" className="alert-link">
+                        islam.ba
+                      </a>
+                    </span>
+                  </Alert>
+                )}
+              </Col>
+            </Row>
+          </section>
           <section>
             <Row>
               <Col xs={12} sm={12} md={12} lg={12}>
