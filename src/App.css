@@ -12,3 +12,8 @@ body.dark {
 body.light {
   background-color: #ffffff;
 }
+
+/* Alert fix */
+.alert-dismissible .btn-close {
+  z-index: auto !important;
+}
