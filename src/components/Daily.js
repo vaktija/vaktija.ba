@@ -179,7 +179,7 @@ function Daily({ locationProps = 77, root }) {
   const [locationState] = useState(Number(localization()));
   const [vaktija, setVaktija] = useState(daily(localization()).vakat);
   const [nextVakatPosition, setNextVakatPosition] = useState(nextVakat());
-  const { toggleTheme, initTheme, automaticTheme, theme } = context;
+  const { toggleTheme, initTheme, automaticTheme, theme, keepAwake, setKeepAwake } = context;
   const [date, setDate] = useState([
     moment().tz("Europe/Sarajevo").format("ddd, D. MMMM"),
     moment().tz("Europe/Sarajevo").format("YYYY"),
@@ -281,20 +281,18 @@ function Daily({ locationProps = 77, root }) {
           href={
             locationState !== 77
               ? `https://vaktija.ba/${slugify(locations[locationState], {
-                  replacement: "-",
-                  remove: null,
-                  lower: true
-                })}`
+                replacement: "-",
+                remove: null,
+                lower: true
+              })}`
               : `https://vaktija.ba`
           }
         />
         <meta
           name="description"
-          content={`Vaktija za ${locationsDative[locationState]}, ${
-            date[0].split(" ")[2]
-          } ${date[1]} / ${date[2].split(" ")[1]} ${
-            date[2].split(" ")[2]
-          }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
+          content={`Vaktija za ${locationsDative[locationState]}, ${date[0].split(" ")[2]
+            } ${date[1]} / ${date[2].split(" ")[1]} ${date[2].split(" ")[2]
+            }. Zora namaz, izlazak sunca, podne namaz, ikindija namaz, akšam namaz i jacija namaz. Android, iOS (iPhone, iPad) i Windows mobilne aplikacije`}
         />
         <meta
           name="theme-color"
@@ -373,7 +371,7 @@ function Daily({ locationProps = 77, root }) {
           <section>
             <Row>
               <Col xs={12} sm={12} md={12} lg={12}>
-                <Counter theme={theme} vakatTime={vaktija[nextVakatPosition]} />
+                <Counter theme={theme} vakatTime={vaktija[nextVakatPosition]} setKeepAwake={setKeepAwake} keepAwake={keepAwake} />
               </Col>
             </Row>
           </section>

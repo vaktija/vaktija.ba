@@ -10,3 +10,11 @@
 .counter-light {
   color: #cacaca;
 }
+
+.unlock.light {
+  color: #333;
+}
+
+.unlock.dark {
+  color: #fff;
+}

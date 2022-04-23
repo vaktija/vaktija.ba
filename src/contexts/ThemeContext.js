@@ -12,6 +12,7 @@ const cookies = new Cookies();
 function ThemeContextProvider(props) {
   const [automaticTheme, setAutomaticTheme] = useState(true);
   const [theme, setTheme] = useState("light");
+  const [keepAwake, setKeepAwake] = useState(false);
 
   const initTheme = theme => {
     if (cookies.get("theme") === "dark" || cookies.get("theme") === "light") {
@@ -72,7 +73,9 @@ function ThemeContextProvider(props) {
         setAutomaticTheme,
         toggleTheme,
         initTheme,
-        theme
+        theme,
+        setKeepAwake,
+        keepAwake
       }}
     >
       {props.children}
