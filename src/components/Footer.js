@@ -2,7 +2,7 @@ import React from "react";
 import Envelope from "../icons/Envelope.js"; // https://fontawesome.com/
 import Code from "../icons/Code.js"; // https://fontawesome.com/
 import Android from "../icons/Android.js"; // https://fontawesome.com/
-// import Apple from "../icons/Apple.js"; // https://fontawesome.com/
+import Apple from "../icons/Apple.js"; // https://fontawesome.com/
 import Windows from "../icons/Windows.js"; // https://fontawesome.com/
 import Github from "../icons/Github.js"; // https://fontawesome.com/
 import Moon from "../icons/Moon.js"; // https://fontawesome.com/
@@ -39,15 +39,15 @@ function Footer({ theme, toggleTheme }) {
       >
         <Android height="18" width="18" className={`android ${theme}`} />
       </a>
-      {/* <a
+      <a
         aria-label="Official iOS App"
         className="links"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://apps.apple.com/app/id1095343967"
+        href="https://apps.apple.com/ba/app/vaktija-ba/id1636479269"
       >
         <Apple height="18" width="18" className={`apple ${theme}`} />
-      </a> */}
+      </a>
       <a
         aria-label="Official Windows App"
         className="links"
