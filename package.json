@@ -10,7 +10,7 @@
     "express-favicon": "^2.0.1",
     "moment-duration-format": "2.3.2",
     "moment-hijri": "^2.1.2",
-    "moment-timezone": "^0.5.34",
+    "moment-timezone": "^0.5.35",
     "path": "^0.12.7",
     "prerender-node": "^3.5.0",
     "react": "^17.0.2",
