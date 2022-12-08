@@ -32,10 +32,8 @@
   },
   "scripts": {
     "https": "HTTPS=true react-scripts start",
-    "dev": "react-scripts start",
-    "//": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "react-scripts build",
-    "//": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "start": "node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
