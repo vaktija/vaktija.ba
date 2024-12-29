@@ -1,8 +1,8 @@
 {
   "vaktija": {
-    "mjesec": [
+    "months": [
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               20220,
@@ -316,7 +316,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               19500,
@@ -610,7 +610,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               17280,
@@ -924,7 +924,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               13740,
@@ -1228,7 +1228,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               9900,
@@ -1542,7 +1542,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               6660,
@@ -1846,7 +1846,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               6360,
@@ -2160,7 +2160,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               9240,
@@ -2474,7 +2474,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               12420,
@@ -2778,7 +2778,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               14880,
@@ -3092,7 +3092,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               17100,
@@ -3396,7 +3396,7 @@
         ]
       },
       {
-        "dan": [
+        "days": [
           {
             "vakat": [
               19080,
@@ -3711,9 +3711,9 @@
       }
     ]
   },
-  "razlika": [
+  "differences": [
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -3837,7 +3837,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             480,
@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             780,
@@ -4085,7 +4085,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -4209,7 +4209,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -4333,7 +4333,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -4457,7 +4457,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             660,
@@ -4581,7 +4581,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             540,
@@ -4705,7 +4705,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             540,
@@ -4829,7 +4829,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             780,
@@ -4953,7 +4953,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             720,
@@ -5077,7 +5077,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             660,
@@ -5201,7 +5201,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -5325,7 +5325,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -5449,7 +5449,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -5573,7 +5573,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -5697,7 +5697,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -5821,7 +5821,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -5945,7 +5945,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             840,
@@ -6069,7 +6069,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             840,
@@ -6193,7 +6193,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -120,
@@ -6317,7 +6317,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -6441,7 +6441,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -6565,7 +6565,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -6689,7 +6689,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -6813,7 +6813,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -6937,7 +6937,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -7061,7 +7061,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -7185,7 +7185,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             600,
@@ -7309,7 +7309,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -7433,7 +7433,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -7557,7 +7557,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -7681,7 +7681,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -7805,7 +7805,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -120,
@@ -7929,7 +7929,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -8053,7 +8053,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -8177,7 +8177,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -8301,7 +8301,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -8425,7 +8425,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -8549,7 +8549,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -60,
@@ -8673,7 +8673,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -8797,7 +8797,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -8921,7 +8921,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -9045,7 +9045,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -9169,7 +9169,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -9293,7 +9293,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -9417,7 +9417,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -9541,7 +9541,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -9665,7 +9665,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -9789,7 +9789,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             540,
@@ -9913,7 +9913,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -10037,7 +10037,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -10161,7 +10161,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -10285,7 +10285,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -10409,7 +10409,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             480,
@@ -10533,7 +10533,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -10657,7 +10657,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             120,
@@ -10781,7 +10781,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -10905,7 +10905,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -11029,7 +11029,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -11153,7 +11153,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -11277,7 +11277,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -11401,7 +11401,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -11525,7 +11525,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -11649,7 +11649,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -11773,7 +11773,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -11897,7 +11897,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -12021,7 +12021,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -12145,7 +12145,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -12269,7 +12269,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -12393,7 +12393,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -12517,7 +12517,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             660,
@@ -12641,7 +12641,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -12765,7 +12765,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -12889,7 +12889,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -120,
@@ -13013,7 +13013,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -13137,7 +13137,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             600,
@@ -13261,7 +13261,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -13385,7 +13385,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             360,
@@ -13509,7 +13509,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -60,
@@ -13633,7 +13633,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             480,
@@ -13757,7 +13757,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -13881,7 +13881,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -14005,7 +14005,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -14129,7 +14129,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -14253,7 +14253,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             420,
@@ -14377,7 +14377,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -14501,7 +14501,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -14625,7 +14625,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -14749,7 +14749,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             300,
@@ -14873,7 +14873,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -14997,7 +14997,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -15121,7 +15121,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -15245,7 +15245,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -15369,7 +15369,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             0,
@@ -15493,7 +15493,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -15617,7 +15617,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             900,
@@ -15741,7 +15741,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -15865,7 +15865,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -15989,7 +15989,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             240,
@@ -16113,7 +16113,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -60,
@@ -16237,7 +16237,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -16361,7 +16361,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -16485,7 +16485,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -60,
@@ -16609,7 +16609,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -120,
@@ -16733,7 +16733,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             180,
@@ -16857,7 +16857,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             60,
@@ -16981,7 +16981,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -300,
@@ -17105,7 +17105,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -360,
@@ -17229,7 +17229,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -240,
@@ -17353,7 +17353,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -420,
@@ -17477,7 +17477,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -360,
@@ -17601,7 +17601,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -17725,7 +17725,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -17849,7 +17849,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -180,
@@ -17973,7 +17973,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -420,
@@ -18097,7 +18097,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -300,
@@ -18221,7 +18221,7 @@
       ]
     },
     {
-      "mjesec": [
+      "months": [
         {
           "vakat": [
             -300,
@@ -18345,7 +18345,7 @@
       ]
     }
   ],
-  "lokacija": [
+  "locations": [
     "Banovići",
     "Banja Luka",
     "Bihać",
@@ -18394,7 +18394,7 @@
     "Kalesija",
     "Kalinovik",
     "Kiseljak",
-    "Kladanj",
+    "Kladaysj",
     "Ključ",
     "Konjic",
     "Kotor-Varoš",
@@ -18465,7 +18465,7 @@
     "Sjenica",
     "Tutin"
   ],
-  "lokaciju": [
+  "locationsDative": [
     "Banoviće",
     "Banja Luku",
     "Bihać",
@@ -18514,7 +18514,7 @@
     "Kalesiju",
     "Kalinovik",
     "Kiseljak",
-    "Kladanj",
+    "Kladaysj",
     "Ključ",
     "Konjic",
     "Kotor-Varoš",
@@ -18634,7 +18634,7 @@
     "Kalesija",
     "Kalinovik",
     "Kiseljak",
-    "Kladanj",
+    "Kladaysj",
     "Ključ",
     "Konjic",
     "Kotor-Varoš",
@@ -18713,7 +18713,7 @@
     "Akšam",
     "Jacija"
   ],
-  "weight": [
+  "weights": [
     3,
     1,
     1,
