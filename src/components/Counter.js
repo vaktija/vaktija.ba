@@ -15,7 +15,6 @@ function Counter({ vakatTime, theme, setKeepAwake, keepAwake }) {
 
   useEffect(() => {
     released === false ? setKeepAwake(true) : setKeepAwake(false);
-    console.log(released);
   }, [released, setKeepAwake]);
 
   if (vakatTime === undefined) {
