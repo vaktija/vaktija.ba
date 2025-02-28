@@ -53,7 +53,7 @@ function Footer({ theme, toggleTheme }) {
         className="links"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.microsoft.com/en-us/store/apps/vaktijaba/9nblggh5lc4p"
+        href="https://apps.apple.com/ba/app/vaktija-ba/id1636479269"
       >
         <Windows height="18" width="18" className={`windows ${theme}`} />
       </a>
